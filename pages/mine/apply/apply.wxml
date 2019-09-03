@@ -1,0 +1,22 @@
+<view class="cu-form-group margin-top">
+    <view class="title">类型</view>
+    <input type='text' bindinput='type' placeholder="请填写申请类型"></input>
+</view>
+<view class="cu-form-group">
+    <view class="title">姓名</view>
+    <input type="text" bindinput='uname' placeholder="请填写申请人的姓名"></input>
+</view>
+<view class="cu-form-group">
+    <view class="title">手机号</view>
+    <input text="number" bindinput='tel' placeholder="请填写申请人的手机号码"></input>
+</view>
+
+<view class="cu-form-group">
+    <textarea placeholder="请输入您需要申请资源的介绍，我们将尽快为您解决" maxlength="-1" bindinput="remarks"></textarea>
+</view>
+
+<view class='fixed padding-sm align-center'>
+    <view>
+        <button class="bg-blue basis-xss-p text-lg" bindtap='submission'>提交申请</button>
+    </view>
+</view>

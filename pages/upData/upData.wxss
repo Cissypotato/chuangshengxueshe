@@ -1,0 +1,5 @@
+/* pages/upData/upData.wxss */
+
+page{height: 100%}
+.btn-wrapper{height: 100%;display: flex;flex-direction: column;align-items: center;justify-content: center;}
+.btn{color: #555;padding: 20rpx;border: 1px solid #eee;margin-top: 40rpx;width: 80%;text-align: center;}

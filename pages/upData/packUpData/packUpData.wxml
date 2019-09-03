@@ -1,0 +1,96 @@
+
+<view wx:if="{{isLogin==1}}">
+    <view class="form_3">
+        <view class="in_tips">
+            <b>资源类型</b>
+            <s>请选择资源所属的类型</s>
+        </view>
+        <view class="choo_mk {{resource_type[index].state?'type_now':''}}" wx:for="{{resource_type}}" wx:key data-id="{{index}}" data-t="{{item.name}}" bindtap="choo_type">
+            <icon class="iconfont icon-danxuanxuanzhong" wx:if="{{resource_type[index].state}}"></icon>
+            <icon class="iconfont icon-danxuanweixuanzhong" wx:else></icon>
+            {{item.name}}
+        </view>
+        <view class="clear"></view>
+        <view class="in_tips">
+            <b>资源名称</b>
+            <s>一句话描写资源的简短介绍</s>
+        </view>
+        <input data-t="title" bindblur="input_data"/>
+        <view class="in_tips" wx:if="{{resource_type[2].state}}">
+            <b>公共资源可用时间段</b>
+        </view>
+        <input data-t="time" bindblur="input_data" wx:if="{{resource_type[2].state}}" />
+        <view class="in_tips">
+            <b>选择地址</b>
+            <s>点击选择资源所在的城市</s>
+        </view>
+        <view class="section">
+            <picker mode="multiSelector" range="{{part}}" bindcolumnchange="choo_part" bindchange="choo_part_ok" 
+            range-key="name">
+                <text class="input_text">{{data_part}}</text>
+            </picker>
+        </view>
+        <view class="in_tips">
+            <b>详情地址</b>
+            <s>请填写村组后的详细地址，如门牌号等信息</s>
+        </view>
+        <input data-t="village" name="village" bindblur="input_data"/>
+        <view class="in_tips">
+            <b>获取当前经纬度</b>
+        </view>
+        <view class="choo_mk {{up_data.lng?'type_now':''}}"  bindtap="getLngAndLat">
+            <icon class="iconfont icon-danxuanxuanzhong" wx:if="{{up_data.lng?'type_now':''}}"></icon>
+            <icon class="iconfont icon-danxuanweixuanzhong" wx:else></icon>
+            <text wx:if="{{up_data.lng?'type_now':''}}">已获取</text>
+            <text wx:else>点击获取</text>
+        </view>
+        <view class="lng_show">{{up_data.lng}} {{up_data.lat}}</view>
+        <view class="clear"></view>
+        <view class="in_tips">
+            <b>价格</b>
+            <s>(面议/定价)</s>
+        </view>
+        <input data-t="price" bindblur="input_data"/>
+        <view class="in_tips">
+            <b>面积</b>
+            <s>(平方米)</s>
+        </view>
+        <input data-t="area" bindblur="input_data"/>
+        <view class="in_tips">
+            <b>资源所有人</b>
+        </view>
+        <input data-t="landlord" bindblur="input_data"/>
+        <view class="in_tips">
+            <b>所有人联系方式</b>
+        </view>
+        <input data-t="tel" bindblur="input_data"/>
+        <view class="in_tips">
+            <b>资源详情</b>
+        </view>
+        <textarea data-t="area_detail" auto-height bindblur="input_data" />
+        <view class="in_tips">
+            <b>添加图片 (大小在300k内)</b>
+        </view>
+        <view class='z_page_pack_2'>
+            <view class='pack_6' wx:for="{{img_path}}" wx:key>
+                <image src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview"></image>
+                <view class='del' data-idx="{{index}}"  bindtap="removeImage">删除图片</view>
+            </view>
+            <view class='pack_6' bindtap="chooseImage" wx:if="{{img_path.length<7}}">
+                <view class='btn'>添加图片</view>
+            </view>
+            <view class='clear'></view>
+        </view>
+        <view class='z_page_space_2'></view>
+    </view>
+
+    <button class="z_btn_2 g_1" bindtap="submitForm">提交</button>
+</view>
+
+<view class="noLogin" wx:elif="{{isLogin==5}}" >
+ <view class="btn" bindtap="toUserReal">您还没有实名认证，请先实名认证</view>
+</view>
+
+<view class="noLogin" wx:else >
+ <view class="btn" bindtap="toLogin">您还没有登录，请先登录</view>
+</view>

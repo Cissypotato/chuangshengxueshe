@@ -1,0 +1,98 @@
+<view class='z_page_space_3'></view>
+<view class="z_page_info_0">{{info.resources.title}}</view>
+<scroll-view scroll-x enable-flex class="img_list">
+    <image class="scroll-view-item" wx:for="{{info.resources.img}}" wx:key src="{{item.img}}" mode="aspectFill" bindtap="img_show" data-src="{{item.img}}"></image>
+    <view class="last_pack"></view>
+</scroll-view>
+<view class="page_tips">
+    <icon class='iconfont icon-iconfontnote c1'></icon> 右滑查看更多·点击图片放大
+</view>
+
+<view class='z_page_space_2'></view>
+
+<view class="z_page_title">资源介绍</view>
+<view class="info_pack">
+    <view class="pack w100">
+        <text class="tips">位置</text> {{info.resources.districts}}·{{info.resources.community}}·{{info.resources.group}}
+    </view>
+    <view class="pack">
+        <text class="tips">价格</text> {{info.resources.price}}
+    </view>
+    <view class="pack">
+        <text class="tips">面积</text> {{info.resources.area}}
+    </view>
+    <view class="clear"></view>
+</view>
+<view class="z_page_info_1">{{info.resources.desc}}</view>
+
+<view class='z_page_space_2'></view>
+
+<view class="z_page_title">位置及周边</view>
+<map id="myMap" enable-zoom="false" enable-scroll="false" class="map_pack" latitude="{{info.resources.lat}}" longitude="{{info.resources.lng}}" markers="{{markers}}" show-location></map>
+<view class='z_page_space_2'></view>
+<view class="z_page_title">资源评价</view>
+<view class="bg-white padding-top" wx:if="{{info.comment.length!=0}}">
+    <view class='page_message_pack' wx:for="{{info.comment}}" wx:key>
+        <view class='l'>
+            <icon class='iconfont icon-icon_people_fill c9'></icon>
+        </view>
+        <view class='r'>
+            <view class='name'>{{item.nickName}}</view>
+            <view class='content'>{{item.content}}</view>
+            <view class='time'>{{item.create_time}}</view>
+        </view>
+        <view class='clear'></view>
+    </view>
+</view>
+<view class='z_page_info_1' wx:else>
+    此资源暂时没有评价
+</view>
+
+<view class='z_page_space_2'></view>
+
+<view class="z_page_title">附近资源</view>
+<view class='z_list_1' bindtap='details' data-id="{{item.id}}" wx:for="{{info.fj_resources}}" wx:key wx:if="{{index<3}}" bindtap='details'>
+    <image src="{{item.img}}"></image>
+    <view class="r">
+        <view class="z_font_2">{{item.title}}</view>
+        <view class="z_font_3">{{item.community}}</view>
+        <view class="z_font_3">{{item.group}}</view>
+        <view class="z_font_4">
+            <text>{{item.price}}</text> {{item.area}}</view>
+    </view>
+    <view class='clear'></view>
+</view>
+
+
+
+<view class='z_page_space'></view>
+
+<view class='page_b_tips'>
+    <view class='t'>如果以上信息有误</view>
+    <button class='btn' open-type="contact">点此报错</button>
+</view>
+
+<view class='page_b_btn'>
+    <button class='btn b_1' open-type="contact">
+        <view class='t'>在线咨询</view>
+        <view class='b'>了解更多资源信息</view>
+    </button>
+    <button class='btn o_1' bindtap='goMake' data-id="{{info.resources.id}}">
+        <view class='t'>立即预约</view>
+        <view class='b'>预约后请注意消息</view>
+    </button>
+    <view class='clear'></view>
+</view>
+
+
+<!-- 
+<view class='flex fixed align-center text-center text-lg' style="background-color:#fbbd08">
+    <button class="basis-xss-p qx" plain  open-type='contact' bindcontact="handleContact">
+        <text class="icon-phone lg text-white">联系出租</text>
+    </button>
+    <view class="basis-lg-p bg-blue"  bindtap='goMake' data-id="{{info.resources.id}}">
+        <text class="icon-form lg text-white">立即预约</text>
+    </view>
+</view>
+
+-->

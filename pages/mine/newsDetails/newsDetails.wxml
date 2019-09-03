@@ -1,0 +1,10 @@
+<view class="timer">{{cont.create_time}}</view>
+<view class="news">
+   <view class="news_head_img">
+      <image src="{{cont.img}}" mode="widthFix"></image>
+   </view>
+   <view class='news_cont'>
+      <text>{{cont.content}}</text>
+      <navigator wx:if="{{cont.is_url === 1}}" class="nav" open-type="navigate" hover-class="none" url="{{cont.options}}?id={{cont.notice_id}}">查看链接<icon class="iconfont icon-lianjie"></icon></navigator>
+   </view>
+</view>

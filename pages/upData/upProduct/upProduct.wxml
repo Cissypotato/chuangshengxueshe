@@ -1,0 +1,49 @@
+<!--pages/upData/upProduct/upProduct.wxml-->
+<view class="form_3">
+   
+    <view class="in_tips">
+        <b>产品名称</b>
+    </view>
+    <input data-t="title" bindblur="input_data"/>
+    
+    <view class="in_tips">
+        <b>产品所属社区</b>
+        <s>包括区镇社区</s>
+    </view>
+    <input data-t="village" bindblur="input_data"/>
+
+    <view class="in_tips">
+        <b>价格</b>
+    </view>
+    <input data-t="price" bindblur="input_data"/>
+    <view class="in_tips">
+        <b>产品分类</b>
+        <s>(请用逗号分隔)</s>
+    </view>
+    <input data-t="sort" bindblur="input_data"/>
+
+    <view class="in_tips">
+        <b>产品联系方式</b>
+    </view>
+    <input data-t="tel" bindblur="input_data"/>
+    <view class="in_tips">
+        <b>产品介绍</b>
+    </view>
+    <textarea data-t="produce" auto-height bindblur="input_data" />
+    <view class="in_tips">
+        <b>添加产品图片</b>
+    </view>
+    <view class='z_page_pack_2'>
+        <view class='pack_6' wx:for="{{img_path}}" wx:key>
+            <image src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview"></image>
+            <view class='del' data-idx="{{index}}"  bindtap="removeImage">删除图片</view>
+        </view>
+        <view class='pack_6' bindtap="chooseImage" wx:if="{{img_path.length<7}}">
+            <view class='btn'>添加图片</view>
+        </view>
+        <view class='clear'></view>
+    </view>
+    <view class='z_page_space_2'></view>
+</view>
+
+<button class="z_btn_2 g_1" bindtap="submitForm">提交</button>

@@ -1,0 +1,28 @@
+<!--
+<view class="padding-lr">
+   <form bindsubmit="formSubmit">
+      <view class="cu-form-group">
+         <view class="title">姓名</view>
+         <input placeholder="真实姓名" name="real_name"></input>
+      </view>
+      <view class="cu-form-group">
+         <view class="title">身份证号</view>
+         <input placeholder="公民身份证号码" name="real_number" maxlength="18"></input>
+      </view>
+      <view class="cu-form-group"></view>
+      <button form-type="submit" class="bg-blue">提交</button>
+   </form>
+</view>
+-->
+
+
+
+<view class='z_page_space_2'></view>
+<view class="z_page_title">请仔细核对后输入</view>
+<form bindsubmit="formSubmit">
+    <input class='input_1' placeholder="真实姓名"  name="real_name"></input>
+    <input class='input_1' placeholder="公民身份证号码" name="real_number" maxlength="18"></input>
+    <view class="clear"></view>
+    <view class='z_page_space_2'></view>
+    <button form-type="submit" class="z_btn_2">提交</button>
+</form>

@@ -1,0 +1,82 @@
+<view wx:if="{{isOrganization}}">
+    <view class="add-project-wrapper">
+        <view class="in_tips">
+            <b>项目名字</b>
+        </view>
+        <input data-t="project_title" bindblur="input_project_data" value="{{project_title}}" />
+        <view class="in_tips">
+            <b>项目预算</b>
+        </view>
+        <input data-t="project_price" bindblur="input_project_data" value="{{project_price}}" />
+        <view class="in_tips">
+            <b>项目针对人群</b>
+        </view>
+        <input data-t="project_tag" bindblur="input_project_data" value="{{project_tag}}" />
+        <view class="in_tips">
+            <b>项目介绍</b>
+        </view>
+        <textarea data-t="project_introduction" auto-height bindblur="input_project_data" value="{{project_introduction}}" />
+
+    </view>
+    <button class="z_btn_2 g_1" bindtap="submitForm">提交</button>
+
+</view>
+
+
+<view wx:else>
+    <view wx:if="{{toCertify===0}}" bindtap="changeCertify"class="middle-info">您还没有进行社会组织认证，请先进行认证</view>
+    <view wx:elif="{{toCertify===1}}"class="middle-info">您申请的社会组织正在审核中，审核成功即可上传项目</view>
+    <view wx:else>
+        <view class="form_3">
+
+            <view class="in_tips">
+                <b>社会组织名字</b>
+            </view>
+            <input data-t="title" bindblur="input_data" />
+
+            <view class="in_tips">
+                <b>联系人名字</b>
+            </view>
+            <input data-t="name" bindblur="input_data" />
+            <view class="in_tips">
+                <b>联系电话</b>
+            </view>
+            <input data-t="tel" bindblur="input_data" />
+
+
+            <view class="in_tips">
+                <b>社会组织介绍</b>
+            </view>
+            <textarea data-t="introduction" auto-height bindblur="input_data" />
+
+
+            <view class="project-list-wrapper">
+
+                <view class="project-item" wx:for="{{projectTitle}}">
+                    <view>{{item}}
+                        <view bindtap="deleteProject" data-idx="{{index}}">X</view>
+                    </view>
+
+                </view>
+            </view>
+
+
+            <view class="in_tips">
+                <b>添加图片</b>
+            </view>
+            <view class='z_page_pack_2'>
+                <view class='pack_6' wx:for="{{img_path}}" wx:key>
+                    <image src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview"></image>
+                    <view class='del' data-idx="{{index}}" bindtap="removeImage">删除图片</view>
+                </view>
+                <view class='pack_6' bindtap="chooseImage" wx:if="{{img_path.length<7}}">
+                    <view class='btn'>添加图片</view>
+                </view>
+                <view class='clear'></view>
+            </view>
+            <view class='z_page_space_2'></view>
+        </view>
+
+        <button class="z_btn_2 g_1" bindtap="submitForm">提交</button>
+    </view>
+</view>

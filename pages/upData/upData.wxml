@@ -1,0 +1,11 @@
+<!--pages/upData/upData.wxml-->
+
+
+<view class="btn-wrapper">
+
+    <view class="btn"  bindtap="toUpData" data-id="1">专家人才资源上传</view>
+    <view class="btn"  bindtap="toUpData" data-id="2">社会组织资源上传</view>
+    <view class="btn"  bindtap="toUpData" data-id="3">土地资源上传</view>
+    <view class="btn"  bindtap="toUpData" data-id="4">社区特色产品资源上传</view>
+
+</view>

@@ -1,0 +1,147 @@
+<view class="z_page_title pt_3">
+    <picker bindchange="city_choo" value="{{city_list[city_list_index].name}}" mode="selector" range="{{city_list}}" range-key="name">
+        <text>{{city_list[city_list_index].name}}</text>
+        <icon class="icon iconfont icon-icon_gps_fill" animation="{{city_animate}}"></icon>
+    </picker>
+</view>
+<view class="page_tips_2 pt_3">点击切换地区</view>
+<view class="city_pack">
+
+    <image class="bg" src="{{city_list[city_list_index].img}}" animation="{{city_img_animate}}"></image>
+</view>
+<view class="user_pack" bindtap="user_pack_click">
+    <view wx:if="{{isLogin}}">
+        <open-data type="userAvatarUrl" class="user_face" mode="cover"></open-data>
+        <open-data type="userNickName" class="user_name"></open-data>
+        <view class="user_state">切换登录状态</view>
+        <!--
+        <view class="user_rank" wx:if="{{user_real}}">
+            <icon class="iconfont icon-icon_certification_f"></icon>
+            <text>已认证用户</text>
+        </view>
+        <view class="user_rank" wx:else>
+            <icon class="iconfont icon-icon_newapplication_"></icon>
+            <text>未认证用户</text>
+        </view>
+        -->
+    </view>
+    <view wx:else>
+        <open-data type="userAvatarUrl" class="user_face" mode="cover"></open-data>
+        <open-data type="userNickName" class="user_name"></open-data>
+        <view class="user_state">点击登录</view>
+    </view>
+    <view class="clear"></view>
+</view>
+
+<view class='z_page_pack'>
+    <view class='z_f_4'  bindtap="mk_list" data-id="1" data-t="闲置房屋">
+        <icon class='iconfont icon-tudishuju c1' animation="{{icon_anima}}"></icon>
+        <text>闲置房屋</text>
+    </view>
+    <view class='z_f_4'  bindtap="mk_list" data-id="2" data-t="闲置土地">
+        <icon class='iconfont icon-tudi- c1' animation="{{icon_anima}}"></icon>
+        <text>闲置土地</text>
+    </view>
+    <view class='z_f_4'  bindtap="mk_list" data-id="3" data-t="公共资源">
+        <icon class='iconfont icon-icon_dingtab c1' animation="{{icon_anima}}"></icon>
+        <text>公共资源</text>
+    </view>
+    <view class='z_f_4'  bindtap="mk_list" data-id="4" data-t="专家人才">
+        <icon class='iconfont icon-rencai- c1' animation="{{icon_anima}}"></icon>
+        <text>专家人才</text>
+    </view>
+    <view class='z_f_4'  bindtap="mk_list" data-id="5" data-t="项目公示">
+        <icon class='iconfont icon-mingxingxiangmu- c1' animation="{{icon_anima}}"></icon>
+        <text>项目公示</text>
+    </view>
+    <view class='z_f_4'  bindtap="mk_list" data-id="6" data-t="社会组织">
+        <icon class='iconfont icon-shehuizuzhi- c1' animation="{{icon_anima}}"></icon>
+        <text>社会组织</text>
+    </view>
+    <view class='z_f_4'  bindtap="mk_list" data-id="7" data-t="社区特色产品">
+        <icon class='iconfont icon-gouwu c1' animation="{{icon_anima}}"></icon>
+        <text>社区特色产品</text>
+    </view>
+    <view class="clear"></view>
+    <view class="z_f_line"></view>
+    <button class='z_f_4' bindtap="mk_list" data-id="11" data-t="我的消息">
+        <icon class='iconfont icon-xiaoxi c4'></icon>
+        <text>我的消息</text>
+    </button>
+    <button class='z_f_4' bindtap="mk_list" data-id="12" data-t="我的评价">
+        <icon class='iconfont icon-pingjia1 c4'></icon>
+        <text>我的评价</text>
+    </button>
+    <button class='z_f_4' bindtap="mk_list" data-id="13" data-t="我的申请">
+        <icon class='iconfont icon-wodeshenqing- c4'></icon>
+        <text>我的申请</text>
+    </button>
+    <button class='z_f_4' open-type="share">
+        <icon class='iconfont icon-zhuanfafenxiang- c4'></icon>
+        <text>转发分享</text>
+    </button>
+    <button class='z_f_4' open-type="contact">
+        <icon class='iconfont icon-icon_service_fill c4'></icon>
+        <text>在线咨询</text>
+    </button>
+    <button class='z_f_4' bindtap="mk_list" data-id="16" data-t="资源上传">
+        <icon class='iconfont icon-shangchuan c4'></icon>
+        <text>资源上传</text>
+    </button>
+    <button class='z_f_4'  bindtap="mk_list" data-id="17" data-t="搜索资源">
+        <icon class='iconfont icon-sousuochakan- c4'></icon>
+        <text>搜索资源</text>
+    </button>
+    <view class="clear"></view>
+    <view class="z_f_line"></view>
+</view>
+
+<view class='z_page_space_3'></view>
+
+<view class="z_page_title">通知公告
+    <view class="link {{index==news_title_now?'o_1':'b_1'}}" wx:for="{{news_title_list}}" wx:key bindtap="tab_click" data-id="{{index}}">{{item}}</view>
+</view>
+<view class='z_page_pack_2' animation="{{anima_1}}"  style='margin-top:0.6em;'>
+    <view class='z_list_2' wx:for="{{news_list[news_title_now]}}" wx:key data-id="{{item.id}}" bindtap="arc_click">· {{item.title}}</view>
+</view>
+<view class='z_page_pack_2'>
+    <scroll-view enable-flex scroll-x scroll-with-animation scroll-left="{{news_banner_scroll_left}}">
+        <image wx:for="{{d.notice_sow.sow}}" wx:key src="{{item.img}}" mode="scaleToFill" class="scroll_img" data-id="{{item.notice_id}}" bindtap="arc_click"></image>
+    </scroll-view>
+</view>
+<view class='z_page_space_4'></view>
+<view wx:for="{{resource_list}}" wx:key>
+    <view class="z_page_title">{{item.name}}</view>
+    <view wx:for="{{item.info.res}}" wx:key>
+        <view class='z_list_1' bindtap='details' data-id="{{item.id}}">
+            <image src="{{item.img}}"></image>
+            <view class="r">
+                <view class="z_font_2">{{item.title}}</view>
+                <view class="z_font_3">{{item.districts}} / {{item.town}} / {{item.community}}</view>
+                <view class="z_font_3">{{item.group}}</view>
+                <view class="z_font_4">
+                    <text>{{item.price}}</text> {{item.area}}</view>
+            </view>
+            <view class='clear'></view>
+        </view>
+    </view>
+    <view class="z_btn_1 b_1" data-id="{{item.id}}" data-t="{{item.name}}" bindtap='list'>查看更多{{item.name}}</view>
+    <view class='z_page_space_4'></view>
+</view>
+<view class="z_page_title">资源申请</view>
+<view class='page_banner_pack' bindtap="mk_list" data-id="13" data-t="我的申请">
+    <view class='text_pack'>
+        <text class='t'>没有找到您所需的资源吗？</text>
+        <text class='b'>告诉我们，我们帮你搞定！</text>
+        <view class='k'>提交资料
+            <icon class='iconfont icon-you'></icon>
+        </view>
+    </view>
+    <image src='/image/index_b1.jpg'></image>
+</view>
+
+<view class='z_page_space_3'></view>
+<view class="page_foot_info">
+    <text>有原则 有底线</text>
+</view>
+<view class='z_page_space'></view>

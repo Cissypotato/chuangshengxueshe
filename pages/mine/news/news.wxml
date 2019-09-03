@@ -1,0 +1,55 @@
+<!-- <view wx:if="{{isLogin}}">
+   <block wx:if="{{isNew}}">
+      <view class="cu-list menu-avatar solid-bottom">
+         <view class="cu-item {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{info}}" wx:key bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-target="move-box-{{index}}" style="position: relative">
+            <view class="cu-tag badge" wx:if="{{item.state == 0}}"></view>
+            <view class="cu-avatar round lg" style="background-image:url({{item.img}});" data-id="{{item.id}}" bindtap='jump'>
+
+            </view>
+            <view class="content" data-id="{{item.id}}" bindtap='jump'>
+               <view class="text-black">{{item.title}}</view>
+               <view class="text-gray text-sm text-cut">{{item.content}}</view>
+            </view>
+            <view class="action" data-id="{{item.id}}" bindtap='jump'>
+               <view class="text-grey text-xs">{{item.create_time}}</view>
+            </view>
+            <view class="move" bindtap='del' data-id="{{item.id}}">
+               <view class="bg-red">删除</view>
+            </view>
+         </view>
+      </view>
+   </block>
+	<block wx:else>
+		<view class='no_info'>
+			<image src="/image/new.png" mode="widthFix"></image>
+			<view class="text-content text-black padding-tb-sm text-xl">您还没有消息</view>
+		</view>
+	</block>
+</view>
+<view wx:else>
+   <view class='no_info'>
+      <image src="/image/new.png" mode="widthFix"></image>
+      <view class="text-content text-black padding-tb-sm text-xl">您尚未登录，无法查看历史消息</view>
+      <button class="bg-blue btn_login" bindtap="login">登录查看历史消息</button>
+      <view class="margin-top btn_home text-lg" bindtap="go_home">继续找好资源</view>
+   </view>
+</view> -->
+
+<view class='z_page_space_3'></view>
+<view wx:if="{{isNew}}">
+	<view class='page_message_pack' data-id="{{item.id}}" wx:for="{{info}}" wx:key bindtap="{{item.is_desc === 1?'newsDetails':''}}">
+		<view class='l'>
+			<image src="{{item.img}}"></image>
+		</view>
+		<view class='r'>
+			<view class='name'>{{item.title}}</view>
+			<view class='content'>{{item.content}}</view>
+			<view class='time'>{{item.create_time}}</view>
+		</view>
+		<view class='clear'></view>
+	</view>
+</view>
+<view class='page_tips_3' wx:else>
+	<icon class='iconfont icon-xiaoxi c9'></icon>
+	<view class='p'>您还没有消息</view>
+</view>

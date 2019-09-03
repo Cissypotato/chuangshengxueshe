@@ -1,0 +1,60 @@
+<!-- <view wx:if="{{isList}}">
+   <view class='z_page_space_3'></view>
+   <li wx:for="{{list}}" wx:key>
+      <image src="{{item.img}}" mode="aspectFit"></image>
+      <r>
+         <n>{{item.name}}</n>
+         <d>{{item.course}} {{item.desc}}</d>
+         <c>课程:
+            <k wx:for="{{item.course}}" wx:key wx:for-item="kc">{{kc}}</k>
+         </c>
+         <b wx:if="{{item.click}}">
+            <icon class='iconfont icon-xin-1 z'></icon>{{item.praise}}</b>
+         <b wx:else bindtap="praise_click" data-id="{{item.id}}">
+            <icon class='iconfont icon-heart z'></icon>赞Ta</b>
+         <b bindtap="info_click" data-id="{{item.id}}">
+            <icon class='iconfont icon-lianjie l'></icon>介绍</b>
+         <b bindtap="yuyue_click" data-id="{{item.id}}">
+            <icon class='iconfont icon-you y'></icon>预约</b>
+      </r>
+      <view class="clear"></view>
+   </li>
+</view>
+<view class='page_tips_3' wx:else>
+	<icon class='iconfont icon-rencai- c9'></icon>
+	<view class='p'>暂时没有数据</view>
+</view> -->
+
+
+<view>
+
+    <view class="card" wx:for="{{list}}">
+
+        <view class="organization-wrapper">
+            <image class="org-avatar" mode="aspectFill" src="{{item.img}}"></image> 
+            <view class="org-info">
+                <view class="org-title">{{item.name}}</view>
+                <view class="org-more-info">介绍：{{item.desc}}</view>
+            </view>
+
+        </view>
+        <view class="project-wrapper">
+            <view class="">课程</view>
+            <view wx:for="{{item.course}}">
+                <view class="pro-item">
+                    {{item}}
+                    <!-- <s class="pro-more-info">></s> -->
+                    <icon class="iconfont icon-lianjie" bindtap="list_click"></icon>
+                </view>
+            </view>
+
+        </view>
+
+
+    </view>
+
+
+
+
+
+</view>

@@ -1,0 +1,11 @@
+/* pages/mine/orderDetail/orderDetail.wxss */
+page{
+    background: #f5f5f5;
+}
+.resource {
+    width: 140rpx;
+    height: 140rpx;
+}
+.cu-form-group .title {
+  min-width: calc(4em + 30rpx);
+}

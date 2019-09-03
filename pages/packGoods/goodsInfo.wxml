@@ -1,0 +1,47 @@
+
+
+<view class='z_page_space_3'></view>
+<view class="z_page_info_0">{{item.name}}</view>
+<scroll-view scroll-x enable-flex class="img_list">
+    <image class="scroll-view-item" wx:for="{{item_i.img}}" wx:key src="{{item.img}}" mode="aspectFill" bindtap="img_show" data-src="{{item.img}}"></image>
+    <view class="last_pack"></view>
+</scroll-view>
+<view class="page_tips">
+    <icon class='iconfont icon-iconfontnote c1'></icon> 右滑查看更多·点击图片放大
+</view>
+<view class='z_page_space_2'></view>
+<view class="z_page_title">产品介绍</view>
+<view class="info_pack">
+    <view class="pack w100">
+        <text class="tips">社区</text> {{item_i.three_name}}
+    </view>
+    <view class="pack">
+        <text class="tips">分类</text>  {{item_i.type_name}}
+    </view>
+    <view class="pack">
+        <text class="tips">价格</text>  {{item_i.price}}
+    </view>
+    <view class="pack">
+        <text class="tips">电话</text>  {{item_i.tel}}
+    </view>
+    <view class="clear"></view>
+</view>
+<view class="z_page_info_1">
+<!-- 方唇平折沿，曲腹大平底，底面内部下凹。内外均施彩釉，釉层不及底，所露胎骨为坚硬的褐红色。釉色分两种，盆内上部与沿面为豆绿色，余均呈棕红色，两种色釉相交处有一周弦纹，上下分界明显。但由于釉色温润，这种截然的分野并不显得突兀。釉层均匀而釉面亮泽，经揩拭光洁如新。 -->
+ {{item_i.info}}
+
+</view>
+<view class='z_page_space'></view>
+
+
+<view class='page_b_btn'>
+    <button class='btn b_1' open-type="contact">
+        <view class='t'>在线咨询</view>
+        <view class='b'>了解更多资源信息</view>
+    </button>
+    <button class='btn o_1' bindtap='goMake' data-id="{{item_i.id}}">
+        <view class='t'>立即预订</view>
+        <view class='b'>预订后请注意消息</view>
+    </button>
+    <view class='clear'></view>
+</view>

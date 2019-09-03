@@ -1,0 +1,55 @@
+/* pages/upData/upExpert/upExpert.wxss */
+.tipsInfo{font-size: 28rpx;width: 100%;color: #555;display: flex;margin-left: 60rpx;}
+.form_3 {}
+.form_3 .in_tips {width:90vw; margin:10vw 5vw 0 5vw; font-size:0.9rem;}
+.form_3 .in_tips>b {color:#607d8b;}
+.form_3 .in_tips>s {color:#cfd8dc; margin-left:1rem; font-size:0.8rem;}
+.form_3 input{height:2rem; line-height:2rem; width:86vw; margin:0vw 5vw 0 5vw; border:none; border-bottom:1px solid #eceff1; padding:0 2vw; text-align:left; font-size:0.9rem; outline:none;}
+.form_3 .input_text {height:2rem; line-height:2rem; width:86vw; margin:0vw 5vw 0 5vw; border:none; border-bottom:1px solid #eceff1; padding:0 2vw; text-align:left; font-size:0.9rem; display:block;}
+.form_3 .choo_mk {width:26.2vw; height:10vw; line-height:10vw; border-radius:4px; border:1px solid #eceff1; float:left; margin-left:5vw; text-align:center; margin-top:3vw; font-size:0.8rem; color:#b0bec5;}
+.form_3 .lng_show {height:10vw; line-height:10vw;  font-size:0.9rem; display:inline-block; float:left; margin-left:5vw; margin-top:3vw; border:1px solid #fff; color:#b0bec5;}
+.form_3 .type_now {color:#3f51b5;}
+.form_3 textarea {width:84vw; margin:2vw 5vw; border:1px solid #eceff1; border-radius:4px; padding:2vw 3vw; font-size:0.9rem; min-height:5rem; line-height:1.6;}
+
+/* zp */
+
+/*专家认证*/
+.expert_real{font-size: 1.6rem;font-weight: bold;color: #274462;padding: 2vw 5vw;letter-spacing: 6rpx;}
+.expert_tips{font-size: 28rpx;color: #274462;padding: 0 5vw;line-height: 2rem;}
+.in_img{margin: 5vw auto;width: 160rpx;height: 160rpx;border-radius: 50%;background: rgba(0, 0, 0, 0.4);text-align: center;color: #fff;}
+.in_img>icon{font-size: 2rem;line-height: 160rpx;}
+
+/*专家信息*/
+.expert_up{display: flex;justify-content: space-between;padding:0 32rpx;color: #fff;align-items:center;}
+.expert_up .rc{font-size: 46rpx;font-weight: bold;}
+.expert_up .rc_e{font-size: 26rpx;}
+.expert_up .icon-shezhi{font-size: 46rpx;}
+.expert_data{padding: 20rpx 32rpx;margin: 100rpx 0 0 0;position: relative;border-radius: 32rpx 32rpx 0 0;background: #F6F8F8;min-height: 600rpx;}
+.expert_data>.head_img{display: block;margin: -100rpx auto 0 auto;width: 160rpx;height: 160rpx;border-radius: 50%;}
+.expert_data>.name{text-align: center;font-weight: bold;line-height: 64rpx;}
+.expert_data>.introduce{position: relative;padding-left: 12rpx;margin: 20rpx 0;}
+.expert_data>.introduce>.c{font-size: 32rpx;}
+.expert_data>.introduce>.e{font-size: 24rpx;color: #B5B5B5;}
+.expert_int_cont{padding: 20rpx 0;font-size: 30rpx;text-align: justify;border-bottom:1px dashed #ececec;line-height: 52rpx;margin-bottom: 40rpx;}
+.courses_item{background: #fff;padding: 20rpx;min-height: 120rpx;margin:40rpx 0;box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);border-radius: 8rpx;height: 200rpx;}
+.courses_item{display: flex;justify-content: space-between;}
+.courses_item>.l{width: 54%;display: flex;align-content:  space-around;flex-wrap: wrap;}
+.courses_item>.l>.l_title{font-size:28rpx;font-weight: bold;height: 84rpx;overflow: hidden;width: 100%;}
+.courses_item>.l>.l_pro{font-size: 26rpx;color:#BDBDBD;width: 100%}
+.courses_item>.l>.l_int>icon{padding-right: 6rpx;font-size: 24rpx;}
+.courses_item>.l>.l_int>.cur{color: #FAD23E;}
+.courses_item>.l>.l_int>.l_int_text{font-size: 24rpx;color:#BDBDBD;}
+.courses_item>.r{width: 40%;}
+.courses_item>.r>image{width: 100%;height: 100%;}
+.focal{position: absolute;content: '';top: 0;bottom: 0;left: 0;border-left: 6px solid #EA4646;} 
+
+/* 课程发布 */
+.toolbar {padding: 0 5vw;box-sizing: border-box;border-bottom: 0;font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;}
+.ql-active {color: #06c;}
+.toolbar>.iconfont {display: inline-block;padding: 8px 8px;width: 24px;height: 24px;cursor: pointer;font-size: 20px;}
+.ql-container {box-sizing: border-box;padding: 0 5vw;width: 100%;min-height: 30vh;height: auto;background: #fff;margin-top: 20px;
+font-size: 16px;line-height: 1.5;}
+
+.expert_dete{padding: 0 5vw;font-size: 0.9rem;color: #607d8b;line-height: 3rem;}
+.expert_dete>view{display: flex;}
+.expert_dete>view>.time{padding-left: 32rpx;}

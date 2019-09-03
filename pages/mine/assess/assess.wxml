@@ -1,0 +1,51 @@
+<!--
+<view wx:if="{{isInfo}}" wx:key>
+    <block wx:for="{{info}}" wx:key>
+        <view class="padding solid-bottom flex">
+            <view class="cu-avatar lg round" style="background-image:url({{item.avatarUrl}});"></view>
+            <view class='padding-left-sm ' style="width:90%;">
+                <view class='flex justify-between'>
+                    <view><open-data type="userNickName"></open-data></view>
+                    <view>{{item.create_time}}</view>
+                </view>
+                <view class="text-content">
+                    <text class="icon-favorfill lg {{item.score>=1?'text-yellow':'text-gray'}}"></text>
+                    <text class="icon-favorfill lg {{item.score>=2?'text-yellow':'text-gray'}}"></text>
+                    <text class="icon-favorfill lg {{item.score>=3?'text-yellow':'text-gray'}}"></text>
+                    <text class="icon-favorfill lg {{item.score>=4?'text-yellow':'text-gray'}}"></text>
+                    <text class="icon-favorfill lg {{item.score>=5?'text-yellow':'text-gray'}}"></text>
+                </view>
+                <view class="flex justify-between bg-gray">
+                    <view class="resource">
+                        <image src="{{item.img[0]}}" mode='aspectFill'></image>
+                    </view>
+                    <view class="basis-xl">
+                        <view class="text-lg text-black resource_title">{{item.title}}</view>
+                        <view class="text-df text-content-sm">总价:
+                            <text class="text-red">￥{{item.price}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>
+<view wx:else>
+    <view class='no_info'>
+        <image src="/image/assess.png" mode="widthFix"></image>
+        <view class="text-content text-black padding-tb-sm text-xl">你还没有评价服务</view>
+    </view>
+</view>
+-->
+<view class='z_page_space_3'></view>
+<view wx:if="{{isInfo}}">
+
+
+
+</view>
+
+
+<view class='page_tips_3' wx:else>
+	<icon class='iconfont icon-pingjia1 c9'></icon>
+	<view class='p'>您还没有评价</view>
+</view>

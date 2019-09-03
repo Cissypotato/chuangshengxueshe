@@ -1,0 +1,35 @@
+<!--
+<view class="padding-lr-xl margin-top-xxl">
+    <view class="solid padding-lr text-content round flex align-center margin-top">
+        <text class="icon-mobile lg text-gray" style="font-size:50rpx;"></text>
+        <input placeholder='请输入手机号码' maxlength='11' bindinput="tel" class='padding-left-sm' style="width:90%;"></input>
+    </view>
+    <view class="solid padding-lr text-content round flex align-center justify-between margin-top">
+        <view class="flex align-center">
+            <text class="icon-safe lg text-gray" style="font-size:50rpx;"></text>
+            <input placeholder='验证码' maxlength='4' bindinput='code'  class='padding-left-sm'></input>
+        </view>
+        <text class="text-gray" bindtap='getCode'>{{text}}</text>
+    </view>
+    <view class="margin-top-xxl">
+        <button class="bg-blue round" bindtap='but_sub'>登录</button>
+    </view>
+
+    <view class="text-center" style="margin-top:300rpx;">
+        <view class="text-gray text-sm">使用第三方登录</view> 
+        <button class="margin-tb wx_but" plain open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> <icon class='iconfont icon-weixin text-green'></icon></button>
+        <text class="text-df">微信登录</text>
+    </view>
+</view>
+-->
+
+
+<view class='z_page_space_2'></view>
+<view class="z_page_title">注册&登陆</view>
+<input class='input_1' placeholder='请输入手机号码' maxlength='11' bindinput="tel"></input>
+<input class='input_2' placeholder='请输入验证码'maxlength='4' bindinput='code'></input>
+<text class="z_btn_3 b_1" bindtap='getCode'>{{text}}</text>
+<view class="clear"></view>
+<view class='z_page_space_2'></view>
+<view class="z_btn_2 b_1" bindtap='but_sub'>登陆</view>
+<button class="z_btn_2 g_1" plain open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">使用微信登陆</button>

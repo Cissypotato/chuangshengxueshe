@@ -1,0 +1,25 @@
+<view class="po_top">
+    <view class="btn_steam_2">
+        <picker bindchange="type_choo" value="{{index}}"  range="{{type}}" range-key="name" data-id="{{type[index].id}}">
+            <view class="l">产品分类：<b>{{type[index].name}}</b></view>
+        </picker>
+        <picker bindchange="zhen_choo" value="{{town_index}}"  range="{{town}}" range-key="name">
+            <view class="r">所属街镇：<b>{{town[town_index].name}}</b></view>
+        </picker>
+        <view class="clear"></view>
+    </view>
+</view>
+<view class='z_page_space_3'></view>
+<view class='z_page_space'></view>
+<view class="list_goods" wx:for="{{list}}" wx:key bindtap="list_click" data-id="{{item.id}}">
+    <image mode="aspectFit" src="{{item.img}}"></image>
+    <view class="title">{{item.name}}</view>
+    <view class="price"><icon class='iconfont icon-ux1399194609363713'></icon>{{item.price}}</view>
+</view>
+<view class="clear"></view>
+<view class='z_page_space_2'></view>
+<view class="page_tips">以上产品全部为系统测试数据</view>
+<view class='z_page_space_2'></view>
+
+
+

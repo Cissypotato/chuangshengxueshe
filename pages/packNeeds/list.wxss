@@ -1,0 +1,6 @@
+.list_needs {width:90vw; margin:5vw 3vw; box-shadow:0 0 2px rgba(0,0,0,0.1); padding:4vw 2vw 3vw 2vw; font-size:0.9rem;}
+.list_needs li {display:inline-block; width:90vw; margin-bottom:1vw;}
+.list_needs li>t { color:#b0bec5;  width:20vw; display:block;  float:left; text-align:right;}
+.list_needs li>b { width:68vw; display:block; float:right; color:#263238; text-align: justify;}
+.list_needs li>b>icon {float:right; display:inline-block; position:relative; top:-0.6rem; color:#2196f3;}
+.r{text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}

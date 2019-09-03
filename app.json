@@ -1,0 +1,47 @@
+{
+    "pages": [
+        "pages/index/home/home",
+        "pages/index/list/list",
+        "pages/index/assess/assess",
+        "pages/index/details/details",
+        "pages/index/query/query",
+        "pages/index/notice/notice",
+        "pages/index/make/make",
+        "pages/mine/home/home",
+        "pages/mine/login/login",
+        "pages/mine/order/order",
+        "pages/mine/apply/apply",
+        "pages/mine/assess/assess",
+        "pages/mine/news/news",
+        "pages/mine/newDetails/newDetails",
+        "pages/mine/orderDetail/orderDetail",
+        "pages/mine/goAssess/goAssess",
+        "pages/mine/real/real",
+        "pages/packApply/packApply",
+        "pages/packGoods/packGoods",
+        "pages/packGoods/goodsInfo",
+        "pages/packNeeds/list",
+        "pages/packOrganization/list",
+        "pages/packExpert/list",
+        "pages/packExpert/article/article",
+        "pages/packOrganization/moreInfo/moreInfo",
+        "pages/upData/packUpData/packUpData",
+        "pages/upData/upData",
+        "pages/upData/upExpert/upExpert",
+        "pages/upData/upSociety/upSociety",
+        "pages/upData/upProduct/upProduct",
+        "pages/packOrganization/projectMore/projectMore"
+    ],
+    "window": {
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "#3f51b5",
+        "navigationBarTitleText": "创生学社",
+        "navigationBarTextStyle": "white"
+    },
+    "sitemapLocation": "sitemap.json",
+    "permission": {
+        "scope.userLocation": {
+            "desc": "你的位置信息将用于小程序位置接口的效果展示"
+        }
+    }
+}

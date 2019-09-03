@@ -1,0 +1,31 @@
+/* page {background:linear-gradient(#3f51b5 0%,#fff 80%); }
+.z_page_title {width:81vw; margin-left:9.5vw; color:#fff;}
+.link {opacity:0.8;}
+swiper {height:125vw;}
+li {width:81vw; height:108vw; background:#1a237e; display:block; margin:5vw 9.5vw; border-radius:4px; box-shadow:0 4px 5px rgba(0,0,0,0.2); position:relative;}
+li>image {width:81vw; height:108vw; border-radius:4px; overflow:hidden; opacity:0.4; position:absolute; top:0; left:0; z-index:0;}
+li>.card   {width:81vw; height:108vw; position:absolute; top:0; left:0; z-index:1; color:#fff; padding:5vw; letter-spacing:1px;}
+li>.card>t {font-size:1.2rem; display:block;}
+li>.card>b {font-size:0.8rem; letter-spacing:1px; display:block; opacity:0.7; line-height:1.8;}
+li>.card>m {font-size:0.9rem; letter-spacing:1px; display:block; opacity:1; position:absolute; bottom:21vw;}
+li>.card>d {font-size:0.9rem; letter-spacing:1px; display:block; opacity:1; position:absolute; bottom:15vw;}
+.info_link {width:81vw; position:absolute; bottom:0; right:9.5vw; z-index:1; color:#03a9f4; letter-spacing:1px; text-align:right; font-size:0.8rem;} */
+
+
+.card{border: 1px solid #eee;padding: 20rpx;margin-top: 40rpx;}
+
+
+.organization-wrapper{display: flex;height: 200rpx;align-items: center;font-size: 30rpx;}
+
+.org-avatar{width: 30%;height: 180rpx;margin-right: 20rpx;}
+
+.org-title,.org-name,.org-tel,.org-more-info{
+    color: #555;line-height: 1.8em;
+}
+.org-more-info{font-size: 24rpx;display: flex;justify-content: flex-end;color: blue}
+
+
+.project-wrapper{margin-top: 40rpx;}
+.pro-item{display: flex;justify-content: space-between;line-height: 1.5em;font-size: 28rpx;align-items: center}
+
+.icon-lianjie{color: blue;margin-right:20rpx;font-size: 24rpx;line-height: 1.4em; }

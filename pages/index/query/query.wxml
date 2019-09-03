@@ -1,0 +1,23 @@
+<view class='z_page_space_2'></view>
+<view class="z_page_title">{{page_title}}</view>
+<input class='input_2' placeholder='搜索资源' type="text" confirm-type="search" bindinput="content"></input>
+<view class="z_btn_3 g_1" bindtap='query'>搜索</view>
+<view class='clear'></view>
+<view class='z_page_space_2'></view>
+
+<view wx:if="{{infoState}}">
+    <view class="" wx:for="{{info}}" wx:key>
+        <view class="z_list_1" bindtap='details' data-id="{{item.id}}" >
+			<image src="{{item.img[0]}}"></image>
+            <view class="r">
+                <view class="z_font_2">{{item.title}}</view>
+                <view class="z_font_3">{{item.districts}} / {{item.town}} / {{item.community}}</view>
+                <view class="z_font_3">{{item.group}}</view>
+                <view class="z_font_4">
+                    <text>{{item.price}}</text> {{item.area}}</view>
+            </view>
+			<view class='clear'></view>
+        </view>
+    </view>
+</view>
+<view wx:else class='page_tips_1'>暂无资源</view>

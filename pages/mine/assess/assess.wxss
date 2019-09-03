@@ -1,0 +1,5 @@
+/* pages/mine/assess/assess.wxss */
+.resource {
+    width: 100rpx;
+    height: 100rpx;
+}

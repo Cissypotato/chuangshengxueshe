@@ -1,0 +1,5 @@
+/* pages/mine/order/order.wxss */
+.resource {
+    width: 140rpx;
+    height: 140rpx;
+}

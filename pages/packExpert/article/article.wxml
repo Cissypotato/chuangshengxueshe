@@ -1,0 +1,4 @@
+<!--pages/packExpert/article/article.wxml-->
+<text>pages/packExpert/article/article.wxml</text>
+
+<rich-text nodes="{{nodes}}" bindtap="tap"></rich-text>

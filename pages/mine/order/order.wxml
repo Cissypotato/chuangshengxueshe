@@ -1,0 +1,35 @@
+<view wx:if="{{isInfo}}">
+    <block wx:for="{{info}}" wx:key>
+        <view class="flex justify-between bg-white padding" bindtap='orderDetail' data-id="{{item.id}}">
+            <view class="resource">
+                <image src="{{item.img[0]}}" mode='aspectFill'></image>
+            </view>
+            <view class="padding-left basis-lg-x">
+                <view class="text-lg text-black resource_title">{{item.title}}</view>
+                <view class="text-df text-content-sm">总价:
+                    <text class="text-red">￥{{item.price}}</text>
+                </view>
+                <view class="text-content-xs text-df">{{item.community}} / {{item.group}}</view>
+            </view>
+            <view class="basis-xxs text-right text-red" wx:if="{{item.state == 0}}">
+                待审核
+            </view>
+            <view class="basis-xxs text-right text-yellow" wx:if="{{item.state == 1}}">
+                未通过
+            </view>
+            <view class="basis-xxs text-right text-yellow" wx:if="{{item.state == 2}}">
+                待评价
+            </view>
+            <view class="basis-xxs text-right text-blue" wx:if="{{item.state == 3}}">
+                已完成
+            </view>
+        </view>
+    </block>
+
+</view>
+<view wx:else>
+    <view class='no_info'>
+        <image src="/image/ser.png" mode="widthFix"></image>
+        <view class="text-content text-black padding-tb-sm text-xl">你还没有预约服务</view>
+    </view>
+</view>

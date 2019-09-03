@@ -1,0 +1,6 @@
+.list_goods {width:44vw;  float:left; margin:4vw 0 0 4vw; padding:0; line-height:1.4; box-shadow:0 0 2px rgba(0,0,0,0.1); padding-bottom:0.8rem;}
+.list_goods image {width:44vw; height:44vw; display:block; padding:0; margin:0;}
+.list_goods .title {font-size:0.9rem; width:96vw; height:1.4em; padding:2vw 2vw 0 2vw; color:#78909c; overflow:hidden;}
+.list_goods .price {font-size:0.8rem; width:96vw; height:1.4em; padding:0 2vw 2vw 2vw; color:#ff9800; overflow:hidden;}
+.list_goods .price icon { display:inline; margin-right:0.2rem;}
+.page_tips {width:100vw; text-align:center; font-size:0.8rem; color:#b0bec5;}

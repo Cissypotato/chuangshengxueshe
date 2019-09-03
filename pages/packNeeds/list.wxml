@@ -1,0 +1,56 @@
+<view class="po_top">
+    <view class="btn_steam_2">
+
+        <picker bindchange="city_choo" mode="multiSelector" range="{{place}}" data-id="{{place[1][multiIndex[1]].id}}" bindcolumnchange="place_choo"range-key="title" value="{{multiIndex}}">
+            <view class="l">街镇：<b>{{place[0][multiIndex[0]].title}} {{place[1][multiIndex[1]].title}}</b></view>
+        </picker>
+
+        <picker bindchange="type_choo" value="type_index"  range="{{type}}" range-key="title">
+            <view class="r">类别：<b>{{type[type_index].title}}</b></view>
+        </picker>
+        <view class="clear"></view>
+    </view>
+</view>
+<view class='z_page_space'></view>
+<view class="list_needs" wx:for="{{card_list}}" wx:key data-id="{{index}}" bindtap="list_click">
+    <li>
+        <t>镇/街道</t>
+        <b>{{item.xz}} {{item.sq}} 
+            <icon class="iconfont icon-moduanzhankai" wx:if="{{!item.s}}"></icon>
+            <icon class="iconfont icon-moduanshouqi"  wx:else></icon>
+        </b>
+        <view class="clear"></view>
+    </li>
+    <li>
+        <t>需求类别</t>
+        <b style="color:#4caf50;">{{item.class}}</b>
+        <view class="clear"></view>
+    </li>
+    <view wx:if="{{item.s}}">
+        <li>
+            <t>初步计划</t>
+            <b>{{item.content}}</b>
+            <view class="clear"></view>
+        </li>
+        <li>
+            <t>预计资金</t>
+            <b style="color:#ff9800;">{{item.money}} 万元</b>
+            <view class="clear"></view>
+        </li>
+        <li>
+            <t>有效期</t>
+            <b>{{item.time}}</b>
+            <view class="clear"></view>
+        </li>
+        <li>
+            <t>联系人</t>
+            <b style="color:#03a9f4;">{{item.lx}}</b>
+            <view class="clear"></view>
+        </li>
+        <li>
+            <t>备注信息</t>
+            <b style="color:#90a4ae;">{{item.remarks}}</b>
+            <view class="clear"></view>
+        </li>
+    </view>
+</view>

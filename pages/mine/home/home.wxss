@@ -1,0 +1,3 @@
+
+.page_pack_1>.user_face {width:4rem; height:4rem; border-radius:4rem; display:block; overflow: hidden; margin:0rem auto 0.6rem auto;}
+.dl {font-size:1.6rem; background:#eceff1; line-height:4rem; color:#cfd8dc; border:1px solid #cfd8dc; }
