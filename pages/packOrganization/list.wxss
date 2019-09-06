@@ -1,31 +1,23 @@
-/* page {background:linear-gradient(#3f51b5 0%,#fff 80%); }
-.z_page_title {width:81vw; margin-left:9.5vw; color:#fff;}
-.link {opacity:0.8;}
-swiper {height:125vw;}
-li {width:81vw; height:108vw; background:#1a237e; display:block; margin:5vw 9.5vw; border-radius:4px; box-shadow:0 4px 5px rgba(0,0,0,0.2); position:relative;}
-li>image {width:81vw; height:108vw; border-radius:4px; overflow:hidden; opacity:0.4; position:absolute; top:0; left:0; z-index:0;}
-li>.card   {width:81vw; height:108vw; position:absolute; top:0; left:0; z-index:1; color:#fff; padding:5vw; letter-spacing:1px;}
-li>.card>t {font-size:1.2rem; display:block;}
-li>.card>b {font-size:0.8rem; letter-spacing:1px; display:block; opacity:0.7; line-height:1.8;}
-li>.card>m {font-size:0.9rem; letter-spacing:1px; display:block; opacity:1; position:absolute; bottom:21vw;}
-li>.card>d {font-size:0.9rem; letter-spacing:1px; display:block; opacity:1; position:absolute; bottom:15vw;}
-.info_link {width:81vw; position:absolute; bottom:0; right:9.5vw; z-index:1; color:#03a9f4; letter-spacing:1px; text-align:right; font-size:0.8rem;} */
+/* 社会组织列表页 */
+.list_pack_2 { width:86vw; margin:0em 5vw 5vw 5vw;  padding:3vw 2vw 2vw 2vw; border:1px solid #eceff1;}
+.z_list_2>t {display:block; font-size:1.1rem;  margin-bottom:3vw; letter-spacing:1px; border-bottom:1px solid #f5f5f5; padding-bottom:3vw;}
+.z_list_2>t>icon {float:right; margin-right:2vw; color:#2196f3; position: relative; top:-0.4rem;}
+.z_list_2>image {float:left; width:28vw; height:21vw;  display:block; border-radius:4px;}
+.z_list_2>r {float:right; width:53vw; height:21vw; position:relative; top:-2.2vw;}
+.z_list_2>r>n {width:55vw;  display:inline-block; font-size:0.8rem;  color:#546e7a; }
+.z_list_2>r>n>icon {font-size:0.7rem; margin-right:0.4rem; color:#b0bec5; }
+.z_list_2_b {border-top:1px solid #f5f5f5; margin-top:3vw; padding-top:0.5rem;}
+.z_list_2_b>li {font-size:0.8rem; height:3rem; line-height:3rem;  overflow:hidden; position:relative; left:0rem; padding-left:0vw; display:block; padding-right:2vw;}
+.z_list_2_b>li .icon-lianjie {color:#2196f3; margin-right:0.4rem;}
+.z_list_2_b>li icon {font-size:0.9rem; }
+.z_list_2_b>li .tag {color:#90a4ae; margin-left:0.6rem;}
+.z_list_2_b>li .r {float:right; color:#ff9800;}
+.info_pack>s {position: fixed; top:0; right: 0;bottom: 0;left: 0;background-color: rgba(0, 0, 0, 0.75); z-index: 10;}
+.info_pack>n {width:100vw; height:80vh; position: fixed; top:20vh; right: 0;bottom: 0;left: 0;background-color:#fff; z-index:11; padding-top:5vw;  }
+.info_pack>n>c {display:block; text-align:right; width:90vw;  margin-left:5vw; color:#2196f3; border-bottom:1px solid #eceff1; padding-bottom:0.6rem;}
+.info_pack>n .text_pack { width:90vw; margin:5vw; display:block; text-align:justify; line-height:1.6; overflow:scroll; padding-bottom:20vw; }
 
-
-.card{border: 1px solid #eee;padding: 20rpx;margin-top: 40rpx;}
-
-
-.organization-wrapper{display: flex;height: 200rpx;align-items: center;font-size: 30rpx;}
-
-.org-avatar{width: 30%;height: 180rpx;margin-right: 20rpx;}
-
-.org-title,.org-name,.org-tel,.org-more-info{
-    color: #555;line-height: 1.8em;
-}
-.org-more-info{font-size: 24rpx;display: flex;justify-content: flex-end;color: blue}
-
-
-.project-wrapper{margin-top: 40rpx;}
-.pro-item{display: flex;justify-content: space-between;line-height: 1.5em;font-size: 28rpx;align-items: center}
-
-.icon-lianjie{color: blue;margin-right:20rpx;font-size: 24rpx;line-height: 1.4em; }
+.page_tips_4 {background:#fff8e1; color:#ffa000; border:1px solid #ffecb3; width:82vw; height:3rem; line-height:3rem; margin-left:5vw; font-size:0.9rem; border-radius:4px; padding:0 4vw;}
+.page_tips_4>.l {display:inline-block;}
+.page_tips_4>.l>icon {float:left; margin-right:0.2rem;}
+.page_tips_4>.r {float:right;}

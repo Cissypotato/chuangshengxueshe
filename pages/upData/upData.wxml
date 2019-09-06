@@ -1,11 +1,14 @@
 <!--pages/upData/upData.wxml-->
 
 
-<view class="btn-wrapper">
+<view class="btn-wrapper" wx:if="{{isState === 0}}">
 
-    <view class="btn"  bindtap="toUpData" data-id="1">专家人才资源上传</view>
-    <view class="btn"  bindtap="toUpData" data-id="2">社会组织资源上传</view>
-    <view class="btn"  bindtap="toUpData" data-id="3">土地资源上传</view>
-    <view class="btn"  bindtap="toUpData" data-id="4">社区特色产品资源上传</view>
+   <view class="btn" bindtap="toUpData" data-id="1">专家人才资源上传</view>
+   <view class="btn" bindtap="toUpData" data-id="2">社会组织资源上传</view>
+   <view class="btn" bindtap="toUpData" data-id="3">土地资源上传</view>
+   <view class="btn" bindtap="toUpData" data-id="4">社区特色产品资源上传</view>
 
 </view>
+
+<view wx:elif="{{isState === 1}}" class="middle-info" bindtap="toLogin">您还没有登录，请先登录</view>
+<view wx:elif="{{isState === 2}}" class="middle-info" bindtap="toUserReal">您还没有实名认证，请先实名认证</view>

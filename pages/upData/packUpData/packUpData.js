@@ -16,40 +16,17 @@ Page({
             data: {
                 state: id
             },
-            header: {},
-            method: 'GET',
-            dataType: 'json',
-            responseType: 'text',
             success:  (res)=> {
+                console.log(res)
                 let data = res.data
                 this.setData({
                     need_data:data
                 })
-            },
-            fail: function (res) { },
-            complete: function (res) { },
+            }
         })
         
     },
     onShow: function() {
-        let token=wx.getStorageSync("token")
-        let user_real = wx.getStorageSync("user_real")
-        if(!token){
-            this.setData({
-                isLogin: false
-            })
-        } else if (user_real==false){
-
-            this.setData({
-                isLogin: 5
-            })
-        }else{
-            this.setData({
-                isLogin: 1
-            })
-        }
-       // 判断是否实名认证，勿删    
-        
         let need_data=this.data.need_data
         wx.request({
             url: 'https://xczyzx.com/index.php/index/address/returnlist',
@@ -177,10 +154,10 @@ Page({
     input_data(e) { //文本框数据赋值
         let item = this.data.up_data;
         let k = e.currentTarget.dataset.t;
-       
         if (e.detail.value!==""){
             console.log(e.detail.value)
             item[k] = e.detail.value;
+            console.log(item)
             this.setData({
                 up_data: item
             });  
@@ -189,7 +166,7 @@ Page({
             app.alert("请填写相关信息")
              
         }
-        console.log(item)
+        // console.log(item)
        
     },
     chooseImage(e) { //图片选择
@@ -236,11 +213,9 @@ Page({
             }
         }
         function judge() { //这里写遍历方法与后端传来的data_keys逐个对比
-            // console.log(up_data)
-            // for (let i = 0; i < need_data.length; i++) {
-            //     console.log(up_data[i])
-            // }
             let arr = Object.keys(up_data);
+            console.log(arr)
+            console.log(must_data)
             if (up_data.sort == 3 && arr.length < must_data.length ) {
                 return true;
             } else if (arr.length < must_data.length - 1 ) {
@@ -298,10 +273,44 @@ Page({
         });
     },
     data_up() { //数据上传
-       let  t=this.data.data_up
+       let  t=this.data.up_data
+       let data={}
+        if (t.sort===3){
+          data={
+              title: t.title,
+              sort_id: t.sort,
+              pid: t.pid,
+              group: t.village,
+              lng: t.lng,
+              lat: t.lat,
+              area: t.area,
+              all: t.landlord,
+              price: t.price,
+              phone: t.tel,
+              desc: t.area_detail,
+              img: t.image_url,
+              time_slot:t.time
+          }
+        } else {
+             data = {
+                title: t.title,
+                sort_id: t.sort,
+                pid: t.pid,
+                group: t.village,
+                lng: t.lng,
+                lat: t.lat,
+                area: t.area,
+                all: t.landlord,
+                price: t.price,
+                phone: t.tel,
+                desc: t.area_detail,
+                 img: t.image_url,
+            }
+        }
+
         wx.request({
             url: 'https://xczyzx.com/index.php/index/resources/addResources',
-            data: t,
+            data:data,
             success: function(res) {
 
               console.log(res)

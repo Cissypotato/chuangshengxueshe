@@ -1,3 +1,6 @@
+@import "/utils/icon_font.wxss";
+
+
 ::-webkit-scrollbar{
 width: 0;
 height: 0;

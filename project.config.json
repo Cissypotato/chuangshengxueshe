@@ -49,7 +49,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 31,
+			"current": 34,
 			"list": [
 				{
 					"id": -1,
@@ -272,6 +272,27 @@
 					"id": -1,
 					"name": "更多介绍",
 					"pathName": "pages/packOrganization/moreInfo/moreInfo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "课程介绍",
+					"pathName": "pages/packExpert/article/article",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "社会组织展示页面",
+					"pathName": "pages/packOrganization/list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/packOrganization/upData",
+					"pathName": "pages/packOrganization/upData",
 					"query": "",
 					"scene": null
 				}

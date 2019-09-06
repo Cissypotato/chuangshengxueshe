@@ -24,13 +24,12 @@
         "pages/packOrganization/list",
         "pages/packExpert/list",
         "pages/packExpert/article/article",
-        "pages/packOrganization/moreInfo/moreInfo",
         "pages/upData/packUpData/packUpData",
         "pages/upData/upData",
         "pages/upData/upExpert/upExpert",
         "pages/upData/upSociety/upSociety",
-        "pages/upData/upProduct/upProduct",
-        "pages/packOrganization/projectMore/projectMore"
+        "pages/upData/upProduct/upProduct"
+        
     ],
     "window": {
         "backgroundTextStyle": "dark",

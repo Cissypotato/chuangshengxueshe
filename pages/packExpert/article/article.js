@@ -5,14 +5,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-    nodes:"介绍"
+    nodes:"介绍",
+    data:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      console.log(options)
+      let id=options.id
+      wx.request({
+          url:'https://xczyzx.com/index.php/index/Expert/returnCourse',
+          data: {id},
+          header: {},
+          method: 'GET',
+          dataType: 'json',
+          responseType: 'text',
+          success: (res) =>{
+              console.log(res)
+              this.setData({
+                  data:res.data
+              })
+          },
+          fail: function(res) {},
+          complete: function(res) {},
+      })
   },
 
   /**

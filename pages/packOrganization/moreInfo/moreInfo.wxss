@@ -1,6 +1,0 @@
-/* pages/packOrganization/moreInfo/moreInfo.wxss */
-
-.fwb{text-indent: 60rpx;line-height: 64rpx;}
-
-.aticle-wrapper{padding: 40rpx;}
-.title{display: flex;justify-content: center;line-height: 1.8em;font-weight: 600}

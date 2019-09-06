@@ -13,7 +13,7 @@ Page({
     onShow: function () {
 
       wx.request({
-        url: 'https://xczyzx.com/index.php/index/expert/returnExpert',
+          url: 'https://xczyzx.com/index.php/index/Expert/returnExpert',
         data: '',
         header: {},
         method: 'GET',
@@ -69,4 +69,13 @@ Page({
         //发送ID到后台请求业务逻辑
         getApp().alert('ok')
     },
+    list_click(e){
+        let id=e.currentTarget.dataset.id
+        wx.navigateTo({
+            url: './article/article?id='+id,
+            success: function(res) {},
+            fail: function(res) {},
+            complete: function(res) {},
+        })
+    }
 })

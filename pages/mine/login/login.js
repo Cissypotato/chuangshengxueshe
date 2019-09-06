@@ -37,6 +37,7 @@ Page({
             responseType: 'text',
             success: function(res) {
                wx.setStorageSync("token", res.data.token)
+               wx.setStorageSync("user_real", res.data.code)
                wx.navigateBack({
                   delta: 1,
                   success: function(res) {
@@ -160,6 +161,7 @@ Page({
             success: function(res) {
                console.log(res)
                wx.setStorageSync("token", res.data.token)
+               wx.setStorageSync("user_real", res.data.code)
                wx.navigateBack({
                   delta: 1,
                   success: function(res) {

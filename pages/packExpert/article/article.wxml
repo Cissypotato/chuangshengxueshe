@@ -1,4 +1,21 @@
 <!--pages/packExpert/article/article.wxml-->
-<text>pages/packExpert/article/article.wxml</text>
 
-<rich-text nodes="{{nodes}}" bindtap="tap"></rich-text>
+
+
+<view>
+
+
+
+    <view class="course-name">{{data.s_name}}</view>
+
+    <view class="info-wrapper">
+        <view>课程价格 :<text>{{data.price}}</text></view>
+        <view>开课时间 :<text>{{data.start_time}}</text></view>
+        <view>开课地点 :<text>{{data.address}}-{{data.desc}}</text></view>
+    </view>
+    
+    <view class="detail-info">{{data.info}}</view>
+
+</view>
+
+<!-- <rich-text nodes="{{nodes}}" bindtap="tap"></rich-text> -->

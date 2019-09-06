@@ -34,7 +34,7 @@
             <image class="org-avatar" mode="aspectFill" src="{{item.img}}"></image> 
             <view class="org-info">
                 <view class="org-title">{{item.name}}</view>
-                <view class="org-more-info">介绍：{{item.desc}}</view>
+                <view class="org-more-info">介绍：{{item.info}}</view>
             </view>
 
         </view>
@@ -42,9 +42,9 @@
             <view class="">课程</view>
             <view wx:for="{{item.course}}">
                 <view class="pro-item">
-                    {{item}}
+                    {{item.s_name}}
                     <!-- <s class="pro-more-info">></s> -->
-                    <icon class="iconfont icon-lianjie" bindtap="list_click"></icon>
+                    <icon class="iconfont icon-lianjie" bindtap="list_click" data-id="{{item.id}}"></icon>
                 </view>
             </view>
 

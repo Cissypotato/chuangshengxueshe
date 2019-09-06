@@ -2,194 +2,70 @@ const app = getApp();
 let reg = app.globalData.myreg
 Page({
     data: {
-        resource_type: [],
-        data_part: '',
+        uid: 0,
         up_data: {},
         img_path: [],
-        isLogin: 1,
-        need_data: null,
-        projectItem:{},
-        projects:[],
-        project_title:"",
-        project_price:"",
-        project_tag: "",
-        project_introduction: "",
-        projectTitle:[],
-        isOrganization:false,
-        toCertify:0
-
-
-
-
+        // isLogin: 1,
+        // need_data: null,
+        projectItem: {},
+        projects: [],
+        // projectTitle: [],
+        // isOrganization: false,
+        // isAddProject: false,
+        toCertify: 3,
+        state: 3,
+        formats: {},
+        bottom: 0,
+        readOnly: false,
+        placeholder: '输入项目介绍...',
+        _focus: false,
+        isIcon: false,
+        iconText: '展开',
+        tag:[],
+        index:0,
+        pickerValue:"请点击进行选择",
+        societyName:""
 
     },
     onLoad(options) {
-        let id = options.id
+        let id = wx.getStorageSync("token")
+        // console.log(id)
         wx.request({
-            url: 'https://xczyzx.com/index/resources/returnField',
+            url: 'https://xczyzx.com/index.php/index/Society/returnIsSociety',
             data: {
-                state: id
+                uid: id
             },
             header: {},
             method: 'GET',
             dataType: 'json',
             responseType: 'text',
             success: (res) => {
+                // console.log(res)
                 let data = res.data
-                console.log(data)
+                let up_data = this.data.up_data
+                up_data["uid"] = id
+                // console.log(data.type)
                 this.setData({
-                    need_data: data
+                    uid: id,
+                    up_data,
+                    toCertify: data.state,
+                    projects: data.item,
+                    tag:data.type,
+                    societyName:data.name
                 })
             },
-            fail: function (res) { },
-            complete: function (res) { },
+            fail: function(res) {},
+            complete: function(res) {},
         })
 
     },
-    onShow: function () {
-        let token = wx.getStorageSync("token")
-        let user_real = wx.getStorageSync("user_real")
-        if (!token) {
-            this.setData({
-                isLogin: false
-            })
-        } else if (user_real == false) {
+    onShow: function() {
+        
+    },
 
-            this.setData({
-                isLogin: 5
-            })
-        } else {
-            this.setData({
-                isLogin: 1
-            })
-        }
-        // 判断是否实名认证，勿删    
 
-        let need_data = this.data.need_data
-        wx.request({
-            url: 'https://xczyzx.com/index.php/index/address/returnlist',
-            success: (res) => {
-                let data_keys = [];
-                let list_0 = res.data.tree;
-                let list_1 = [];
-                let list_2 = [];
-                let list_3 = [];
-                for (let i = 0; i < list_0.length; i++) {
-                    list_1.push({ name: list_0[i].name });
-                };
-                for (let a = 0; a < list_0[0].son.length; a++) {
-                    list_2.push({ name: list_0[0].son[a].name });
-                    if (a == 0) {
-                        for (let b = 0; b < list_0[0].son[a].son.length; b++) {
-                            list_3.push({
-                                name: list_0[0].son[a].son[b].name,
-                                id: list_0[0].son[a].son[b].id,
-                            });
-                        };
-                    };
-                };
-                let list_4 = [];
-                list_4.push(list_1, list_2, list_3);
-                this.setData({
-                    resource_type: res.data.sort,
-                    list_0: res.data.tree,
-                    part: list_4
-                });
-            }
-        });
-    },
-    choo_type(e) { //资源类型选择
-        let k = this.data.resource_type;
-        for (var i = 0; i < k.length; i++) {
-            k[i].state = false;
-        };
-        k[e.currentTarget.dataset.id].state = true;
-        let t = this.data.up_data;
-        t.sort = k[e.currentTarget.dataset.id].id;
-        this.setData({
-            resource_type: k,
-            up_data: t
-        });
-    },
-    choo_part(e) { //资源地区选择
-        let list_0 = this.data.list_0;//tree
-        let part = this.data.part;
-        if (e.detail.column == 0) {
-            let k = e.detail.value;
-            //第一竖列
-            let list_2 = []
-            let list_3 = []
-            for (let i = 0; i < list_0[k].son.length; i++) {
-                list_2.push({ name: list_0[k].son[i].name })
-                for (let j = 0; j < list_0[k].son[i].son.length; j++) {
-                    list_3.push({
-                        name: list_0[k].son[i].son[j].name,
-                        id: list_0[k].son[i].son[j].id
-                    })
-                }
-            };
-
-            // console.log(list_2)
-            // console.log(list_3)
-            part[1] = list_2
-            part[2] = list_3
-            this.setData({
-                part,
-            });
-
-        } else if (e.detail.column == 1) {
-            let k = e.detail.value;
-            let list_3 = [];
-            for (let i = 0; i < list_0[0].son[k].son.length; i++) {
-                list_3.push({
-                    name: list_0[0].son[k].son[i].name,
-                    id: list_0[0].son[k].son[i].id
-                })
-            };
-            part[2] = list_3
-            this.setData({
-                part,
-            });
-        } else if (e.detail.column == 2) {
-            let k = e.detail.value;
-        };
-        // list_4.push(list_1, list_2, list_3);
-        // this.setData({
-        //     part
-        // });
-    },
-    choo_part_ok(e) { //资源地区选择确认
-        let k = e.detail.value;
-        let k1 = k[0]
-        let k2 = k[1];
-        let k3 = k[2] == null ? 0 : k[2];
-        let part = this.data.part;
-        let id = part[2][k3].id
-        let t = this.data.up_data;
-        t.pid = id
-        this.setData({
-            data_part: part[0][k1].name + ' ' + part[1][k2].name + ' ' + part[2][k3].name,
-            up_data: t
-        });
-    },
-    getLngAndLat() { //经纬度获取
-        wx.showLoading({
-            title: '获取中······',
-        });
-        wx.getLocation({
-            type: 'wgs84',
-            success: (res) => {
-                let t = this.data.up_data;
-                t.lng = res.longitude;
-                t.lat = res.latitude;
-                this.setData({
-                    up_data: t
-                });
-                wx.hideLoading();
-            }
-        });
-    },
-    input_data(e) { //文本框数据赋值
+/*社会组织*/
+    input_data(e) { //社会组织文本框数据赋值
         let item = this.data.up_data;
         let k = e.currentTarget.dataset.t;
         if (e.detail.value !== "") {
@@ -210,12 +86,11 @@ Page({
         wx.chooseImage({
             sizeType: ['compressed'],
             sourceType: ['album', 'camera'],
-            count: 6,
+            count: 1,
             success: res => {
+                console.log(res)
                 let t = this.data.img_path;
-                t = [...res.tempFilePaths]
-                // t.push();
-                // console.log(res)
+                t = res.tempFilePaths[0]
                 this.setData({
                     img_path: t
                 });
@@ -224,209 +99,292 @@ Page({
     },
     handleImagePreview(e) { //图片浏览
         wx.previewImage({
-            current: this.data.img_path[e.target.dataset.idx],
+            current: this.data.img_path,
             urls: this.data.img_path
         });
     },
     removeImage(e) { //图片删除
-        let i = e.target.dataset.idx;
-        let t = this.data.img_path;
-        t.splice(i, 1);
         this.setData({
-            img_path: t
+            img_path: ""
         });
     },
-    submitForm(e) { //开始上传
-
+    submitForm(e) { //社会组织开始上传
         let up_data = this.data.up_data;
-        let need_data = this.data.need_data;
-        console.log(need_data)
-        console.log(up_data)
+        let arr = Object.keys(up_data);
+        console.log(arr.length)
 
-        let must_data = []
-        for (let i = 0; i < need_data.length; i++) {
-            if (need_data[i].bool == true) {
-                must_data.push(need_data[i])
-            }
-        }
-        function judge() { //这里写遍历方法与后端传来的data_keys逐个对比
-            // console.log(up_data)
-            // for (let i = 0; i < need_data.length; i++) {
-            //     console.log(up_data[i])
-            // }
-            let arr = Object.keys(up_data);
-            if (up_data.sort == 3 && arr.length < must_data.length) {
-                return true;
-            } else if (arr.length < must_data.length - 1) {
-                return true;
-            }
+        if (arr.length < 5) {
 
-        };
-
-        if (judge()) {
             app.alert('请先填写全部表单');
         } else if (reg.test(this.data.up_data.tel) == false) {
             app.alert('请填写有效电话号码');
-        } else if (this.data.img_path.length == 0) {
+        } else
+        if (this.data.img_path.length == 0) {
             app.alert('请先上传照片');
         } else {
             wx.showLoading({
                 title: '上传中···',
             });
-            let t = this.data.up_data;
-            let k = 'image_url';
-            t[k] = [];
             this.setData({
-                up_data: t,
                 now_up: 0
             });
             this.img_up();
         };
     },
     img_up() { //图片上传
+        let data = this.data.up_data
+        console.log(data)
         wx.uploadFile({
-            url: 'https://xczyzx.com/index.php/index/address/upload_img',
-            filePath: this.data.img_path[this.data.now_up],
-            name: 'file',
-            success: (res) => {
-                let info = JSON.parse(res.data);
-                if (info.state) {
-                    let d = this.data.up_data;
-                    d.image_url.push(info.image_url);
-                    this.setData({
-                        up_data: d
-                    });
-                }
+            url: 'https://xczyzx.com/index.php/index/Society/addSociety',
+            filePath: this.data.img_path,
+            name: 'img',
+            formData: {
+                uid: data.uid,
+                title: data.title,
+                name: data.name,
+                tel: data.tel,
+                info: data.editor
             },
-            complete: (res) => {
-                let t = Number(this.data.now_up) + 1;
-                if (t === this.data.img_path.length) {
-                    this.data_up();
-                } else {
-                    this.setData({
-                        now_up: t
-                    });
-                    this.img_up();
-                };
-            }
-        });
-    },
-    data_up() { //数据上传
-        let t = this.data.data_up
-        console.log(t)
-        wx.request({
-            url: 'https://xczyzx.com/index.php/index/resources/addResources',
-            data: t,
-            success: function (res) {
-
+            success: (res) => {
                 console.log(res)
                 wx.hideLoading();
-                app.alert('成功');//这里写数据成功后的逻辑\
-
-                wx.navigateBack({
-                    delta: 1,
-                })
-            }
+                app.alert("添加组织成功，审核结果我们将尽快以消息的方式通知您")
+                setTimeout(() => {
+                    wx.reLaunch({
+                        url: '/pages/upData/upData',
+                    })
+                }, 2000)    
+            },
+        
         });
     },
-    toLogin() {//跳转到登录页
-        wx.navigateTo({
-            url: '/pages/mine/login/login',
-            success: function (res) { },
-            fail: function (res) { },
-            complete: function (res) { },
-        })
-    },
-    toUserReal() {
-        wx.navigateTo({
-            url: '/pages/mine/real/real',
-            success: function (res) { },
-            fail: function (res) { },
-            complete: function (res) { },
-        })
-    },
-    addProject(){
-        this.setData({
-            isAddProject:true,
-        })
-    },
-    addMoreProject() {
-        let projects = this.data.projects
-        let projectItem = JSON.parse(JSON.stringify(this.data.projectItem)) 
-        projects.push(projectItem)
-        console.log(projects)
-        let projectTitle=[]
-        for (let i = 0; i < projects.length;i++){
-            projectTitle.push(projects[i].project_title)
-        }
-        this.setData({
-            isAddProject: true,
-            projects,
-            project_title: "",
-            project_price: "",
-            project_tag: "",
-            project_introduction: "",
-            projectTitle
-        })
-    },
-    input_project_data(e) { //项目 文本框数据赋值
-        // let item = this.data.up_data;
-        
-        let projectItem=this.data.projectItem
-        let projectItem_1={}
+
+
+/*项目*/
+    input_project_data(e) { //项目文本框数据赋值
+        let projectItem = this.data.projectItem
         let k = e.currentTarget.dataset.t;
-        
         if (e.detail.value !== "") {
             projectItem[k] = e.detail.value;
-            // projects.push(projectItem)
             this.setData({
                 projectItem
             })
-
-            if (k == "project_title") {
-                this.setData({
-                    project_title: e.detail.value
-                })
-            } else if (k == "project_price") {
-                this.setData({
-                    project_title: e.detail.value
-                })
-            } else if (k == "project_tag") {
-                this.setData({
-                    project_title: e.detail.value
-                })
-            } else if (k == "project_introduction"){
-                this.setData({
-                    project_title: e.detail.value
-                })
-            }
-
         } else {
             console.log(e.detail.value)
             app.alert("请填写相关信息")
 
         }
-        console.log(projectItem)
 
     },
-    // deleteProject(e){
-    //     console.log(e)
-    //     let idx=e.currentTarget.dataset.idx
 
-    //     let projects = JSON.parse(JSON.stringify(this.data.projects))
-    //     projects.splice(idx,1)
-    //     if(projects.length===0){
-    //         this.setData({
-    //             isAddProject:false
-    //         })
-    //     }
-    //     this.setData({
-    //         projects
-    //     })
-    // },
-    changeCertify(){
+    deletePro(e) { //删除项目
+        let id = e.currentTarget.dataset.id
+        let idx = e.currentTarget.dataset.idx
+        let projects = this.data.projects
+        projects.splice(idx, 1)
+        
+        
+
+       
+        
+    },
+
+    bindPickerChange: function (e) {//项目 针对人群picker选择事件
+        let tag = this.data.tag
+        let id = tag[e.detail.value].id
+        let pickerValue = tag[e.detail.value].name
+        let projectItem = this.data.projectItem
+        projectItem["project_tag"] = id
         this.setData({
-            toCertify:false
+            index: e.detail.value,
+            projectItem,
+            pickerValue
         })
-    }
+    },
+
+    submitProject() {//提交项目数据
+        let data = this.data.projectItem
+
+        let arr = Object.keys(data)
+        console.log(data)
+        if (arr.length < 4) {
+            app.alert("请填写全部信息")
+        } else {
+            wx.request({
+                url: 'https://xczyzx.com/index.php/index/Society/addCourse',
+                data: {
+                    uid: this.data.uid,
+                    i_name: data.project_title,
+                    people: data.project_tag,
+                    info: data.editor,
+                    price: data.project_price,
+                },
+                header: {},
+                method: 'GET',
+                dataType: 'json',
+                responseType: 'text',
+                success: (res) => {
+                    app.alert("添加项目成功，审核结果我们将尽快以消息的方式通知您")
+                    setTimeout(()=>{
+                        wx.reLaunch({
+                            url: '/pages/upData/upData',
+                        })
+                    },2000)
+                    
+                },
+                fail: function(res) {},
+                complete: function(res) {},
+            })
+
+        }
+
+    },
+   
+
+/*富文本*/
+    zk() {
+        var iconText;
+        if (this.data.isIcon) {
+            iconText = '展开'
+        } else {
+            iconText = '收起'
+        }
+        this.setData({
+            isIcon: !this.data.isIcon,
+            iconText
+        })
+    },
+    readOnlyChange() {
+        this.setData({
+            readOnly: !this.data.readOnly
+        })
+    },
+    onEditorReady() {
+        const then = this
+        wx.createSelectorQuery().select('#editor').context(function(res) {
+            then.editorCtx = res.context
+        }).exec()
+    },    
+    undo() {// 富文本撤回
+        this.editorCtx.undo()
+    },  
+    redo() {// 富文本重回
+        this.editorCtx.redo()
+    },
+    format(e) {
+        let {
+            name,
+            value
+        } = e.target.dataset
+        if (!name) return
+        // console.log('format', name, value)
+        this.editorCtx.format(name, value)
+
+    },
+    onStatusChange(e) {
+        const formats = e.detail
+        this.setData({
+            formats
+        })
+    },
+    
+    insertDivider() {//富文本添加分隔符
+        this.editorCtx.insertDivider({
+            success: function() {
+                console.log('insert divider success')
+            }
+        })
+    },
+    
+    clear() {//富文本清空文本框
+        this.editorCtx.clear({
+            success: function(res) {
+                console.log("clear success")
+            }
+        })
+    },
+    
+    removeFormat() {//删除富文本选择
+        this.editorCtx.removeFormat()
+    },
+    insertDate() {//富文本添加当前时间
+        const date = new Date()
+        const formatDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
+        this.editorCtx.insertText({
+            text: formatDate
+        })
+    },
+    
+    insertImage() {
+        var then = this;
+        wx.chooseImage({
+            count: 4,
+            sizeType: ['original', 'compressed'],
+            sourceType: ['album', 'camera'],
+            success: res => {
+                wx.showLoading({
+                    title: '上传图片中...',
+                    mask: true
+                })
+                this.uploadimg(res.tempFilePaths)
+            }
+        })
+    },
+    uploadimg(data) {
+        var i = data.i ? data.i : 0;
+        wx.uploadFile({
+            url: 'https://xczyzx.com/index.php/index/upload/upload_img',
+            filePath: data[i],
+            name: 'img',
+            formData: 'null',
+            success: res => {
+                var str = res.data
+                var pic = JSON.parse(str);
+                console.log(pic.img)
+                this.editorCtx.insertImage({
+                    src: pic.img,
+                    data: {
+                        id: 'abcd',
+                        role: 'god'
+                    },
+                    success: function () {
+                        console.log('insert image success')
+                    }
+                })
+            },
+            complete: res => {
+                i++;
+                data.i = i
+                if (i !== data.length) {
+                    this.uploadimg(data);
+                } else {
+                    wx.hideLoading();
+                }
+            }
+
+        })
+    },
+    onEditorBlur(e) {//组织富文本
+        var up_data = this.data.up_data;
+        this.editorCtx.getContents({
+            success: res => {
+                up_data.editor = res.html;
+                this.setData({
+                    up_data: up_data
+                })
+            }
+        })
+    },
+    onEditorBlur_2(e) {//项目富文本
+        let data = this.data.projectItem
+        this.editorCtx.getContents({
+            success: res => {
+                data.editor = res.html;
+                this.setData({
+                    projectItem: data
+                })
+            }
+        })
+    },
+    
 });
