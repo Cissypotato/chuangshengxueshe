@@ -104,11 +104,13 @@
             <b>组织介绍</b>
             <s>请使用以下文本编辑器填写组织介绍</s>
         </view>
-        <editor id="editor" class="ql-container" placeholder="" bindinput="" showImgSize showImgToolbar showImgResize bindready="onEditorReady" bindinput="onEditorBlur"></editor>
+        <editor id="editor" class="ql-container" placeholder="" bindinput="" showImgSize showImgToolbar showImgResize                           bindready="onEditorReady" bindinput="onEditorBlur"></editor>
         <view class='toolbar' bindtap="format">
             <text bindtap="insertImage">插入图片</text>
             <text class="{{formats.bold ? 'b_1' : ''}}" data-name="bold" bindtap="edit_blod">文字加粗</text>
-            <text class=" {{formats.back ? 'b_1' : ''}}" data-name="backgroundColor" data-value="#00ff00" bindtap="edit_back">文字背景</text>
+            <text class=" {{formats.back ? 'b_1' : ''}}" data-name="backgroundColor" data-value="#00ff00" bindtap="edit_back">
+                文字背景              
+            </text>
         </view>
     </view>
     <view class="z_page_space"></view>

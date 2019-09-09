@@ -67,6 +67,7 @@
     <button class='z_f_4' bindtap="mk_list" data-id="11" data-t="我的消息">
         <icon class='iconfont icon-xiaoxi c4'></icon>
         <text>我的消息</text>
+        <span class="info-num">1</span>
     </button>
     <button class='z_f_4' bindtap="mk_list" data-id="12" data-t="我的评价">
         <icon class='iconfont icon-pingjia1 c4'></icon>

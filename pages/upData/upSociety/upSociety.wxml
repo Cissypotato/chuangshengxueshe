@@ -1,10 +1,10 @@
-<view wx:if="{{toCertify===1}}">
+<view wx:if="{{initial_data.state===1}}">
 
     <view class="pro-list-wrappper">
-        <view class="society-name">以下是{{societyName}}的项目列表</view>
-        <view wx:if="{{!projects.length}}" class="no-project">您还没有项目</view>
+        <view class="society-name">以下是{{initial_data.name}}的项目列表</view>
+        <view wx:if="{{!initial_data.item.length}}" class="no-project">您还没有项目</view>
         <view wx:else>
-            <view wx:for="{{projects}}">
+            <view wx:for="{{initial_data.item}}">
                 <view class="pro-item" wx:key>
                     {{item.i_name}}
                     <view class="delete-wrapper">
@@ -28,70 +28,25 @@
         <view class="in_tips">
             <b>项目名字</b>
         </view>
-        <input data-t="project_title" bindblur="input_project_data" value="{{project_title}}" />
+        <input data-t="project_title" bindblur="input_data" value="{{project_title}}" />
         <view class="in_tips">
             <b>项目预算</b>
         </view>
-        <input data-t="project_price" bindblur="input_project_data" type="number" placeholder="￥" value="{{project_price}}" />
+        <input data-t="project_price" bindblur="input_data" type="number" placeholder="￥" value="{{project_price}}" />
+        <view class="in_tips">
+            <b>项目针对人群</b>
+        </view>
+        <picker bindchange="bindPickerChange" value="{{picker.index}}" range="{{initial_data.type}}" range-key="name"               class="picker-wrapper">
+            <view class="picker">
+                {{picker.pickerValue}}
+            </view>
+        </picker>
 
         <view class="in_tips">
             <b>项目介绍</b>
             <s>请使用以下文本编辑器填写项目介绍</s>
         </view>
-        <!-- <view class='toolbar' bindtap="format">
-            <i class="iconfont icon-zitijiacu {{formats.bold ? 'ql-active' : ''}}" data-name="bold"></i>
-            <i class="iconfont icon-zitixieti {{formats.italic ? 'ql-active' : ''}}" data-name="italic"></i>
-            <i class="iconfont icon-zitixiahuaxian {{formats.underline ? 'ql-active' : ''}}" data-name="underline"></i>
-            <i class="iconfont icon-charutupian" bindtap="insertImage"></i>
-
-            <i class="iconfont icon-zuoduiqi {{formats.align === 'left' ? 'ql-active' : ''}}" data-name="align" data-value="left"></i>
-            <i class="iconfont icon-juzhongduiqi {{formats.align === 'center' ? 'ql-active' : ''}}" data-name="align" data-value="center"></i>
-            <i class="iconfont icon-youduiqi {{formats.align === 'right' ? 'ql-active' : ''}}" data-name="align" data-value="right"></i>
-            <i class="iconfont icon-zuoyouduiqi {{formats.align === 'justify' ? 'ql-active' : ''}}" data-name="align" data-value="justify"></i>
-
-            <i class="iconfont icon-line-height {{formats.lineHeight ? 'ql-active' : ''}}" data-name="lineHeight" data-value="2"></i>
-            <i class="iconfont icon-Character-Spacing {{formats.letterSpacing ? 'ql-active' : ''}}" data-name="letterSpacing" data-value="2em"></i>
-            <i class="iconfont icon-722bianjiqi_duanqianju {{formats.marginTop ? 'ql-active' : ''}}" data-name="marginTop" data-value="20px"></i>
-            <i class="iconfont icon-723bianjiqi_duanhouju {{formats.micon-previewarginBottom ? 'ql-active' : ''}}" data-name="marginBottom" data-value="20px"></i>
-
-            <i class="iconfont icon-clearedformat" bindtap="removeFormat"></i>
-            <i class="iconfont icon-font {{formats.fontFamily ? 'ql-active' : ''}}" data-name="fontFamily" data-value="Pacifico"></i>
-            <i class="iconfont icon-fontsize {{formats.fontSize === '24px' ? 'ql-active' : ''}}" data-name="fontSize" data-value="24px"></i>
-            <block wx:if="{{isIcon}}"> -->
-
-
-        <!-- <i class="iconfont icon-text_color {{formats.color === '#0000ff' ? 'ql-active' : ''}}" data-name="color" data-value="#0000ff"></i>
-                <i class="iconfont icon-fontbgcolor {{formats.backgroundColor === '#00ff00' ? 'ql-active' : ''}}" data-name="backgroundColor" data-value="#00ff00"></i>
-                <i class="iconfont icon-date" bindtap="insertDate"></i>
-                <i class="iconfont icon--checklist" data-name="list" data-value="check"></i>
-                <i class="iconfont icon-youxupailie {{formats.list === 'ordered' ? 'ql-active' : ''}}" data-name="list" data-value="ordered"></i>
-                <i class="iconfont icon-wuxupailie {{formats.list === 'bullet' ? 'ql-active' : ''}}" data-name="list" data-value="bullet"></i>
-                <i class="iconfont icon-undo" bindtap="undo"></i>
-                <i class="iconfont icon-redo" bindtap="redo"></i>
-
-                <i class="iconfont icon-outdent" data-name="indent" data-value="-1"></i>
-                <i class="iconfont icon-indent" data-name="indent" data-value="+1"></i>
-                <i class="iconfont icon-fengexian" bindtap="insertDivider"></i>
-
-                <i class="iconfont icon-zitishanchuxian {{formats.strike ? 'ql-active' : ''}}" data-name="strike"></i>
-                <i class="iconfont icon-format-header-1 {{formats.header === 1 ? 'ql-active' : ''}}" data-name="header" data-value="{{1}}"></i>
-                <i class="iconfont icon-zitixiabiao {{formats.script === 'sub' ? 'ql-active' : ''}}" data-name="script" data-value="sub"></i>
-                <i class="iconfont icon-zitishangbiao {{formats.script === 'super' ? 'ql-active' : ''}}" data-name="script" data-value="super"></i> -->
-        <!-- <i class="iconfont icon-quanping"></i> -->
-        <!-- <i class="iconfont icon-shanchu" bindtap="clear"></i>
-
-            </block>
-
-            <i bindtap="zk" class="ql-active">{{iconText}}</i>
-
-        </view>
-        <editor id="editor" class="ql-container" placeholder="{{placeholder}}" showImgSize showImgToolbar showImgResize bindstatuschange="onStatusChange" read-only="{{readOnly}}" bindready="onEditorReady" bindblur="onEditorBlur_2">
-        </editor>-->
-        <view class="in_tips">
-            <b>项目介绍</b>
-            <s>请使用以下文本编辑器填写项目介绍</s>
-        </view>
-        <editor id="editor" class="ql-container" placeholder="" showImgSize showImgToolbar showImgResize bindready="onEditorReady"                  bindinput="onEditorBlur"></editor>
+        <editor id="editor" class="ql-container" placeholder="" showImgSize showImgToolbar showImgResize bindready="onEditorReady" bindinput="onEditorBlur"></editor>
         <view class='toolbar' bindtap="format">
             <text bindtap="insertImage">插入图片</text>
             <text class="{{formats.bold ? 'b_1' : ''}}" data-name="bold" bindtap="edit_blod">文字加粗</text>
@@ -99,24 +54,17 @@
         </view>
 
     </view>
-    <view class="in_tips">
-        <b>项目针对人群</b>
-    </view>
-    <picker bindchange="bindPickerChange" value="{{index}}" range="{{tag}}" range-key="name" class="picker-wrapper">
-        <view class="picker">
-            {{pickerValue}}
-        </view>
-    </picker>
-
 
     <button class="z_btn_2 g_1" bindtap="submitProject">添加项目</button>
 
 </view>
-<view wx:elif="{{toCertify===0}}" class="middle-info" bindtap="toHome">
+<view wx:elif="{{initial_data.state===0}}" class="middle-info" bindtap="toHome">
     您申请的社会组织正在审核中，请耐心等待，审核结果我们将尽快以消息的方式通知您。
 </view>
-<view wx:elif="{{toCertify===2}}" class="middle-info" bindtap="changeCertify">您申请的社会组织审核失败，请重新提交审核</view>
-<view wx:if="{{toCertify===3}}">
+<view wx:elif="{{initial_data.state===2}}" class="middle-info" bindtap="reSubmit">
+    您申请的社会组织审核失败（失败原因已发送给您的消息），请点击重新提交审核
+</view>
+<view wx:if="{{initial_data.state===3}}">
     <view class="form_3">
         <view class="in_tips">
             <b>社会组织名字</b>
@@ -136,55 +84,13 @@
             <b>组织介绍</b>
             <s>请使用以下文本编辑器填写组织介绍</s>
         </view>
+        <editor id="editor" class="ql-container" placeholder="" bindinput="" showImgSize showImgToolbar showImgResize bindready="onEditorReady" bindinput="onEditorBlur"></editor>
         <view class='toolbar' bindtap="format">
-            <i class="iconfont icon-zitijiacu {{formats.bold ? 'ql-active' : ''}}" data-name="bold"></i>
-            <i class="iconfont icon-zitixieti {{formats.italic ? 'ql-active' : ''}}" data-name="italic"></i>
-            <i class="iconfont icon-zitixiahuaxian {{formats.underline ? 'ql-active' : ''}}" data-name="underline"></i>
-            <i class="iconfont icon-charutupian" bindtap="insertImage"></i>
-
-            <i class="iconfont icon-zuoduiqi {{formats.align === 'left' ? 'ql-active' : ''}}" data-name="align" data-value="left"></i>
-            <i class="iconfont icon-juzhongduiqi {{formats.align === 'center' ? 'ql-active' : ''}}" data-name="align" data-value="center"></i>
-            <i class="iconfont icon-youduiqi {{formats.align === 'right' ? 'ql-active' : ''}}" data-name="align" data-value="right"></i>
-            <i class="iconfont icon-zuoyouduiqi {{formats.align === 'justify' ? 'ql-active' : ''}}" data-name="align" data-value="justify"></i>
-
-            <i class="iconfont icon-line-height {{formats.lineHeight ? 'ql-active' : ''}}" data-name="lineHeight" data-value="2"></i>
-            <i class="iconfont icon-Character-Spacing {{formats.letterSpacing ? 'ql-active' : ''}}" data-name="letterSpacing" data-value="2em"></i>
-            <i class="iconfont icon-722bianjiqi_duanqianju {{formats.marginTop ? 'ql-active' : ''}}" data-name="marginTop" data-value="20px"></i>
-            <i class="iconfont icon-723bianjiqi_duanhouju {{formats.micon-previewarginBottom ? 'ql-active' : ''}}" data-name="marginBottom" data-value="20px"></i>
-
-            <i class="iconfont icon-clearedformat" bindtap="removeFormat"></i>
-            <i class="iconfont icon-font {{formats.fontFamily ? 'ql-active' : ''}}" data-name="fontFamily" data-value="Pacifico"></i>
-            <i class="iconfont icon-fontsize {{formats.fontSize === '24px' ? 'ql-active' : ''}}" data-name="fontSize" data-value="24px"></i>
-            <block wx:if="{{isIcon}}">
-
-
-                <i class="iconfont icon-text_color {{formats.color === '#0000ff' ? 'ql-active' : ''}}" data-name="color" data-value="#0000ff"></i>
-                <i class="iconfont icon-fontbgcolor {{formats.backgroundColor === '#00ff00' ? 'ql-active' : ''}}" data-name="backgroundColor" data-value="#00ff00"></i>
-                <i class="iconfont icon-date" bindtap="insertDate"></i>
-                <i class="iconfont icon--checklist" data-name="list" data-value="check"></i>
-                <i class="iconfont icon-youxupailie {{formats.list === 'ordered' ? 'ql-active' : ''}}" data-name="list" data-value="ordered"></i>
-                <i class="iconfont icon-wuxupailie {{formats.list === 'bullet' ? 'ql-active' : ''}}" data-name="list" data-value="bullet"></i>
-                <i class="iconfont icon-undo" bindtap="undo"></i>
-                <i class="iconfont icon-redo" bindtap="redo"></i>
-
-                <i class="iconfont icon-outdent" data-name="indent" data-value="-1"></i>
-                <i class="iconfont icon-indent" data-name="indent" data-value="+1"></i>
-                <i class="iconfont icon-fengexian" bindtap="insertDivider"></i>
-
-                <i class="iconfont icon-zitishanchuxian {{formats.strike ? 'ql-active' : ''}}" data-name="strike"></i>
-                <i class="iconfont icon-format-header-1 {{formats.header === 1 ? 'ql-active' : ''}}" data-name="header" data-value="{{1}}"></i>
-                <i class="iconfont icon-zitixiabiao {{formats.script === 'sub' ? 'ql-active' : ''}}" data-name="script" data-value="sub"></i>
-                <i class="iconfont icon-zitishangbiao {{formats.script === 'super' ? 'ql-active' : ''}}" data-name="script" data-value="super"></i>
-                <!-- <i class="iconfont icon-quanping"></i> -->
-                <i class="iconfont icon-shanchu" bindtap="clear"></i>
-
-            </block>
-
-            <i bindtap="zk" class="ql-active">{{iconText}}</i>
-
+            <text bindtap="insertImage">插入图片</text>
+            <text class="{{formats.bold ? 'b_1' : ''}}" data-name="bold" bindtap="edit_blod">文字加粗</text>
+            <text class=" {{formats.back ? 'b_1' : ''}}" data-name="backgroundColor" data-value="#00ff00" bindtap="edit_back">文字背景</text>
         </view>
-        <editor id="editor" class="ql-container" placeholder="{{placeholder}}" showImgSize showImgToolbar showImgResize bindstatuschange="onStatusChange" read-only="{{readOnly}}" bindready="onEditorReady" bindblur="onEditorBlur">
-        </editor>
+
     </view>
 
     <view class="in_tips">
@@ -192,7 +98,7 @@
     </view>
     <view class='z_page_pack_2'>
 
-        <view class='pack_6' bindtap="chooseImage" wx:if="{{img_path.length==0}}">
+        <view class='pack_6' bindtap="chooseImage" wx:if="{{img_path==undefined||img_path.length==0}}">
             <view class='btn'>添加图片</view>
         </view>
         <view class='pack_6' wx:else>

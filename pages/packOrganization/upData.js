@@ -7,7 +7,6 @@ Page({
         plus_state:true,
         //富文本编辑器按钮样式集
         formats: {},
-        
         //上传数据
         up_data: {},
     },
@@ -152,7 +151,7 @@ Page({
     },
     deletePro(e) { //删除项目
         let id = e.currentTarget.dataset.id
-        let idx = e.currentTarget.dataset.id
+        let idx = e.currentTarget.dataset.idx
         let data = this.data.data
         data.item.splice(idx, 1)
         wx.showModal({

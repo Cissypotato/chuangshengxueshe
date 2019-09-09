@@ -3,65 +3,40 @@ let reg = app.globalData.myreg
 Page({
     data: {
         uid: 0,
+        initial_data:{},
         up_data: {},
-        img_path: [],
-        // isLogin: 1,
-        // need_data: null,
-        projectItem: {},
-        projects: [],
-        // projectTitle: [],
-        // isOrganization: false,
-        // isAddProject: false,
-        toCertify: 3,
-        state: 3,
-        formats: {},
-        bottom: 0,
-        readOnly: false,
-        placeholder: '输入项目介绍...',
-        _focus: false,
-        isIcon: false,
-        iconText: '展开',
-        tag:[],
-        index:0,
-        pickerValue:"请点击进行选择",
-        societyName:""
+        picker:{
+            index: 0,
+            pickerValue: "请点击进行选择",
+        },
+        formats:{},
 
     },
     onLoad(options) {
         let id = wx.getStorageSync("token")
-        // console.log(id)
         wx.request({
             url: 'https://xczyzx.com/index.php/index/Society/returnIsSociety',
             data: {
                 uid: id
             },
-            header: {},
-            method: 'GET',
-            dataType: 'json',
-            responseType: 'text',
             success: (res) => {
-                // console.log(res)
                 let data = res.data
+                console.log(data)
+                let initial_data = this.data.initial_data
                 let up_data = this.data.up_data
-                up_data["uid"] = id
-                // console.log(data.type)
                 this.setData({
-                    uid: id,
-                    up_data,
-                    toCertify: data.state,
-                    projects: data.item,
-                    tag:data.type,
-                    societyName:data.name
+                    uid:id,
+                    initial_data: data,
+                    // toCertify: data.state,
+                    // projects: data.item,
+                    // tag:data.type,
+                    // societyName:data.name
                 })
             },
-            fail: function(res) {},
-            complete: function(res) {},
         })
-
     },
-    onShow: function() {
-        
-    },
+    // onShow: function() {
+    // },
 
 
 /*社会组织*/
@@ -74,13 +49,8 @@ Page({
             this.setData({
                 up_data: item
             });
-        } else {
-            console.log(e.detail.value)
-            app.alert("请填写相关信息")
-
         }
         console.log(item)
-
     },
     chooseImage(e) { //图片选择
         wx.chooseImage({
@@ -88,9 +58,8 @@ Page({
             sourceType: ['album', 'camera'],
             count: 1,
             success: res => {
-                console.log(res)
                 let t = this.data.img_path;
-                t = res.tempFilePaths[0]
+                t = res.tempFilePaths[0];
                 this.setData({
                     img_path: t
                 });
@@ -100,7 +69,7 @@ Page({
     handleImagePreview(e) { //图片浏览
         wx.previewImage({
             current: this.data.img_path,
-            urls: this.data.img_path
+            urls: [this.data.img_path]
         });
     },
     removeImage(e) { //图片删除
@@ -110,213 +79,163 @@ Page({
     },
     submitForm(e) { //社会组织开始上传
         let up_data = this.data.up_data;
-        let arr = Object.keys(up_data);
-        console.log(arr.length)
-
-        if (arr.length < 5) {
-
-            app.alert('请先填写全部表单');
-        } else if (reg.test(this.data.up_data.tel) == false) {
+        // console.log(up_data)
+        if (up_data.title==undefined) {
+            app.alert('请填写社会组织名字');
+        }else if (up_data.name == undefined) {
+            app.alert('请填写联系人名字');
+        }else if (up_data.tel== undefined || reg.test(this.data.up_data.tel) == false) {
             app.alert('请填写有效电话号码');
-        } else
-        if (this.data.img_path.length == 0) {
+        }else if (up_data.editor == undefined) {
+            app.alert('请填写组织介绍');
+        }else if (this.data.img_path.length == 0) {
             app.alert('请先上传照片');
         } else {
             wx.showLoading({
                 title: '上传中···',
             });
-            this.setData({
-                now_up: 0
+            wx.uploadFile({
+                url: 'https://xczyzx.com/index.php/index/Society/addSociety',
+                filePath: this.data.img_path,
+                name: 'img',
+                formData: {
+                    uid: this.data.uid,
+                    title: up_data.title,
+                    name: up_data.name,
+                    tel: up_data.tel,
+                    info: up_data.editor
+                },
+                success: (res) => {
+                    console.log(res)
+                    wx.hideLoading();
+                    app.alert("添加组织成功，审核结果我们将尽快以消息的方式通知您")
+                    setTimeout(() => {
+                        wx.redirectTo({
+                            url: '/pages/index/home/home',
+                        })
+                    }, 2000)
+                },
+
             });
-            this.img_up();
         };
     },
-    img_up() { //图片上传
-        let data = this.data.up_data
-        console.log(data)
-        wx.uploadFile({
-            url: 'https://xczyzx.com/index.php/index/Society/addSociety',
-            filePath: this.data.img_path,
-            name: 'img',
-            formData: {
-                uid: data.uid,
-                title: data.title,
-                name: data.name,
-                tel: data.tel,
-                info: data.editor
-            },
-            success: (res) => {
-                console.log(res)
-                wx.hideLoading();
-                app.alert("添加组织成功，审核结果我们将尽快以消息的方式通知您")
-                setTimeout(() => {
-                    wx.reLaunch({
-                        url: '/pages/upData/upData',
-                    })
-                }, 2000)    
-            },
-        
-        });
+    reSubmit(){//社会组织审核失败回到提交社会组织提交页面
+       let initial_data=this.data.initial_data
+       initial_data.state=3
+       this.setData({
+           initial_data
+       })
     },
-
 
 /*项目*/
-    input_project_data(e) { //项目文本框数据赋值
-        let projectItem = this.data.projectItem
-        let k = e.currentTarget.dataset.t;
-        if (e.detail.value !== "") {
-            projectItem[k] = e.detail.value;
-            this.setData({
-                projectItem
-            })
-        } else {
-            console.log(e.detail.value)
-            app.alert("请填写相关信息")
-
-        }
-
-    },
-
     deletePro(e) { //删除项目
         let id = e.currentTarget.dataset.id
         let idx = e.currentTarget.dataset.idx
-        let projects = this.data.projects
-        projects.splice(idx, 1)
-        
+        let initial_data= this.data.initial_data
+        initial_data.item.splice(idx, 1)
+        wx.showModal({
+            title: '提示',
+            content: '您确定删除这个项目吗',
+            success: (res) => {
+                if (res.confirm) {
+                    wx.request({
+                        url: 'https://xczyzx.com/index.php/index/Society/delItem',
+                        data: {
+                            id: id
+                        },
+                        success: (res) => {
+                            this.setData({
+                                initial_data
+                            })
+                        }
+                    })
+                }
+            }
+        }) 
         
 
-       
         
     },
-
     bindPickerChange: function (e) {//项目 针对人群picker选择事件
-        let tag = this.data.tag
+        let tag = this.data.initial_data.type
         let id = tag[e.detail.value].id
-        let pickerValue = tag[e.detail.value].name
-        let projectItem = this.data.projectItem
-        projectItem["project_tag"] = id
+        let picker=this.data.picker
+        let up_data = this.data.up_data
+        picker.index = e.detail.value
+        picker.pickerValue= tag[e.detail.value].name
+        up_data["project_tag"] = id
         this.setData({
-            index: e.detail.value,
-            projectItem,
-            pickerValue
+            picker,
+            up_data
+            
         })
     },
-
     submitProject() {//提交项目数据
-        let data = this.data.projectItem
-
-        let arr = Object.keys(data)
-        console.log(data)
-        if (arr.length < 4) {
-            app.alert("请填写全部信息")
-        } else {
+        let up_data = this.data.up_data
+        // let arr = Object.keys(data)
+        console.log(up_data)
+        if (up_data.project_title == undefined) {
+            app.alert('请填写项目名字');
+        } else if (up_data.project_price == undefined) {
+            app.alert('请填写项目预算');
+        } else if (up_data.project_tag == undefined ) {
+            app.alert('请选择项目针对人群');
+        } else if (up_data.editor == undefined) {
+            app.alert('请填写先项目介绍');
+        }else {
             wx.request({
                 url: 'https://xczyzx.com/index.php/index/Society/addCourse',
                 data: {
                     uid: this.data.uid,
-                    i_name: data.project_title,
-                    people: data.project_tag,
-                    info: data.editor,
-                    price: data.project_price,
+                    i_name: up_data.project_title,
+                    people: up_data.project_tag,
+                    info: up_data.editor,
+                    price: up_data.project_price,
                 },
-                header: {},
-                method: 'GET',
-                dataType: 'json',
-                responseType: 'text',
                 success: (res) => {
                     app.alert("添加项目成功，审核结果我们将尽快以消息的方式通知您")
                     setTimeout(()=>{
-                        wx.reLaunch({
-                            url: '/pages/upData/upData',
+                        wx.redirectTo({
+                            url: '/pages/index/home/home',
                         })
-                    },2000)
-                    
+                    },2000)   
                 },
-                fail: function(res) {},
-                complete: function(res) {},
             })
 
         }
 
     },
    
-
 /*富文本*/
-    zk() {
-        var iconText;
-        if (this.data.isIcon) {
-            iconText = '展开'
-        } else {
-            iconText = '收起'
-        }
-        this.setData({
-            isIcon: !this.data.isIcon,
-            iconText
-        })
-    },
-    readOnlyChange() {
-        this.setData({
-            readOnly: !this.data.readOnly
-        })
-    },
-    onEditorReady() {
+    onEditorReady() { //编辑器初始化
         const then = this
-        wx.createSelectorQuery().select('#editor').context(function(res) {
+        wx.createSelectorQuery().select('#editor').context(function (res) {
             then.editorCtx = res.context
-        }).exec()
-    },    
-    undo() {// 富文本撤回
-        this.editorCtx.undo()
-    },  
-    redo() {// 富文本重回
-        this.editorCtx.redo()
+        }).exec();
     },
-    format(e) {
+    format(e) { //编辑器按钮逻辑
         let {
             name,
             value
-        } = e.target.dataset
-        if (!name) return
-        // console.log('format', name, value)
-        this.editorCtx.format(name, value)
-
+        } = e.target.dataset;
+        if (!name) return;
+        this.editorCtx.format(name, value);
     },
-    onStatusChange(e) {
-        const formats = e.detail
+    edit_blod() { //编辑器按钮样式
+        let formats = this.data.formats;
+        formats.bold = !formats.bold;
         this.setData({
             formats
-        })
+        });
     },
-    
-    insertDivider() {//富文本添加分隔符
-        this.editorCtx.insertDivider({
-            success: function() {
-                console.log('insert divider success')
-            }
-        })
+    edit_back() { //编辑器按钮样式
+        let formats = this.data.formats;
+        formats.back = !formats.back;
+        this.setData({
+            formats
+        });
     },
-    
-    clear() {//富文本清空文本框
-        this.editorCtx.clear({
-            success: function(res) {
-                console.log("clear success")
-            }
-        })
-    },
-    
-    removeFormat() {//删除富文本选择
-        this.editorCtx.removeFormat()
-    },
-    insertDate() {//富文本添加当前时间
-        const date = new Date()
-        const formatDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
-        this.editorCtx.insertText({
-            text: formatDate
-        })
-    },
-    
     insertImage() {
-        var then = this;
         wx.chooseImage({
             count: 4,
             sizeType: ['original', 'compressed'],
@@ -364,27 +283,9 @@ Page({
 
         })
     },
-    onEditorBlur(e) {//组织富文本
+    onEditorBlur(e) {//编辑器赋值
         var up_data = this.data.up_data;
-        this.editorCtx.getContents({
-            success: res => {
-                up_data.editor = res.html;
-                this.setData({
-                    up_data: up_data
-                })
-            }
-        })
-    },
-    onEditorBlur_2(e) {//项目富文本
-        let data = this.data.projectItem
-        this.editorCtx.getContents({
-            success: res => {
-                data.editor = res.html;
-                this.setData({
-                    projectItem: data
-                })
-            }
-        })
-    },
-    
+        up_data.editor = e.detail.html;
+        this.setData({ up_data });
+    },   
 });

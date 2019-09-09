@@ -6,3 +6,4 @@ width: 0;
 height: 0;
 color: transparent;
 }
+/* .info-num{color: red} */
