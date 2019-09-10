@@ -1,3 +1,6 @@
+const app = getApp();
+let reg = app.globalData.myreg
+
 Page({
     data: {
         //用户状态
@@ -44,7 +47,7 @@ Page({
     },
     data_play(id) { //获取初始数据
         wx.request({
-            url: 'https://xczyzx.com/index.php/index/Society/returnIsSociety',
+            url: 'https://xczyzx.com/index.php/index/Expert/returnIsExpert',
             data: {
                 uid: id
             },
@@ -98,15 +101,13 @@ Page({
         console.log(up_data);
     },
 
-    /*社会组织上传*/
-    up_btn_step_1(e) { //社会组织开始上传
+    /*专家人才上传*/
+    up_btn_step_1(e) { //专家人才开始上传
         let t = this.data.up_data;
-        if (t.title == undefined) {
-            getApp().alert('请填写组织名字');
-        } else if (t.name == undefined) {
-            getApp().alert('请填写联系人姓名');
-        } else if (t.tel == undefined) {
-            getApp().alert('请填写联系电话');
+         if (t.name == undefined) {
+            getApp().alert('请填写专家姓名');
+         } else if (t.tel == undefined || reg.test(t.tel) == false) {
+            getApp().alert('请填写有效联系电话');
         } else if (t.editor == undefined) {
             getApp().alert('请填写组织介绍');
         } else if (this.data.img_path == undefined || this.data.img_path == []) {
@@ -116,12 +117,11 @@ Page({
                 title: '上传中···'
             });
             wx.uploadFile({
-                url: 'https://xczyzx.com/index.php/index/Society/addSociety',
+                url: 'https://xczyzx.com/index.php/index/Expert/addExpert',
                 filePath: this.data.img_path,
                 name: 'img',
                 formData: {
                     uid: this.data.user.token,
-                    title: t.title,
                     name: t.name,
                     tel: t.tel,
                     info: t.editor
@@ -143,7 +143,7 @@ Page({
         };
     },
 
-    /*项目上传*/
+    /*课程上传*/
     plus_state_choo() {//项目展示和项目上传页面切换
         let plus_state = this.data.plus_state;
         plus_state = !plus_state;
@@ -154,14 +154,14 @@ Page({
         let id = e.currentTarget.dataset.id
         let idx = e.currentTarget.dataset.idx
         let data = this.data.data
-        data.item.splice(idx, 1)
+        data.course.splice(idx, 1)
         wx.showModal({
             title: '提示',
-            content: '您确定删除这个项目吗',
+            content: '您确定删除这个课程吗',
             success: (res) => {
                 if (res.confirm) {
                     wx.request({
-                        url: 'https://xczyzx.com/index.php/index/Society/delItem',
+                        url: 'https://xczyzx.com/index.php/index/Expert/delCourse',
                         data: {
                             id: id
                         },
@@ -176,29 +176,27 @@ Page({
         })   
         
     },
-    tag_choo(e) { //项目针对人群
-        let id = e.currentTarget.dataset.id;
-        let data = this.data.data;
-        let up_data = this.data.up_data;
-        for (var i = 0; i < data.type.length; i++) {
-            if (data.type[i].id == id) {
-                data.type[i].act = true;
-                up_data.people = data.type[i].id;
-            }else{
-                data.type[i].act = false;
-            }
-        };
-        this.setData({ data, up_data });
-    },
-    up_btn_step_2() { //项目开始上传
+    // tag_choo(e) { //项目针对人群
+    //     let id = e.currentTarget.dataset.id;
+    //     let data = this.data.data;
+    //     let up_data = this.data.up_data;
+    //     for (var i = 0; i < data.type.length; i++) {
+    //         if (data.type[i].id == id) {
+    //             data.type[i].act = true;
+    //             up_data.people = data.type[i].id;
+    //         }else{
+    //             data.type[i].act = false;
+    //         }
+    //     };
+    //     this.setData({ data, up_data });
+    // },
+    up_btn_step_2() { //课程开始上传
         let t = this.data.up_data;
         if (t.i_name == undefined) {
-            getApp().alert('请填写项目名称');
-        } else if (t.price == undefined) {
-            getApp().alert('请填写项目预算');
-        } else if (t.people == undefined) {
-            getApp().alert('请填写针对人群');
-        } else if (t.editor == undefined) {
+            getApp().alert('请填写课程名称');
+        }else if (t.price == undefined) {
+            getApp().alert('请填写课程预算');
+        }else if (t.editor == undefined) {
             getApp().alert('请填写组织介绍');
         } else {
             wx.showLoading({
@@ -209,11 +207,11 @@ Page({
                 data:t
             })
             wx.request({
-                url: 'https://xczyzx.com/index.php/index/Society/addCourse',
+                url: 'https://xczyzx.com/index.php/index/Expert/addCourses',
                 data: {
                     uid: this.data.user.token,
-                    i_name: t.i_name,
-                    people: t.people,
+                    s_name: t.i_name,
+                    // people: t.people,
                     info: t.editor,
                     price: t.price,
                 },

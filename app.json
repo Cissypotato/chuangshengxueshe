@@ -23,7 +23,6 @@
         "pages/packNeeds/list",
         "pages/packOrganization/list",
         "pages/packExpert/list",
-        "pages/packExpert/article/article",
         "pages/upData/packUpData/packUpData",
         "pages/upData/upData",
         "pages/upData/upExpert/upExpert",

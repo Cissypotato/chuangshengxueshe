@@ -1,23 +1,23 @@
 <view class='page_tips_3' wx:if="{{data.state===0}}">
     <icon class='iconfont icon-pingjia1 c9'></icon>
-    <view class='p'>社会组织材料审核中，请耐心等待</view>
+    <view class='p'>专家人才材料审核中，请耐心等待</view>
 </view>
 
 <view wx:if="{{data.state===1}}">
     <view wx:if="{{plus_state}}">
         <view class='page_tips_3' wx:if="{{data.item.length===0}}">
             <icon class='iconfont icon-kong c9'></icon>
-            <view class='p'>您还没有项目</view>
+            <view class='p'>您还没有课程</view>
             <button class="g_1" bindtap="plus_state_choo">点击提交</button>
         </view>
         <view wx:else>
             <view class="z_page_space_2"></view>
-            <view class="z_page_title">已上传项目列表</view>
+            <view class="z_page_title">已上传课程列表</view>
             <view class="z_page_space_3"></view>
             <view class="list_pack_2" style="padding-top:2vw;">
                 <view class="z_list_2_b" style="margin-top:0; border:none; padding-top:0;">
-                    <li wx:for="{{data.item}}" wx:key data-id=" {{item.id}}">
-                        <text>{{item.i_name}}</text>
+                    <li wx:for="{{data.course}}" wx:key data-id=" {{course.id}}">
+                        <text>{{item.s_name}}</text>
                         <text class="tag c5" wx:if="{{item.state===0}}">待审核</text>
                         <text class="tag c2" wx:if="{{item.state===1}}">审核成功</text>
                         <text class="tag c3" wx:if="{{item.state===2}}">审核失败</text>
@@ -28,32 +28,32 @@
             </view>
             <view class="z_page_space_2"></view>
             <view class="page_tips">
-                <button class="g_1" bindtap="plus_state_choo">上传新项目</button>
+                <button class="g_1" bindtap="plus_state_choo">上传新课程</button>
             </view>
         </view>
     </view>
     <view class="form_3" wx:else>
         <view class="z_page_space_2"></view>
-        <view class="z_page_title">添加新项目
+        <view class="z_page_title">添加新课程
             <view class="link o_1" bindtap="plus_state_choo">返回列表</view>
         </view>
         <view class="in_tips">
-            <b>项目名称</b>
+            <b>课程名称</b>
         </view>
         <input data-t="i_name" bindblur="input_data" />
         <view class="in_tips">
-            <b>项目预算</b>
+            <b>课程价格</b>
         </view>
         <input data-t="price" bindblur="input_data" type="number" placeholder="￥" />
-        <view class="in_tips">
+        <!-- <view class="in_tips">
             <b>针对人群</b>
         </view>
         <view class="tag_list {{item.act?'g_1':''}}" wx:for="{{data.type}}" wx:key data-id="{{item.id}}" bindtap="tag_choo">
             {{item.name}}
-        </view>
+        </view> -->
         <view class="in_tips">
-            <b>项目介绍</b>
-            <s>请使用以下文本编辑器填写项目介绍</s>
+            <b>课程介绍</b>
+            <s>请使用以下文本编辑器填写课程介绍</s>
         </view>
         <editor id="editor" class="ql-container" placeholder="" showImgSize showImgToolbar showImgResize bindready="onEditorReady" bindinput="onEditorBlur"></editor>
         <view class='toolbar' bindtap="format">
@@ -62,7 +62,7 @@
             <text class=" {{formats.back ? 'b_1' : ''}}" data-name="backgroundColor" data-value="#00ff00" bindtap="edit_back">文字背景</text>
         </view>
         <view class="z_page_space"></view>
-        <button class="z_btn_2 g_1" bindtap="up_btn_step_2">添加项目</button>
+        <button class="z_btn_2 g_1" bindtap="up_btn_step_2">添加课程</button>
         <view class="z_page_space"></view>
     </view>
 </view>
@@ -76,15 +76,15 @@
 <view wx:if="{{data.state===3}}">
     <view class="form_3">
         <view class="z_page_space_2"></view>
-        <view class="z_page_title">社会组织资料提交</view>
-        <view class="in_tips">
-            <b>组织名字</b>
+        <view class="z_page_title">专家人才资料提交</view>
+        <!-- <view class="in_tips">
+            <b>专家名字</b>
         </view>
-        <input data-t="title" bindblur="input_data" />
+        <input data-t="title" bindblur="input_data" /> -->
         <view class='z_page_space_2'></view>
         <view class='z_page_pack_2'>
             <view class='pack_6' bindtap="chooseImage" wx:if="{{img_path.length==0||img_path==undefined}}">
-                <view class='btn'>添加图片</view>
+                <view class='btn'>添加专家照片</view>
             </view>
             <view class='pack_6' wx:else>
                 <image src="{{img_path}}" mode="aspectFill" bindtap="handleImagePreview"></image>
@@ -93,7 +93,7 @@
             <view class='clear'></view>
         </view>
         <view class="in_tips">
-            <b>联系人姓名</b>
+            <b>专家姓名</b>
         </view>
         <input data-t="name" bindblur="input_data" />
         <view class="in_tips">
@@ -101,8 +101,8 @@
         </view>
         <input data-t="tel" type='number' bindblur="input_data" />
         <view class="in_tips">
-            <b>组织介绍</b>
-            <s>请使用以下文本编辑器填写组织介绍</s>
+            <b>专家介绍</b>
+            <s>请使用以下文本编辑器填写专家介绍</s>
         </view>
         <editor id="editor" class="ql-container" placeholder="" bindinput="" showImgSize showImgToolbar showImgResize                           bindready="onEditorReady" bindinput="onEditorBlur"></editor>
         <view class='toolbar' bindtap="format">

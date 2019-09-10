@@ -1,8 +1,0 @@
-/* pages/packExpert/article/article.wxss */
-
-.course-name{text-align: center;font-size: 48rpx;line-height: 1.8em;margin-top: 40rpx;}
-.info-wrapper{line-height: 1.8em;padding: 40rpx;}
-.info-wrapper>view>text{color: #555;font-size: 30rpx;}
-
-
-.detail-info{padding: 0 20rpx;}

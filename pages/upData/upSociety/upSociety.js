@@ -39,8 +39,8 @@ Page({
     // },
 
 
-/*社会组织*/
-    input_data(e) { //社会组织文本框数据赋值
+
+    input_data(e) { //文本框数据赋值
         let item = this.data.up_data;
         let k = e.currentTarget.dataset.t;
         if (e.detail.value !== "") {
@@ -77,6 +77,7 @@ Page({
             img_path: ""
         });
     },
+    /*社会组织*/
     submitForm(e) { //社会组织开始上传
         let up_data = this.data.up_data;
         // console.log(up_data)

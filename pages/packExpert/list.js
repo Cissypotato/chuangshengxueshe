@@ -1,81 +1,46 @@
-// pages/packExpert/list.js
 Page({
     data: {
-        list:[],
-        isList:false
+        info_pack: false,
     },
-    onLoad: function (options) {
-
+    onShow: function() { //数据加载
+        wx.showLoading();
+        wx.request({
+            url: 'https://xczyzx.com/index.php/index/Expert/returnExpert',
+            success: (res) => {
+                wx.hideLoading();
+                this.setData({
+                    list: res.data
+                });
+                console.log(res.data)
+            }
+        });
     },
-    onReady: function () {
-
+    list_click(e) { //打开介绍容器
+        let info = e.currentTarget.dataset.info;
+        this.setData({
+            info_pack: true,
+            info: info,
+        });
     },
-    onShow: function () {
+    close_info() { //关闭介绍容器
+        this.setData({
+            info_pack: false
+        });
+    },
+    up_data() { //打开数据上传页面
+        wx.showModal({
+              title: '提示',
+              content: '您即将进入专家人才上传页面，如果您的专家人才已经认证则直接进入课程资源上传页面',
+              success(res) {
+                  if (res.confirm) {
+                      wx.navigateTo({
+                          url: '/pages/packExpert/upData',
+                      });
+                  } else if (res.cancel) {
 
-      wx.request({
-          url: 'https://xczyzx.com/index.php/index/Expert/returnExpert',
-        data: '',
-        header: {},
-        method: 'GET',
-        dataType: 'json',
-        responseType: 'text',
-        success: (res) => {
-          console.log(res.data)
-          this.setData({
-            list: res.data
+                  }
+              }
           })
-        },
-        fail: function (res) { },
-        complete: function (res) { },
-      })
-
-
-    },
-    praise_click(e){
-        let id = e.currentTarget.dataset.id;
-        //这里要先判断用户是否登录
-        if (wx.getStorageSync("token") == '') {
-            wx.showModal({
-                title: '提示',
-                content: '未登陆用户无法完成此操作，现在就去登陆吗？',
-                success(res) {
-                    if (res.confirm) {
-                        wx.navigateTo({
-                            url: '/pages/mine/login/login'
-                        });
-                    } else if (res.cancel) {
-
-                    }
-                }
-            });
-        } else {
-            //这里发起点赞的AJAX请求
-            
-            console.log(e.currentTarget.dataset.id);
-        };
-    },
-    info_click(e){
-        //跳转到指定ID的的文章介绍页
-
-      console.log(e.currentTarget.dataset.id)  
-      let id = e.currentTarget.dataset.id
-      console.log(id)
-      wx.navigateTo({
-        url: '/pages/packExpert/article/article?id='+id
-      });
-
-    },
-    yuyue_click(e){
-        //发送ID到后台请求业务逻辑
-        getApp().alert('ok')
-    },
-    list_click(e){
-        let id=e.currentTarget.dataset.id
-        wx.navigateTo({
-            url: './article/article?id='+id,
-            success: function(res) {},
-            fail: function(res) {},
-            complete: function(res) {},
-        })
+        
     }
-})
+});
