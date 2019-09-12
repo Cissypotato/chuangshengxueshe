@@ -23,4 +23,4 @@
 .page_tips_4>.r {float:right;}
 
 
-.z_list_2>r>n>.expert-h{float:right;color:#2196f3;margin-right: 40rpx;}
+.z_list_2>r>n>.expert-h{float:right;color:#2196f3;margin-right: 40rpx;margin-top: -4rpx;}

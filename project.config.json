@@ -49,7 +49,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 34,
+			"current": 35,
 			"list": [
 				{
 					"id": -1,
@@ -294,6 +294,12 @@
 					"name": "pages/packOrganization/upData",
 					"pathName": "pages/packOrganization/upData",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "资源列表",
+					"pathName": "pages/index/list/list",
 					"scene": null
 				}
 			]

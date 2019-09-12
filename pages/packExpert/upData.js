@@ -13,7 +13,7 @@ Page({
         //上传数据
         up_data: {},
     },
-    onShow: function() { //先获取用户相关状态
+    onLoad: function() { //先获取用户相关状态
         let user = {};
         user.token = wx.getStorageSync("token");
         user.user_real = wx.getStorageSync("user_real");
@@ -314,4 +314,11 @@ Page({
         up_data.editor = e.detail.html;
         this.setData({up_data});
     },
+    re_btn(){
+        let data=this.data.data
+        data.state=3
+        this.setData({
+            data
+        })
+    }
 });

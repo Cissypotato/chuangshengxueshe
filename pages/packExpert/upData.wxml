@@ -5,7 +5,7 @@
 
 <view wx:if="{{data.state===1}}">
     <view wx:if="{{plus_state}}">
-        <view class='page_tips_3' wx:if="{{data.item.length===0}}">
+        <view class='page_tips_3' wx:if="{{data.course.length===0||data.course==null}}">
             <icon class='iconfont icon-kong c9'></icon>
             <view class='p'>您还没有课程</view>
             <button class="g_1" bindtap="plus_state_choo">点击提交</button>

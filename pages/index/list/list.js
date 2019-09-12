@@ -3,7 +3,6 @@ Page({
     data: {
         zhen_list: [],
         zhen_list_index:0,
-        //
         city_list:['新都区','青白江','金堂'],
         city_list_index:0,
         //页面功能标题
@@ -11,6 +10,10 @@ Page({
     },
     onLoad:function(options){
         console.log(options);
+        let id=options.id
+        this.setData({
+            id
+        })
         if (options.id==undefined){
             this.dataInfo(1)
         }else{
@@ -40,23 +43,22 @@ Page({
 
     },
     dataInfo(id){
-        let then = this
         wx.request({
             url: app.globalData.appUrl + 'sort/list',
             data: {
                 id:id
             },
-            success: function(res) {
-                console.log(res)
-                
+            success:(res)=> {
+                // console.log(res)   
                 let k = res.data.site;
                 let d = ['全部街镇'];
                 for (var i = 0; i < k.length; i++) {
                     d.push(k[i].name);
                 };
-                then.setData({
+                this.setData({
                     zhen_list:d,
-                    data:res.data.data
+                    data:res.data.data,
+                    page: res.data.page
                 });
                 wx.nextTick(() => {
                     wx.hideLoading();
@@ -85,5 +87,36 @@ Page({
         wx.navigateTo({
             url: '/pages/index/details/details?id=' + event.currentTarget.dataset.id,
         })
+    },
+    lower: function (e) {//分页下拉刷新
+        let current_page=this.data.page.current_page
+        let last_page = this.data.page.last_page
+        let id=this.data.id
+        if(current_page<last_page){
+            wx.showLoading({
+                title: '加载中',
+            })
+            wx.request({
+                url: 'https://xczyzx.com/index.php/index/Sort/list',
+                data: {
+                    p: current_page+1,
+                    id:id
+                },
+                success: (res)=> {
+                    let data1=this.data.data
+                    let data = data1.concat(res.data.data)
+                    this.setData({
+                        data,
+                        page: res.data.page
+                    })
+                    wx.nextTick(() => {
+                        wx.hideLoading();
+                    });
+                },
+            })
+        }else{
+            app.alert("没有更多数据了")
+        }
     }
+
 })

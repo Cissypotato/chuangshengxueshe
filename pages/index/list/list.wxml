@@ -69,15 +69,22 @@
     <view class="clear"></view>
 </view>
 <view class="page_tips_1">没有查询到任何数据，请重新选择！</view>
-<view class='z_list_1' style="background:#fff; position:relative; top:-2.4rem;" wx:for="{{data}}" wx:key wx:if="{{zhen_list_index==0||item.town == zhen_list[zhen_list_index]}}"  data-id="{{item.id}}" bindtap='details'>
-    <image src="{{item.img}}"></image>
-    <view class="r">
-        <view class="z_font_2">{{item.title}}</view>
-        <view class="z_font_3">{{item.districts}} / {{item.town}} / {{item.community}}</view>
-        <view class="z_font_3">{{item.group}}</view>
-        <view class="z_font_4">
-            <text>{{item.price}}</text> {{item.area}}</view>
+
+
+<scroll-view scroll-y  bindscrolltolower="lower" style="height: 1200rpx;" upper-threshold="0">
+
+
+    <view class='z_list_1' style="background:#fff; position:relative; " wx:for="{{data}}" wx:key wx:if="{{zhen_list_index==0||item.town == zhen_list[zhen_list_index]}}"  data-id="{{item.id}}" bindtap='details'>
+        <image src="{{item.img}}"></image>
+        <view class="r">
+            <view class="z_font_2">{{item.title}}</view>
+            <view class="z_font_3">{{item.districts}} / {{item.town}} / {{item.community}}</view>
+            <view class="z_font_3">{{item.group}}</view>
+            <view class="z_font_4">
+                <text>{{item.price}}</text> {{item.area}}</view>
+        </view>
+        <view class='clear'></view>
     </view>
-    <view class='clear'></view>
-</view>
+
+</scroll-view>
 <view class='z_page_space'></view>
