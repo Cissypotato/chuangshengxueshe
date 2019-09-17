@@ -1,0 +1,90 @@
+<!--
+    <scroll-view scroll-x class="bg-white nav" scroll-with-animation scroll-left="{{scrollLeft}}">
+        <view class="cu-item {{0==TabCur?'text-blue':'text-gray'}}" wx:key bindtap="tabSelect" data-id="0">
+            全部
+        </view>
+        <view class="cu-item {{item.id==TabCur?'text-blue':'text-gray'}}" wx:for="{{list}}" wx:key bindtap="tabSelect" data-id="{{item.id}}">
+            {{item.name}}
+        </view>
+    </scroll-view>
+    <view wx:if="{{TabCur == '0'}}">
+        <view wx:for="{{data}}" wx:key>
+            <view bindtap='details' data-id="{{item.id}}" class="margin-bottom-sm bg-white padding-bottom-sm">
+                <image src="{{item.img}}" mode='widthFix' style='width:100%;'></image>
+                <view class="padding-lr">
+                    <view class="text-lg text-black text-content-xs text-cut">{{item.districts}} · {{item.town}}</view>
+                    <view class="padding-top-xs flex align-end">
+                        <text class="text-red text-xl">{{item.price}}</text>
+                        <view class="flex align-center text-gray">
+                            <text class="text-xs padding-lr-sm">|</text>
+                            <text>{{item.area}}</text>
+                            <text class="text-xs padding-lr-sm">|</text>
+                            <text>{{item.community}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view wx:else>
+        <block wx:for="{{data}}" wx:key wx:if="{{item.two == TabCur}}">
+            <view bindtap='details' data-id="{{item.id}}" class="margin-bottom-sm bg-white padding-bottom-sm">
+                <image src="{{item.img}}" mode='widthFix' style='width:100%;'></image>
+                <view class="padding-lr">
+                    <view class="text-lg text-black text-content-xs text-cut">{{item.districts}} · {{item.town}}</view>
+                    <view class="padding-top-xs flex align-end">
+                        <text class="text-red text-xl">{{item.price}}</text>
+                        <view class="flex align-center text-gray">
+                            <text class="text-xs padding-lr-sm">|</text>
+                            <text>{{item.area}}</text>
+                            <text class="text-xs padding-lr-sm">|</text>
+                            <text>{{item.community}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <view class="text-center text-gray text-content">没有更多了</view>
+
+
+<view class="page_pack_2">
+    <view class="b">
+        <view class="list" wx:for="{{list}}" wx:key>{{item.name}}</view>
+    </view>
+    <view class="clear"></view>
+</view>
+-->
+
+<view class='z_page_space_3'></view>
+<view class="z_page_title title-top">{{page_title}} <view bindtap="toUpdata" class="to-updata">上传资源</view></view>
+<view class='z_page_space_3'></view>
+<view class="btn_steam">
+    <picker bindchange="city_choo" value="{{city_list[city_list_index]}}"  range="{{city_list}}">
+        <view class="l"><icon class="iconfont icon-icon_gps_fill"></icon>{{city_list[city_list_index]}}</view>
+    </picker>
+    <picker bindchange="zhen_choo" value="{{zhen_list[zhen_list_index]}}"  range="{{zhen_list}}">
+        <view class="r"><icon class="iconfont icon-icon_gps_fill"></icon>{{zhen_list[zhen_list_index]}}</view>
+    </picker>
+    <view class="clear"></view>
+</view>
+<view class="page_tips_1">没有查询到任何数据，请重新选择！</view>
+
+
+<scroll-view scroll-y  bindscrolltolower="lower" style="height: 1200rpx;" upper-threshold="0">
+
+
+    <view class='z_list_1' style="background:#fff; position:relative; " wx:for="{{data}}" wx:key wx:if="{{zhen_list_index==0||item.town == zhen_list[zhen_list_index]}}"  data-id="{{item.id}}" bindtap='details'>
+        <image src="{{item.img}}"></image>
+        <view class="r">
+            <view class="z_font_2">{{item.title}}</view>
+            <view class="z_font_3">{{item.districts}} / {{item.town}} / {{item.community}}</view>
+            <view class="z_font_3">{{item.group}}</view>
+            <view class="z_font_4">
+                <text>{{item.price}}</text> {{item.area}}</view>
+        </view>
+        <view class='clear'></view>
+    </view>
+
+</scroll-view>
+<view class='z_page_space'></view>

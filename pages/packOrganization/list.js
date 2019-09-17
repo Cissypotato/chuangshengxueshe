@@ -16,7 +16,7 @@ Page({
         });
     },
     list_click(e) { //打开介绍容器
-        let info = e.currentTarget.dataset.info;
+        let info = e.currentTarget.dataset.info.replace(/\<img/gi, '<img style="max-width:100%;height:auto" ');
         this.setData({
             info_pack: true,
             info: info,

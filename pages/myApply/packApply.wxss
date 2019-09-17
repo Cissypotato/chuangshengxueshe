@@ -1,0 +1,1 @@
+textarea {width:84vw; margin:2vw 5vw; border:1px solid #eceff1; border-radius:4px; padding:2vw 3vw; font-size:0.9rem; min-height:5rem; line-height:1.6;}
