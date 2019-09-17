@@ -49,7 +49,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 35,
+			"current": 36,
 			"list": [
 				{
 					"id": -1,
@@ -300,6 +300,13 @@
 					"id": -1,
 					"name": "资源列表",
 					"pathName": "pages/index/list/list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "专家上传",
+					"pathName": "pages/packExpert/upData",
 					"scene": null
 				}
 			]

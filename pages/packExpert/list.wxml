@@ -26,7 +26,7 @@
             </n>
             <n>
                 <icon class="iconfont icon-icon_certification_f c2"></icon>
-                <text class="c2">已认证审核</text>
+                <text class="c2">{{item.specialty}}</text>
             </n>
         </r>
         <view class='clear'></view>

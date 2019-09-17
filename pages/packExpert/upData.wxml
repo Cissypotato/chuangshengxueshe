@@ -77,10 +77,6 @@
     <view class="form_3">
         <view class="z_page_space_2"></view>
         <view class="z_page_title">专家人才资料提交</view>
-        <!-- <view class="in_tips">
-            <b>专家名字</b>
-        </view>
-        <input data-t="title" bindblur="input_data" /> -->
         <view class='z_page_space_2'></view>
         <view class='z_page_pack_2'>
             <view class='pack_6' bindtap="chooseImage" wx:if="{{img_path.length==0||img_path==undefined}}">
@@ -96,6 +92,10 @@
             <b>专家姓名</b>
         </view>
         <input data-t="name" bindblur="input_data" />
+        <view class="in_tips">
+            <b>专家头衔</b>
+        </view>
+        <input data-t="specialty" bindblur="input_data" />
         <view class="in_tips">
             <b>联系电话</b>
         </view>

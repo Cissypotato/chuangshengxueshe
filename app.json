@@ -9,6 +9,7 @@
         "pages/packNeeds/list",
         "pages/packOrganization/list",
         "pages/packExpert/list",
+        "pages/packExpert/upData",
         "pages/myMessage/list",
         "pages/myComment/list",
         "pages/myApply/packApply",

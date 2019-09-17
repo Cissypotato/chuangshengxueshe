@@ -9,21 +9,50 @@ Page({
         isLogin:1,
         need_data:null
     },
-    onLoad(options){
-        let id =options.id
-        wx.request({
-            url: 'https://xczyzx.com/index/resources/returnField',
-            data: {
-                state: id
-            },
-            success:  (res)=> {
-                console.log(res)
-                let data = res.data
-                this.setData({
-                    need_data:data
-                })
-            }
-        })
+    onLoad(){    
+        let user = {};
+        user.token = wx.getStorageSync("token");
+        user.user_real = wx.getStorageSync("user_real");
+        if (user.token == '' || user.user_real == '') {
+            if (user.token == '') {
+                var k = '/pages/personal/login/login';
+            } else {
+                var k = '/pages/personal/real/real';
+            };
+            wx.showModal({
+                title: '提示',
+                content: '未登陆或未实名认证用户无法完成此功能，现在就去完成吗？',
+                success(res) {
+                    if (res.confirm) {
+                        wx.navigateTo({
+                            url: k
+                        });
+                    } else {
+                        wx.navigateBack({
+                            delta: 1
+                        });
+                    };
+                }
+            });
+        } else {
+            this.setData({
+                user
+            });
+            wx.request({
+                url: 'https://xczyzx.com/index/resources/returnField',
+                data: {
+                    state: 3
+                },
+                success: (res) => {
+                    // console.log(res)
+                    let data = res.data
+                    this.setData({
+                        need_data: data
+                    })
+                }
+            })
+
+        };
         
     },
     onShow: function() {
@@ -31,6 +60,7 @@ Page({
         wx.request({
             url: 'https://xczyzx.com/index.php/index/address/returnlist',
             success: (res) => {
+                // console.log(res)
                 let data_keys = [];    
                 let list_0 = res.data.tree;
                 let list_1 = [];
@@ -60,6 +90,7 @@ Page({
             }
         });
     },
+    
     choo_type(e) { //资源类型选择
         let k = this.data.resource_type;
         for (var i = 0; i < k.length; i++) {
@@ -90,9 +121,6 @@ Page({
                     })
                 }
             };    
-
-            // console.log(list_2)
-            // console.log(list_3)
             part[1] = list_2
             part[2] = list_3
             this.setData({
@@ -115,10 +143,6 @@ Page({
         } else if (e.detail.column == 2) {
             let k = e.detail.value;
         };
-        // list_4.push(list_1, list_2, list_3);
-        // this.setData({
-        //     part
-        // });
     },
     choo_part_ok(e) { //资源地区选择确认
         let k = e.detail.value;

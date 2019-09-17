@@ -16,9 +16,9 @@ Page({
         user.user_real = wx.getStorageSync("user_real");
         if (user.token == '' || user.user_real == '') {
             if (user.token == ''){
-                var k = '/pages/mine/login/login';
+                var k = '/pages/personal/login/login';
             }else{
-                var k = '/pages/mine/real/real';
+                var k = '/pages/personal/real/real';
             };
             wx.showModal({
                 title: '提示',

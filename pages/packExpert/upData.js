@@ -19,9 +19,9 @@ Page({
         user.user_real = wx.getStorageSync("user_real");
         if (user.token == '' || user.user_real == '') {
             if (user.token == ''){
-                var k = '/pages/mine/login/login';
+                var k = '/pages/personal/login/login';
             }else{
-                var k = '/pages/mine/real/real';
+                var k = '/pages/personal/real/real';
             };
             wx.showModal({
                 title: '提示',
@@ -106,12 +106,14 @@ Page({
         let t = this.data.up_data;
          if (t.name == undefined) {
             getApp().alert('请填写专家姓名');
-         } else if (t.tel == undefined || reg.test(t.tel) == false) {
+         }else if (t.specialty == undefined) {
+             getApp().alert('请填写专家头衔');
+         }else if (t.tel == undefined || reg.test(t.tel) == false) {
             getApp().alert('请填写有效联系电话');
         } else if (t.editor == undefined) {
-            getApp().alert('请填写组织介绍');
+            getApp().alert('请填写专家介绍');
         } else if (this.data.img_path == undefined || this.data.img_path == []) {
-            getApp().alert('请添加组织照片');
+            getApp().alert('请添加专家照片');
         } else {
             wx.showLoading({
                 title: '上传中···'
@@ -123,6 +125,7 @@ Page({
                 formData: {
                     uid: this.data.user.token,
                     name: t.name,
+                    specialty:t.specialty,
                     tel: t.tel,
                     info: t.editor
                 },
@@ -197,7 +200,7 @@ Page({
         }else if (t.price == undefined) {
             getApp().alert('请填写课程预算');
         }else if (t.editor == undefined) {
-            getApp().alert('请填写组织介绍');
+            getApp().alert('请填写课程介绍');
         } else {
             wx.showLoading({
                 title: '上传中···'
