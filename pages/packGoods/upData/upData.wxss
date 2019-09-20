@@ -1,10 +1,20 @@
-page{height: 100%;}
+/* pages/packGoods/upData/upData.wxss */
+
+/*富文本*/
+.toolbar {padding: 0 5vw; text-align:right; color:#90a4ae;}
+.toolbar>text {display:inline-block; padding:0.4rem 0.8rem;  font-size:0.7rem; border:1px solid #eceff1; margin:0.4rem 0 0 0.4rem; border-radius:4px; }
+.ql-container {width:90vw; margin:2vw 5vw; border:1px solid #eceff1; border-radius:4px; padding:2vw 3vw; font-size:0.9rem; min-height:5rem; line-height:1.6;}
+
+/* tups */
+.page_tips_4 {background:#fff8e1; color:#ffa000; border:1px solid #ffecb3; width:82vw; height:3rem; line-height:3rem; margin-left:5vw; font-size:0.9rem; border-radius:4px; padding:0 4vw;}
+.page_tips_4>.l {display:inline-block;}
+.page_tips_4>.l>icon {float:left; margin-right:0.2rem;}
+.page_tips_4>.r {float:right;}
 
 .tipsInfo{font-size: 28rpx;width: 100%;color: #555;display: flex;margin-left: 60rpx;}
 
-.form_3 {}
 .form_3 .in_tips {width:90vw; margin:10vw 5vw 0 5vw; font-size:0.9rem;}
-.form_3 .in_tips>b {color:#607d8b;}
+.form_3 .in_tips>b {color:#607d8b; font-weight:700;}
 .form_3 .in_tips>s {color:#cfd8dc; margin-left:1rem; font-size:0.8rem;}
 .form_3 input{height:2rem; line-height:2rem; width:86vw; margin:0vw 5vw 0 5vw; border:none; border-bottom:1px solid #eceff1; padding:0 2vw; text-align:left; font-size:0.9rem; outline:none;}
 .form_3 .input_text {height:2rem; line-height:2rem; width:86vw; margin:0vw 5vw 0 5vw; border:none; border-bottom:1px solid #eceff1; padding:0 2vw; text-align:left; font-size:0.9rem; display:block;}
@@ -13,10 +23,7 @@ page{height: 100%;}
 .form_3 .type_now {color:#3f51b5;}
 .form_3 textarea {width:84vw; margin:2vw 5vw; border:1px solid #eceff1; border-radius:4px; padding:2vw 3vw; font-size:0.9rem; min-height:5rem; line-height:1.6;}
 
-
-
-.noLogin{width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;}
-.noLogin>.btn{width: 80%;padding: 20rpx;border: 1px solid #eee;text-align: center;color: #555;}
+.tag_list {display:inline-block; margin-left:5vw; padding:0.4rem 0.6rem; border:1px solid #eceff1;  border-radius:4px; font-size:0.8rem; margin-top:0.8rem;}
 
 
 .img-wrapper{margin-top: 48rpx;}

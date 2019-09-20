@@ -19,6 +19,18 @@ Page({
             });
 
         }else{
+            wx.showLoading();
+            wx.request({
+                url: 'https://xczyzx.com/index.php/index/Expert/returnExpert',
+                data:{id:id},
+                success: (res) => {
+                    wx.hideLoading();
+                    this.setData({
+                        list: res.data
+                    });
+                    console.log(res.data)
+                }
+            });
 
         }
     },

@@ -49,7 +49,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 36,
+			"current": 39,
 			"list": [
 				{
 					"id": -1,
@@ -307,6 +307,27 @@
 					"id": -1,
 					"name": "专家上传",
 					"pathName": "pages/packExpert/upData",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/packGoods/packGoods",
+					"pathName": "pages/packGoods/upData/upData",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/packApply/packApply",
+					"pathName": "pages/packApply/packApply",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/myMessage/list",
+					"pathName": "pages/myMessage/list",
 					"scene": null
 				}
 			]

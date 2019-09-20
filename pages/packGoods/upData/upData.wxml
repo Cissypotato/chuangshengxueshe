@@ -1,0 +1,146 @@
+<!-- <view class='page_tips_3' wx:if="{{data.state===0}}">
+    <icon class='iconfont icon-pingjia1 c9'></icon>
+    <view class='p'>社会组织材料审核中，请耐心等待</view>
+</view> -->
+
+<!-- <view wx:if="{{data.state===1}}"> -->
+    <view wx:if="{{plus_state}}">
+        <view class='page_tips_3' wx:if="{{data.shop.length===0}}">
+            <icon class='iconfont icon-kong c9'></icon>
+            <view class='p'>您还没有产品</view>
+            <button class="g_1" bindtap="plus_state_choo">点击提交</button>
+        </view>
+        <view wx:else>
+            <view class="z_page_space_2"></view>
+            <view class="z_page_title">已上传产品列表</view>
+            <view class="z_page_space_3"></view>
+            <view class="list_pack_2" style="padding-top:2vw;">
+                <view class="z_list_2_b" style="margin-top:0; border:none; padding-top:0;">
+                    <li wx:for="{{data.shop}}" wx:key data-id=" {{item.id}}">
+                        <text>{{item.name}}</text>
+                        <text class="tag c5" wx:if="{{item.state===0}}">待审核</text>
+                        <text class="tag c2" wx:if="{{item.state===1}}">审核成功</text>
+                        <text class="tag c3" wx:if="{{item.state===2}}">审核失败</text>
+                        <text class="r c3" bindtap="deletePro" data-id=" {{item.id}}" data-idx=" {{index}}">删除</text>
+                        <icon class="iconfont icon-shanchu r c3"></icon>
+                    </li>
+                </view>
+            </view>
+            <view class="z_page_space_2"></view>
+            <view class="page_tips">
+                <button class="g_1" bindtap="plus_state_choo">上传新产品</button>
+            </view>
+        </view>
+    </view>
+    <view class="form_3" wx:else>
+        <view class="z_page_space_2"></view>
+        <view class="z_page_title">添加新产品
+            <view class="link o_1" bindtap="plus_state_choo">返回列表</view>
+        </view>
+        <view class="in_tips">
+            <b>产品名称</b>
+        </view>
+        <input data-t="i_name" bindblur="input_data" />
+        <view class="in_tips">
+            <b>产品价格</b>
+        </view>
+        <input data-t="price" bindblur="input_data" type="number" placeholder="￥" />
+        <view class="in_tips">
+            <b>产品分类</b>
+        </view>
+        <view class="tag_list {{item.act?'g_1':''}}" wx:for="{{data.type}}" wx:key data-id="{{item.id}}" bindtap="tag_choo">
+            {{item.name}}
+        </view>
+        <view class="in_tips">
+            <b>选择地址</b>
+            <s>点击选择资源所在的社区</s>
+        </view>
+        <view class="section">
+            <picker mode="multiSelector" range="{{part}}" bindcolumnchange="choo_part" bindchange="choo_part_ok" 
+            range-key="name">
+                <text class="input_text">{{data_part}}</text>
+            </picker>
+        </view>
+        <view class="in_tips">
+            <b>联系电话</b>
+        </view>
+        <input data-t="tel" type='number' bindblur="input_data" />
+        <view class="in_tips">
+            <b>产品介绍</b>
+            <s>请使用以下文本编辑器填写产品介绍</s>
+        </view>
+        <editor id="editor" class="ql-container" placeholder="" showImgSize showImgToolbar showImgResize bindready="onEditorReady" bindinput="onEditorBlur"></editor>
+        <view class='toolbar' bindtap="format">
+            <text bindtap="insertImage">插入图片</text>
+            <text class="{{formats.bold ? 'b_1' : ''}}" data-name="bold" bindtap="edit_blod">文字加粗</text>
+            <text class=" {{formats.back ? 'b_1' : ''}}" data-name="backgroundColor" data-value="#00ff00" bindtap="edit_back">文字背景</text>
+        </view>
+        <view class="in_tips">
+            <b>添加图片 (大小在300k内)</b>
+        </view>
+        <view class='z_page_pack_2'>
+            <view class='pack_6 img-wrapper' wx:for="{{img_path}}" wx:key>
+                <image src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview"></image>
+                <view class='del' data-idx="{{index}}"  bindtap="removeImage">删除图片</view>
+            </view>
+            <view class='pack_6 img-wrapper add-img-wrapper' bindtap="chooseImage" wx:if="{{img_path.length<7}}">
+                <view class='btn'>添加图片</view>
+            </view>
+            <view class='clear'></view>
+        </view>
+        <view class="z_page_space"></view>
+        <button class="z_btn_2 g_1" bindtap="up_btn_step_2">添加产品</button>
+        <view class="z_page_space"></view>
+    </view>
+<!-- </view> -->
+
+<!-- <view class='page_tips_3' wx:if="{{data.state===2}}">
+    <icon class='iconfont icon-ku c9'></icon>
+    <view class='p'>您提交的材料审核失败，请重新提交</view>
+    <button class="g_1" bindtap="re_btn">重新提交</button>
+</view> -->
+
+<!-- <view wx:if="{{data.state===3}}">
+    <view class="form_3">
+        <view class="z_page_space_2"></view>
+        <view class="z_page_title">社会组织资料提交</view>
+        <view class="in_tips">
+            <b>组织名字</b>
+        </view>
+        <input data-t="title" bindblur="input_data" />
+        <view class='z_page_space_2'></view>
+        <view class='z_page_pack_2'>
+            <view class='pack_6' bindtap="chooseImage" wx:if="{{img_path.length==0||img_path==undefined}}">
+                <view class='btn'>添加图片</view>
+            </view>
+            <view class='pack_6' wx:else>
+                <image src="{{img_path}}" mode="aspectFill" bindtap="handleImagePreview"></image>
+                <view class='del' bindtap="removeImage">删除图片</view>
+            </view>
+            <view class='clear'></view>
+        </view>
+        <view class="in_tips">
+            <b>联系人姓名</b>
+        </view>
+        <input data-t="name" bindblur="input_data" />
+        <view class="in_tips">
+            <b>联系电话</b>
+        </view>
+        <input data-t="tel" type='number' bindblur="input_data" />
+        <view class="in_tips">
+            <b>组织介绍</b>
+            <s>请使用以下文本编辑器填写组织介绍</s>
+        </view>
+        <editor id="editor" class="ql-container" placeholder="" bindinput="" showImgSize showImgToolbar showImgResize                           bindready="onEditorReady" bindinput="onEditorBlur"></editor>
+        <view class='toolbar' bindtap="format">
+            <text bindtap="insertImage">插入图片</text>
+            <text class="{{formats.bold ? 'b_1' : ''}}" data-name="bold" bindtap="edit_blod">文字加粗</text>
+            <text class=" {{formats.back ? 'b_1' : ''}}" data-name="backgroundColor" data-value="#00ff00" bindtap="edit_back">
+                文字背景              
+            </text>
+        </view>
+    </view>
+    <view class="z_page_space"></view>
+    <button class="z_btn_2 g_1" bindtap="up_btn_step_1">提交</button>
+    <view class="z_page_space"></view>
+</view> -->

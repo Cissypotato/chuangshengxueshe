@@ -1,14 +1,52 @@
-@import "/utils/icon_font.wxss";
-
-
-::-webkit-scrollbar{
-width: 0;
-height: 0;
-color: transparent;
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+.alert_box>s {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 10;
+}
+.alert_box>box {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    z-index: 11;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    animation-name: box_1;
+    animation-duration:0.2s;
+    animation-timing-function: linear;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    animation-direction: normal;
 }
 
-/* .my-info{position: relative} */
-/* .info-num{color: red;position: absolute;top: 0;left: 0;} */
+@keyframes box_1 {
+    from {
+        opacity: 0;
+        transform: scale(0.3, 0.3);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+}
+
+.alert_box>.box_1   {width:70vw; height:90vw;}
+.alert_box>.box_1>image {width:70vw; height:90vw; display:block;}
+.alert_box>.box_1>icon {color:#fff; margin:1rem auto; display:block; text-align:center; font-size:1.6rem;}
+
 
 .myInfo{position: relative;}
 .myInfo::after{content:"";background: rgb(245, 115, 136);position: absolute;top: 0;right: 0;width: 16rpx;height: 16rpx;border-radius: 50%}
+
+.user_face1{}

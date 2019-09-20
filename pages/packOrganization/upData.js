@@ -316,4 +316,11 @@ Page({
         up_data.editor = e.detail.html;
         this.setData({up_data});
     },
+    re_btn(e){
+        let data=this.data.data
+        data.state=3
+        this.setData({
+            data
+        })
+    }
 });

@@ -42,8 +42,15 @@
 			<image src="{{item.img}}"></image>
 		</view>
 		<view class='r'>
-			<view class='name'>{{item.title}}</view>
-			<view class='content'>{{item.content}}</view>
+			<view class='name msgname'>
+            {{item.title}}
+             <view class="move" bindtap='del' data-id="{{item.id}}" data-idx="{{index}}">
+               <view class="bg-red">删除</view>
+            </view>
+            </view>
+			<view class='content'>
+            {{item.content}}
+            </view>
 			<view class='time'>{{item.create_time}}</view>
 		</view>
 		<view class='clear'></view>

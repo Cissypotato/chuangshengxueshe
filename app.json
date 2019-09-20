@@ -16,9 +16,8 @@
         "pages/search/query",
         "pages/personal/home/home",
         "pages/personal/login/login",
-        "pages/personal/real/real"
-        
-        
+        "pages/personal/real/real",
+        "pages/packGoods/upData/upData"
     ],
     "window": {
         "backgroundTextStyle": "dark",

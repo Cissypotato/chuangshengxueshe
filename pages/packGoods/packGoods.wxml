@@ -16,9 +16,13 @@
     <view class="title">{{item.name}}</view>
     <view class="price"><icon class='iconfont icon-ux1399194609363713'></icon>{{item.price}}</view>
 </view>
+<view class="list_goods up-data" >
+    <view bindtap="toUpData">上传资源</view>
+</view>
 <view class="clear"></view>
 <view class='z_page_space_2'></view>
 <view class="page_tips">以上产品全部为系统测试数据</view>
+
 <view class='z_page_space_2'></view>
 
 

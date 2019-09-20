@@ -137,4 +137,9 @@ Page({
           url: '/pages/packGoods/goodsInfo?id='+id,
       });
   },
+    toUpData(){
+        wx.navigateTo({
+            url: './upData/upData'
+        })
+    }
 });

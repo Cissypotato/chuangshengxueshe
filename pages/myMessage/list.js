@@ -12,11 +12,11 @@ Page({
             success(res) {
                if (res.confirm) {
                   wx.navigateTo({
-                     url: '/pages/mine/login/login',
+                     url: '/pages/personal/login/login',
                   })
                } else if (res.cancel) {
                   wx.navigateTo({
-                     url: '/pages/index/home/home',
+                     url: '/pages/index/index',
                   })
                }
             }
@@ -41,9 +41,22 @@ Page({
          },
       })
    },
-   newsDetails(e){
-      wx.navigateTo({
-         url: '/pages/mine/newsDetails/newsDetails?id=' + e.currentTarget.dataset.id,
-      })
+   del(e){
+       let id =e.currentTarget.dataset.id
+       let idx = e.currentTarget.dataset.idx
+       let info=this.data.info
+       info.splice(idx,1)
+       wx.request({
+           url: 'https://xczyzx.com/index.php/index/news/del_news',
+           data: {id},
+           success: (res)=> {
+               this.setData({info})
+           },
+       })
    }
+//    newsDetails(e){
+//       wx.navigateTo({
+//          url: '/pages/mine/newsDetails/newsDetails?id=' + e.currentTarget.dataset.id,
+//       })
+//    }
 })

@@ -1,0 +1,3 @@
+ .msgname{display: flex;}
+
+ .msgname>.move{margin-left: 40rpx;color: rgb(157, 165, 187);}

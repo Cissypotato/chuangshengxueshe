@@ -4,3 +4,5 @@
 .list_goods .price {font-size:0.8rem; width:96vw; height:1.4em; padding:0 2vw 2vw 2vw; color:#ff9800; overflow:hidden;}
 .list_goods .price icon { display:inline; margin-right:0.2rem;}
 .page_tips {width:100vw; text-align:center; font-size:0.8rem; color:#b0bec5;}
+
+.up-data{height: 44vw;color: #666;display: flex;justify-content: center;align-items: center;background: #f7f7f7;border-color: #eee}

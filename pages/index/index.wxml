@@ -26,8 +26,12 @@
         -->
     </view>
     <view wx:else>
-        <open-data type="userAvatarUrl" class="user_face" mode="cover"></open-data>
-        <open-data type="userNickName" class="user_name"></open-data>
+        <view  class="user_face">
+            <icon class="iconfont icon-icon_people_fill"></icon>
+        </view>
+        <view  class="user_name"> 未登录</view>
+        <!-- <open-data type="userAvatarUrl" class="user_face" mode="cover"></open-data> -->
+        <!-- <open-data type="userNickName" class="user_name"></open-data> -->
         <view class="user_state">点击登录</view>
     </view>
     <view class="clear"></view>
@@ -69,7 +73,7 @@
     <view class="clear"></view>
     <view class="z_f_line"></view>
     <button class='z_f_4' bindtap="mk_list" data-id="11" data-t="我的消息">
-        <icon class='iconfont icon-xiaoxi c4 myInfo'></icon>
+        <icon class="iconfont icon-xiaoxi c4 {{news_state? 'myInfo':''}}"></icon>
         <text>我的消息</text>    
     </button>
     <button class='z_f_4' bindtap="mk_list" data-id="12" data-t="我的评价">
@@ -84,10 +88,10 @@
         <icon class='iconfont icon-zhuanfafenxiang- c4'></icon>
         <text>转发分享</text>
     </button> -->
-    <!-- <button class='z_f_4' open-type="contact">
+    <button class='z_f_4' open-type="contact">
         <icon class='iconfont icon-icon_service_fill c4'></icon>
         <text>在线咨询</text>
-    </button> -->
+    </button>
     <!-- <button class='z_f_4' bindtap="mk_list" data-id="16" data-t="资源上传">
         <icon class='iconfont icon-shangchuan c4'></icon>
         <text>资源上传</text>
@@ -109,13 +113,15 @@
     <view class='z_list_2' wx:for="{{news_list[news_title_now]}}" wx:key data-id="{{item.id}}" bindtap="arc_click">· {{item.title}}</view>
 </view>
 <view class='z_page_pack_2'>
-    <scroll-view enable-flex scroll-x scroll-with-animation scroll-left="{{news_banner_scroll_left}}">
+    <scroll-view enable-flex scroll-x scroll-with-animation scroll-left="{{news_banner_scroll_left}}" id="sw">
         <image wx:for="{{d.notice_sow.sow}}" wx:key src="{{item.img}}" mode="scaleToFill" class="scroll_img" data-id="{{item.notice_id}}" bindtap="arc_click"></image>
     </scroll-view>
 </view>
 <view class='z_page_space_4'></view>
 <view wx:for="{{resource_list}}" wx:key>
-    <view class="z_page_title">{{item.name}}</view>
+    <view class="z_page_title">{{item.name}}
+        <view class="link c_1" bindtap="list" data-id="{{item.id}}" data-t="{{item.name}}">更多</view>
+    </view>
     <view wx:for="{{item.info.res}}" wx:key>
         <view class='z_list_1' bindtap='details' data-id="{{item.id}}">
             <image src="{{item.img}}"></image>
@@ -129,7 +135,7 @@
             <view class='clear'></view>
         </view>
     </view>
-    <view class="z_btn_1 b_1" data-id="{{item.id}}" data-t="{{item.name}}" bindtap='list'>查看更多{{item.name}}</view>
+    <!-- <view class="z_btn_1 b_1" data-id="{{item.id}}" data-t="{{item.name}}" bindtap='list'>查看更多{{item.name}}</view> -->
     <view class='z_page_space_4'></view>
 </view>
 <view class="z_page_title">资源申请</view>
@@ -143,6 +149,42 @@
     </view>
     <image src='/image/index_b1.jpg'></image>
 </view>
+<view class='z_page_space_4'></view>
+
+<view class="z_page_title">专家人才
+    <view class="link c_1" bindtap="mk_list" data-id="4">更多</view>
+</view>
+<view class="page_pack_3">
+    <li wx:for="{{experts}}" wx:key  bindtap='toExpertOne'  data-id="{{item.id}}">
+        <image src='{{item.img}}'></image>
+        <t>
+            <n>{{item.name}}</n> · {{item.title}}</t>
+    </li>
+    <view class="clear"></view>
+</view>
+
+<view class='z_page_space_4'></view>
+
+
+<view class="z_page_title">社会组织
+    <view class="link c_1" bindtap="mk_list" data-id="6">更多</view>
+</view>
+<view class="page_pack_3">
+    <view wx:for="{{organization}}" wx:key>
+        <view class='z_list_1' bindtap='toOrganizationOne' data-id="{{item.id}}">
+            <image src="{{item.img}}"></image>
+            <view class="r">
+                <view class="z_font_2">{{item.title}}</view>
+                <view class="z_font_3"></view>
+                <view class="z_font_3">{{item.name}}</view>
+                <view class="z_font_3">{{item.tel}}</view>
+            </view>
+            <view class='clear'></view>
+        </view>
+    </view>
+</view>
+
+<view class='z_page_space_4'></view>
 
 <view class='z_page_space_3'></view>
 <view class="page_foot_info">

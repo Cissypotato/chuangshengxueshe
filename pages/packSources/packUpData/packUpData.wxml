@@ -72,11 +72,11 @@
             <b>添加图片 (大小在300k内)</b>
         </view>
         <view class='z_page_pack_2'>
-            <view class='pack_6' wx:for="{{img_path}}" wx:key>
+            <view class='pack_6 img-wrapper' wx:for="{{img_path}}" wx:key>
                 <image src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview"></image>
                 <view class='del' data-idx="{{index}}"  bindtap="removeImage">删除图片</view>
             </view>
-            <view class='pack_6' bindtap="chooseImage" wx:if="{{img_path.length<7}}">
+            <view class='pack_6 img-wrapper add-img-wrapper' bindtap="chooseImage" wx:if="{{img_path.length<7}}">
                 <view class='btn'>添加图片</view>
             </view>
             <view class='clear'></view>

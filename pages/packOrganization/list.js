@@ -2,19 +2,41 @@ Page({
     data: {
         info_pack: false,
     },
-    onShow: function() { //数据加载
-        wx.showLoading();
-        wx.request({
-            url: 'https://xczyzx.com/index.php/index/Society/returnSociety',
-            success: (res) => {
-                wx.hideLoading();
-                this.setData({
-                    list: res.data
-                });
-                console.log(res.data)
-            }
-        });
+    onLoad(options) {
+        let id = options.id
+        console.log(id)
+        if (id == undefined) {
+            wx.showLoading();
+            wx.request({
+                url: 'https://xczyzx.com/index.php/index/Society/returnSociety',
+                success: (res) => {
+                    wx.hideLoading();
+                    this.setData({
+                        list: res.data
+                    });
+                    console.log(res.data)
+                }
+            });
+
+        } else {
+            wx.showLoading();
+            wx.request({
+                url: 'https://xczyzx.com/index.php/index/Society/returnSociety',
+                data:{id:id},
+                success: (res) => {
+                    wx.hideLoading();
+                    this.setData({
+                        list: res.data
+                    });
+                    console.log(res.data)
+                }
+            });
+
+        }
     },
+    // onShow: function() { //数据加载
+        
+    // },
     list_click(e) { //打开介绍容器
         let info = e.currentTarget.dataset.info.replace(/\<img/gi, '<img style="max-width:100%;height:auto" ');
         this.setData({

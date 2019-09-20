@@ -1,6 +1,71 @@
-<view class='z_page_space_2'></view>
+<view class='z_page_space_2'>
+</view>
+ 
+<view>
+
+    <view class="apply_page_title">申请列表</view>
+    <view wx-if='{{init_data.length==0 ||init_data==null}}'> 您还没有申请任何资源</view>
+    <view class="list_wrapper" wx-else>
+
+        <!-- <view class="z_page_space_2"></view>
+        <view class="z_page_space_3"></view>
+        <view class="list_pack_2" style="padding-top:2vw;">
+            <view class="z_list_2_b" style="margin-top:0; border:none; padding-top:0;">
+                <li wx:for="{{init_data}}" wx:key data-id=" {{item.id}}">
+                    <text>{{item.title}}</text>
+                    <text class="tag c5" wx:if="{{item.state===0}}">待审核</text>
+                    <text class="tag c2" wx:if="{{item.state===1}}">审核成功</text>
+                    <text class="tag c3" wx:if="{{item.state===2}}">审核失败</text>
+                    <text class="r c3" bindtap="deletePro" data-id=" {{item.id}}" data-idx=" {{index}}">删除</text>
+                    <icon class="iconfont icon-shanchu r c3"></icon>
+                </li>
+            </view>
+        </view> -->
+       
+
+        <view class="list-item" wx:for="{{init_data}}" wx:key data-id=" {{item.id}}">
+            <view class="title">{{item.title}}</view>
+            <view class="sort">
+                <text wx:if="{{item.type===1}}">土地资源</text>
+                <text wx:if="{{item.type===2}}">社会组织</text>
+                <text wx:if="{{item.type===3}}">社会组织项目</text>
+                <text wx:if="{{item.type===4}}">专家人才</text>
+                <text wx:if="{{item.type===5}}">专家人才课程</text>
+                <text wx:if="{{item.type===6}}">特色产品</text>
+            </view>
+            <view class="state">
+                <text wx:if="{{item.type==1 && item.state==1}}">已上架</text>
+                <text wx:elif="{{item.type==1 && item.state==2}}">已下架</text>
+                <text wx:elif="{{item.type==1 && item.state==3}}">维护中</text>
+                <text wx:elif="{{item.state==0}}" class="tag c3" >待审核</text>
+                <text wx:elif="{{item.type==1 && item.state==4}}" class="tag c3">审核失败</text>
+                <text wx:elif="{{item.type!=1 && item.state==1}}" class="tag c2">审核通过</text>
+                <text wx:elif="{{item.type!==1 && item.state===2}}" class="tag c3">审核失败</text>
+            </view>
+        </view>
+        <!-- <view class="list-item">
+            <view class="title">晨曦社会服务中心</view>
+            <view class="sort">社会组织</view>
+            <view class="state">待审核</view>
+        </view> -->
+    </view>
+
+    <view class="btn-wrapper">
+        <view class="btn" data-id="1" bindtap="toUpData">土地资源申请</view>
+        <view class="btn" data-id="2" bindtap="toUpData">社会组织申请</view>
+        <view class="btn" data-id="3" bindtap="toUpData">专家人才申请</view>
+        <view class="btn" data-id="4" bindtap="toUpData">特色产品申请</view>
+    </view>
+
+
+   
+</view>
+
+
+
+<!-- <view class='z_page_space_2'></view>
 <view class="z_page_title">资源申请</view>
 <form bindsubmit="formSubmit">
     <textarea class="textarea" bindblur="bindTextAreaBlur" auto-height maxlength="300" placeholder="在这里写下您的需求，我们会主动和您取得联系" value="{{up_data}}" />
     <button class="z_btn_2 g_1" formType="submit">提交</button>
-</form>
+</form> -->

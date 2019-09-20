@@ -1,1 +1,12 @@
 textarea {width:84vw; margin:2vw 5vw; border:1px solid #eceff1; border-radius:4px; padding:2vw 3vw; font-size:0.9rem; min-height:5rem; line-height:1.6;}
+
+.apply_page_title{padding-left: 20rpx;font-size: 40rpx;}
+.list_wrapper{margin: 20rpx;border: 1px solid #eee;padding: 20rpx; }
+.list-item{display: flex;width: 100%;justify-content: space-between;box-sizing: border-box;align-items: center;line-height: 1.6em}
+.list-item>.title{width: 50%;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;font-size: 26rpx; }
+.list-item>.sort{font-size: 24rpx;color: #555;width: 22%;}
+.list-item>.state{font-size: 24rpx;color:#ff9800;width: 18%;}
+
+
+.btn-wrapper{margin:120rpx 20rpx 0;}
+.btn{width: 100%;display: flex;justify-content: center;align-items: center;border: 1px solid #eee;color: #555;line-height: 2em;margin-top: 8rpx;}

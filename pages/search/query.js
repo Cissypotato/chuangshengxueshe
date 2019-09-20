@@ -27,7 +27,6 @@ Page({
                 key: then.data.con
             },
             success: function(res) {
-
                 console.log(res);
                 if (res.data.resources.length != 0){
                     then.setData({

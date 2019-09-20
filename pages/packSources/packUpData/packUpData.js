@@ -199,10 +199,10 @@ Page({
             sourceType: ['album', 'camera'],
             count: 6,
             success: res => {
-                let t = this.data.img_path;
-                t = [...res.tempFilePaths]
-                // t.push();
-                // console.log(res)
+                let t = JSON.parse(JSON.stringify(this.data.img_path)) 
+                for (let i = 0; i < res.tempFilePaths.length;i++){
+                    t.push(res.tempFilePaths[i]);
+                }
                 this.setData({
                     img_path: t
                 });
@@ -217,7 +217,7 @@ Page({
     },
     removeImage(e) { //图片删除
         let i = e.target.dataset.idx;
-        let t = this.data.img_path;
+        let t = JSON.parse(JSON.stringify(this.data.img_path));
         t.splice(i, 1);
         this.setData({
             img_path: t
@@ -298,9 +298,11 @@ Page({
     },
     data_up() { //数据上传
        let  t=this.data.up_data
+       let user=this.data.user
        let data={}
         if (t.sort===3){
           data={
+              user_id: user.token,
               title: t.title,
               sort_id: t.sort,
               pid: t.pid,
@@ -317,6 +319,7 @@ Page({
           }
         } else {
              data = {
+                user_id:user.token,
                 title: t.title,
                 sort_id: t.sort,
                 pid: t.pid,
