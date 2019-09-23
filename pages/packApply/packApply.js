@@ -7,7 +7,17 @@ Page({
         state:false    
     },
     onLoad: function (options) {
-       
+       let id=options.id
+    //    console.log(id)
+       if(id=="我的申请"){
+           this.setData({
+               isShowlist:true
+           })
+       }else{
+           this.setData({
+               isShowlist: false
+           }) 
+       }
 
     },
 

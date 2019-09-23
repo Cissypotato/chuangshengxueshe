@@ -69,7 +69,7 @@
 
 <view class='page_tips_3' wx:if="{{data.state===2}}">
     <icon class='iconfont icon-ku c9'></icon>
-    <view class='p'>您提交的材料审核失败，请重新提交</view>
+    <view class='p'>您提交的材料审核失败，失败原因已发送至您的消息</view>
     <button class="g_1" bindtap="re_btn">重新提交</button>
 </view>
 

@@ -1,3 +1,5 @@
  .msgname{display: flex;}
 
  .msgname>.move{margin-left: 40rpx;color: rgb(157, 165, 187);}
+
+ .content-wrapper{display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp:2;overflow: hidden;}

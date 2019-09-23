@@ -60,9 +60,9 @@
 <view class="z_page_title title-top">{{page_title}} <view bindtap="toUpdata" class="to-updata">上传资源</view></view>
 <view class='z_page_space_3'></view>
 <view class="btn_steam">
-    <picker bindchange="city_choo" value="{{city_list[city_list_index]}}"  range="{{city_list}}">
-        <view class="l"><icon class="iconfont icon-icon_gps_fill"></icon>{{city_list[city_list_index]}}</view>
-    </picker>
+    <!-- <picker bindchange="city_choo" value="{{city_list[city_list_index]}}"  range="{{city_list}}"> -->
+        <view class="l"><icon class="iconfont icon-icon_gps_fill"></icon>新都区</view>
+    <!-- </picker> -->
     <picker bindchange="zhen_choo" value="{{zhen_list[zhen_list_index]}}"  range="{{zhen_list}}">
         <view class="r"><icon class="iconfont icon-icon_gps_fill"></icon>{{zhen_list[zhen_list_index]}}</view>
     </picker>
@@ -77,7 +77,7 @@
     <view class='z_list_1' style="background:#fff; position:relative; " wx:for="{{data}}" wx:key wx:if="{{zhen_list_index==0||item.town == zhen_list[zhen_list_index]}}"  data-id="{{item.id}}" bindtap='details'>
         <image src="{{item.img}}"></image>
         <view class="r">
-            <view class="z_font_2">{{item.title}}</view>
+            <view class="z_font_2 source-title">{{item.title}}</view>
             <view class="z_font_3">{{item.districts}} / {{item.town}} / {{item.community}}</view>
             <view class="z_font_3">{{item.group}}</view>
             <view class="z_font_4">

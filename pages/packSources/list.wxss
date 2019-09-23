@@ -3,3 +3,5 @@ scroll-view {z-index: 999;position: relative;box-sizing: border-box;top:-2.4rem;
 .title-top{display: flex;justify-content: space-between;}
 
 .to-updata{font-size: 32rpx;color: #ffa000;padding: 10rpx 20rpx;line-height: 1.4em; }
+
+.source-title{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}

@@ -36,7 +36,7 @@
 </view> -->
 
 <view class='z_page_space_3'></view>
-<view wx:if="{{isNew}}">
+<view wx:if="{{ isNew }}">
 	<view class='page_message_pack' data-id="{{item.id}}" wx:for="{{info}}" wx:key bindtap="{{item.is_desc === 1?'newsDetails':''}}">
 		<view class='l'>
 			<image src="{{item.img}}"></image>
@@ -48,7 +48,7 @@
                <view class="bg-red">删除</view>
             </view>
             </view>
-			<view class='content'>
+			<view class='content content-wrapper' bindtap="list_click" data-info="{{item.content}}">
             {{item.content}}
             </view>
 			<view class='time'>{{item.create_time}}</view>
@@ -56,7 +56,17 @@
 		<view class='clear'></view>
 	</view>
 </view>
-<view class='page_tips_3' wx:else>
+<view class='page_tips_3' wx:elif="{{isNew==false|| info.length==0}}">
 	<icon class='iconfont icon-xiaoxi c9'></icon>
 	<view class='p'>您还没有消息</view>
+</view>
+
+<view class="info_pack" wx:if="{{info_pack}}">
+    <s></s>
+    <n>
+        <c bindtap="close_info">关闭</c>
+        <view style="height:80vh; width:100vw; overflow: scroll;">
+            <rich-text class="text_pack" nodes="{{content}}"></rich-text>
+        </view>
+    </n>
 </view>

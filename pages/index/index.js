@@ -302,7 +302,7 @@ Page({
             })
         } else if (k == 13) { //我的申请
             wx.navigateTo({
-                url: '/pages/packApply/packApply',
+                url: '/pages/packApply/packApply?id='+t,
             })
         } else if (k == 14) { //转发分享
         } else if (k == 15) { //在线咨询

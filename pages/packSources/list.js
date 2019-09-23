@@ -3,7 +3,7 @@ Page({
     data: {
         zhen_list: [],
         zhen_list_index:0,
-        city_list:['新都区','青白江','金堂'],
+        city_list:['新都区'],
         city_list_index:0,
         //页面功能标题
         page_title:'',
@@ -29,13 +29,13 @@ Page({
             })            
         };
 
-        if (wx.getStorageSync('city_list') == '') {
+        // if (wx.getStorageSync('city_list') == '') {
 
-        } else {
-            this.setData({
-                city_list: wx.getStorageSync('city_list'),
-            });
-        };
+        // } else {
+        //     this.setData({
+        //         city_list: wx.getStorageSync('city_list'),
+        //     });
+        // };
 
         wx.showLoading({
             title: '加载中',
@@ -49,7 +49,7 @@ Page({
                 id:id
             },
             success:(res)=> {
-                // console.log(res)   
+                console.log(res)   
                 let k = res.data.site;
                 let d = ['全部街镇'];
                 for (var i = 0; i < k.length; i++) {
@@ -121,9 +121,6 @@ Page({
     toUpdata(){//跳转到上传资源页面
         wx.navigateTo({
             url: '/pages/packSources/packUpData/packUpData',
-            success: function(res) {},
-            fail: function(res) {},
-            complete: function(res) {},
         })
     }
 

@@ -45,8 +45,11 @@
 .alert_box>.box_1>image {width:70vw; height:90vw; display:block;}
 .alert_box>.box_1>icon {color:#fff; margin:1rem auto; display:block; text-align:center; font-size:1.6rem;}
 
+.index-city-choo{margin-top: 20rpx;}
+
 
 .myInfo{position: relative;}
 .myInfo::after{content:"";background: rgb(245, 115, 136);position: absolute;top: 0;right: 0;width: 16rpx;height: 16rpx;border-radius: 50%}
 
-.user_face1{}
+.user-avatar{display: flex;justify-content: center;align-items: center;}
+.icon-icon_people_fill{color: #888}

@@ -1,4 +1,4 @@
-<view class="z_page_title pt_3">
+<view class="z_page_title pt_3 index-city-choo">
     <picker bindchange="city_choo" value="{{city_list[city_list_index].name}}" mode="selector" range="{{city_list}}" range-key="name">
         <text>{{city_list[city_list_index].name}}</text>
         <icon class="icon iconfont icon-icon_gps_fill" animation="{{city_animate}}"></icon>
@@ -26,7 +26,7 @@
         -->
     </view>
     <view wx:else>
-        <view  class="user_face">
+        <view  class="user_face user-avatar">
             <icon class="iconfont icon-icon_people_fill"></icon>
         </view>
         <view  class="user_name"> 未登录</view>
@@ -139,7 +139,7 @@
     <view class='z_page_space_4'></view>
 </view>
 <view class="z_page_title">资源申请</view>
-<view class='page_banner_pack' bindtap="mk_list" data-id="13" data-t="我的申请">
+<view class='page_banner_pack' bindtap="mk_list" data-id="13" data-t="其他资源申请">
     <view class='text_pack'>
         <text class='t'>没有找到您所需的资源吗？</text>
         <text class='b'>告诉我们，我们帮你搞定！</text>

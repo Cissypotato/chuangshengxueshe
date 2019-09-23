@@ -10,14 +10,15 @@ Page({
         //上传数据
         up_data: {},
     },
-    onShow: function() { //先获取用户相关状态
+    onLoad:function(){
+
         let user = {};
         user.token = wx.getStorageSync("token");
         user.user_real = wx.getStorageSync("user_real");
         if (user.token == '' || user.user_real == '') {
-            if (user.token == ''){
+            if (user.token == '') {
                 var k = '/pages/personal/login/login';
-            }else{
+            } else {
                 var k = '/pages/personal/real/real';
             };
             wx.showModal({
@@ -28,7 +29,7 @@ Page({
                         wx.navigateTo({
                             url: k
                         });
-                    }else{
+                    } else {
                         wx.navigateBack({
                             delta: 1
                         });
@@ -41,6 +42,9 @@ Page({
             });
             this.data_play(user.token);
         };
+    },
+    onShow: function() { //先获取用户相关状态
+       
     },
     data_play(id) { //获取初始数据
         wx.request({
