@@ -12,10 +12,6 @@ Page({
         wx.request({
           url: 'https://xczyzx.com/index.php/index/shop/returnShop',
           data: '',
-          header: {},
-          method: 'GET',
-          dataType: 'json',
-          responseType: 'text',
           success: (res)=> {
               let type = res.data.sort
               let town = res.data.address
@@ -25,12 +21,10 @@ Page({
                 town,
                 list
               })
-              console.log(list)
-              console.log(town)
+            //   console.log(list)
+            //   console.log(town)
 
           },
-          fail: function(res) {},
-          complete: function(res) {},
         })
 
 

@@ -94,7 +94,7 @@ Page({
                      success(res) {
                         if (res.confirm) {
                            wx.navigateTo({
-                              url: '/pages/mine/real/real'
+                              url: '/pages/personal/real/real'
                            });
                         } else if (res.cancel) {
 
@@ -112,7 +112,7 @@ Page({
             success(res) {
                if (res.confirm) {
                   wx.navigateTo({
-                     url: '/pages/mine/login/login'
+                     url: '/pages/personal/login/login'
                   });
                } else if (res.cancel) {
 

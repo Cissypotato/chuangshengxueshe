@@ -28,7 +28,8 @@
 </view>
 <view class="z_page_info_1">
 <!-- 方唇平折沿，曲腹大平底，底面内部下凹。内外均施彩釉，釉层不及底，所露胎骨为坚硬的褐红色。釉色分两种，盆内上部与沿面为豆绿色，余均呈棕红色，两种色釉相交处有一周弦纹，上下分界明显。但由于釉色温润，这种截然的分野并不显得突兀。釉层均匀而釉面亮泽，经揩拭光洁如新。 -->
- {{item_i.info}}
+
+ <rich-text class="text_pack" nodes="{{item_i.info}}"></rich-text>
 
 </view>
 <view class='z_page_space'></view>

@@ -8,21 +8,23 @@
     <view class="clear"></view>
 </view>
 <view class='z_page_space_3'></view>
-<view class="list_pack_2" wx:for="{{list}}" wx:key>
+<view class="list_pack_2 expert-item" wx:for="{{list}}" wx:key bindtap="list_click" data-id="{{item.id}}">
     <view class='z_list_2'>
         <!-- <t bindtap="list_click" data-info="{{item.info}}">
             <icon class="iconfont icon-you r"></icon>
         </t> -->
-        <image bindtap="list_click" data-info="{{item.info}}" src="{{item.img}}"></image>
+        <image  data-info="{{item.info}}" src="{{item.img}}"></image>
         <r>
             <n>
                 <icon class="iconfont icon-icon_people_fill"></icon>
                 <text>{{item.name}}</text>
-                <icon class="iconfont icon-lianjie expert-h" bindtap="list_click" data-info="{{item.info}}"></icon>
+                <!-- <icon class="iconfont icon-lianjie expert-h" bindtap="list_click" data-info="{{item.info}}" data-img="{{item.img}}"     data-id="{{item.id}}"></icon> -->
             </n>
-            <n>
-                <icon class="iconfont icon-lianxi1"></icon>
-                <text>{{item.tel}}</text>
+            <n class="reservation-wrapper">
+                <!-- <icon class="iconfont icon-lianxi1"></icon>
+                <text>{{item.tel}}</text> -->
+                <!-- <text class="reservation-now" bindtap="goMake" data-id="{{item.id}}">立即预约</text> -->
+                预约次数：<text class="reservation-num">{{item.about_num}}</text>
             </n>
             <n>
                 <icon class="iconfont icon-icon_certification_f c2"></icon>
@@ -32,21 +34,30 @@
         <view class='clear'></view>
     </view>
     <view class="z_list_2_b">
-        <li wx:for="{{item.course}}" wx:key bindtap="list_click" data-info="{{item.info}}">
-            <icon class="iconfont icon-lianjie"></icon>
-            <text>{{item.s_name}}</text>
-            <!-- <text class="tag">{{item.people}}</text> -->
-            <text class="r">{{item.price}}</text>
-            <icon class="iconfont icon-jiage r"></icon>
-        </li>
+      <view class="expert-info-wrapper" class="read-more">
+        <view>查看详情</view> <view class="more-info">></view>
+          
+      </view>
+      
     </view>
+    <!-- <view class="z_list_2_b">
+        <li wx:for="{{item.course}}" wx:key bindtap="list_click" data-info="{{item.info}}" data-id="2">
+            <icon class="iconfont icon-lianjie" ></icon>
+            <text>{{item.s_name}}</text>
+            <text class="r">{{item.price}}</text>
+            <icon class="iconfont icon-jiage r"  ></icon>
+        </li>
+    </view> -->
 </view>
-<view class="info_pack" wx:if="{{info_pack}}">
+<!-- <view class="info_pack" wx:if="{{info_pack}}">
     <s></s>
     <n>
         <c bindtap="close_info">关闭</c>
         <view style="height:80vh; width:100vw; overflow: scroll;">
+            <view wx:if="{{expert_id==1}}"  class="expert-img-wrapper">
+                <image src="{{expert_img}}"></image>
+            </view>
             <rich-text class="text_pack" nodes="{{info}}"></rich-text>
         </view>
     </n>
-</view>
+</view> -->

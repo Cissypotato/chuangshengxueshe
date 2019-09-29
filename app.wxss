@@ -18,8 +18,8 @@ page {background:#fff;}
 .page_pack_2>.b>.list { font-size:0.7rem; height:1.6rem; line-height:1.6rem; display:inline-block; margin:0.4rem 0.4rem;  background:#ddd; padding:0 0.6rem; border-radius:4px;}
 .page_pack_3 {width:100vw; min-height:20vw;}
 .page_pack_3>li{width:42.5vw; margin:4vw 0 3vw 5vw; min-height:20vw; display:block; float:left;}
-.page_pack_3>li>image { width:42.5vw; height:20vw; display:block; border-radius:4px;}
-.page_pack_3>li>t {font-size:0.9rem; display:block; color:#78909c; width:42.5vw; height:10vw; line-height:10vw; overflow:hidden;}
+.page_pack_3>li>image { width:42.5vw; height:30vw; display:block; border-radius:4px;}
+.page_pack_3>li>t {font-size:0.9rem; display:block; color:#78909c; width:42.5vw;overflow:hidden;}
 .page_pack_3>li>t>n {color:#546e7a;}
 
 /* page_baner */
@@ -102,7 +102,7 @@ scroll-view { white-space:nowrap;}
 .z_list_1>image {float:left; width:30vw; height:22.5vw;  display:block; border-radius:4px;}
 .z_list_1>.r {float:right; width:57vw; height:24vw; overflow:hidden;  position:relative; top:-1vw;}
 /* 图文列表右侧样式 */
-.z_font_2 {width:55vw; height:6vw; line-height:8vw; display:block; overflow:hidden; font-size:0.95rem; color:#37474f; margin-bottom:0.5vw;}
+.z_font_2 {width:55vw; height:6vw; line-height:8vw; display:block; overflow:hidden; font-size:0.95rem; color:#37474f;text-overflow: ellipsis;white-space: nowrap}
 .z_font_3 {width:55vw; height:5.5vw; line-height:5.5vw; display:block; overflow:hidden; font-size:0.75rem; margin-bottom:0.5vw;color:#546e7a;}
 .z_font_4 {width:55vw; height:6vw; display:block; overflow:hidden; font-size:0.75rem; color:#90a4ae;}
 .z_font_4>text {font-size:0.9rem; color:#ff9800;}

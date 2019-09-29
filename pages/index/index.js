@@ -341,7 +341,7 @@ Page({
     },
     toExpertOne(e){//专家人才点击
         wx.navigateTo({
-            url: '/pages/packExpert/list?id=' + e.currentTarget.dataset.id,
+            url: '/pages/packExpert/list-detail?id=' + e.currentTarget.dataset.id,
         })
     },
     choo_anima() {//地区选择动画

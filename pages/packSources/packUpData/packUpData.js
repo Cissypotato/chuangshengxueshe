@@ -352,7 +352,7 @@ Page({
     },
     toLogin(){//跳转到登录页
         wx.navigateTo({
-            url: '/pages/mine/login/login',
+            url: '/pages/personal/login/login',
             success: function(res) {},
             fail: function(res) {},
             complete: function(res) {},
@@ -360,7 +360,7 @@ Page({
     },
     toUserReal() {
         wx.navigateTo({
-            url: '/pages/mine/real/real',
+            url: '/pages/personal/real/real',
             success: function (res) { },
             fail: function (res) { },
             complete: function (res) { },

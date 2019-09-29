@@ -28,10 +28,6 @@ Page({
             data: {
                 id: wx.getStorageSync("token")
             },
-            header: {},
-            method: 'GET',
-            dataType: 'json',
-            responseType: 'text',
             success: function(res) {
                 then.setData({
                     state: res.data.info.state

@@ -53,3 +53,9 @@
 
 .user-avatar{display: flex;justify-content: center;align-items: center;}
 .icon-icon_people_fill{color: #888}
+
+
+.experts-info-w{text-overflow: ellipsis;display: inline-block;white-space: nowrap}
+.experts-img{margin-bottom: 10rpx;}
+.experts-name{letter-spacing: 0.2em;text-align: center;font-size: 0.95rem}
+.course-name{text-overflow: ellipsis;width:100%;white-space: nowrap;overflow: hidden;font-size: 0.75rem;color:#546e7a;text-align: center}

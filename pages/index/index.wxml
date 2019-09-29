@@ -156,9 +156,18 @@
 </view>
 <view class="page_pack_3">
     <li wx:for="{{experts}}" wx:key  bindtap='toExpertOne'  data-id="{{item.id}}">
-        <image src='{{item.img}}'></image>
-        <t>
-            <n>{{item.name}}</n> · {{item.title}}</t>
+        <image src='{{item.img}}' class="experts-img"></image>
+        <!-- <t class="experts-info-w">
+            <n class="experts-name">{{item.name}} · {{item.title}}</n> 
+        </t> -->
+        <!-- <t class="experts-info-w">
+            <n class="course-name">课程：{{item.course.s_name}}</n> 
+        </t> -->
+        <view>
+        
+            <view class="experts-name">{{item.name}}</view>
+            <view class="course-name">{{item.title}}</view>
+        </view>
     </li>
     <view class="clear"></view>
 </view>

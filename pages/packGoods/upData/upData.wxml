@@ -71,7 +71,7 @@
         </view>
         <editor id="editor" class="ql-container" placeholder="" showImgSize showImgToolbar showImgResize bindready="onEditorReady" bindinput="onEditorBlur"></editor>
         <view class='toolbar' bindtap="format">
-            <text bindtap="insertImage">插入图片</text>
+            <!-- <text bindtap="insertImage">插入图片</text> -->
             <text class="{{formats.bold ? 'b_1' : ''}}" data-name="bold" bindtap="edit_blod">文字加粗</text>
             <text class=" {{formats.back ? 'b_1' : ''}}" data-name="backgroundColor" data-value="#00ff00" bindtap="edit_back">文字背景</text>
         </view>

@@ -21,11 +21,11 @@ Page({
                 success(res) {
                     if (res.confirm) {
                         wx.navigateTo({
-                            url: '/pages/mine/login/login',
+                            url: '/pages/personal/login/login',
                         })
                     } else if (res.cancel) {
                         wx.reLaunch({
-                            url: '/pages/index/home/home',
+                            url: '/pages/index/index',
                         })
                     }
                 }
@@ -36,21 +36,7 @@ Page({
             });
         };
     },
-    onHide: function () {
-
-    },
-    onUnload: function () {
-
-    },
-    onPullDownRefresh: function () {
-
-    },
-    onReachBottom: function () {
-
-    },
-    onShareAppMessage: function () {
-
-    },
+    
     bindTextAreaBlur: function (e) {
         let k = e.detail.value;
         this.setData({

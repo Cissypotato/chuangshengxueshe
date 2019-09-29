@@ -49,7 +49,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 39,
+			"current": 45,
 			"list": [
 				{
 					"id": -1,
@@ -328,6 +328,48 @@
 					"id": -1,
 					"name": "pages/myMessage/list",
 					"pathName": "pages/myMessage/list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/packGoods/upData/upData",
+					"pathName": "pages/packGoods/upData/upData",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/packExpert/list",
+					"pathName": "pages/packExpert/list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/packExpert/list-detail",
+					"pathName": "pages/packExpert/list-detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/packExpert/course-detail",
+					"pathName": "pages/packExpert/course-detail/course-detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/packSources/list",
+					"pathName": "pages/packSources/list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/packExpert/upData",
+					"pathName": "pages/packExpert/upData",
 					"scene": null
 				}
 			]

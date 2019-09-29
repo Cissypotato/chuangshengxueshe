@@ -3,10 +3,12 @@ Page({
     data: {
         zhen_list: [],
         zhen_list_index:0,
-        city_list:['新都区'],
+        city_list: ['新都区', '青白江区', '金堂' ],
         city_list_index:0,
         //页面功能标题
+        city_id:1,
         page_title:'',
+        noTown:false
     },
     onLoad:function(options){
         console.log(options);
@@ -44,18 +46,24 @@ Page({
     },
     dataInfo(id){
         wx.request({
-            url: app.globalData.appUrl + 'sort/list',
+            url: app.globalData.appUrl + 'sort/lists',
             data: {
                 id:id
             },
             success:(res)=> {
                 console.log(res)   
                 let k = res.data.site;
-                let d = ['全部街镇'];
+                let d = [];
+                let city_list=[]
                 for (var i = 0; i < k.length; i++) {
-                    d.push(k[i].name);
+                    city_list.push({ "name": k[i].name, "id": k[i].id});
+                };
+                for (var i = 0; i < k[0].data.length; i++) {
+                    d.push({ "name": k[0].data[i].name, "id": k[0].data[i].id});
                 };
                 this.setData({
+                    site: res.data.site,
+                    city_list:city_list,
                     zhen_list:d,
                     data:res.data.data,
                     page: res.data.page
@@ -71,17 +79,91 @@ Page({
         this.setData({
             city_list_index: e.detail.value,
         });
+        let k=this.data.site
+        let d = [];
+        for (var i = 0; i < k[e.detail.value].data.length; i++) {
+            d.push({ "name": k[e.detail.value].data[i].name, "id": k[e.detail.value].data[i].id});
+        };
+        this.setData({
+            zhen_list: d
+        });
+        let id = this.data.city_list[e.detail.value].id
         //获取新的街镇数据，未完成
+        console.log(id)
+        console.log(this.data.id)
+        wx.request({
+            url: 'https://xczyzx.com/index.php/index/Sort/lists',
+            data: {
+                id:this.data.id,
+                ones:id
+                },
+            success: (res) =>{
+               
+                let data=res.data.data
+                if(data.length==0){
+                    this.setData({
+                        city_id: id,
+                        data:data,
+                        noTown:true
+                    })
+                }else{
+                    this.setData({
+                        city_id:id,
+                        data: res.data.data,
+                        noTown: false
+                    })
+                }
+                
+            },
+        })
     },
     zhen_choo(e) {//街镇切换
+        console.log(e.detail.value)
+        let zhen_list = this.data.zhen_list
         this.setData({
             zhen_list_index: e.detail.value,
         });
-
-        let d1 = this.data.data;
-        let d2 = d1[e.detail.value].town;
-
-        console.log(e);
+        let id = zhen_list[e.detail.value].id  
+        wx.request({
+            url: 'https://xczyzx.com/index.php/index/Sort/lists',
+            data: {
+                id: this.data.id,
+                ones:this.data.city_id,
+                two:id
+                },
+            success: (res)=> {
+                console.log(res)
+                let data = res.data.data
+                if (data.length == 0) {
+                    this.setData({
+                        data,
+                        noTown: true
+                    })
+                } else {
+                    this.setData({
+                        data,
+                        noTown: false
+                    })
+                }
+                
+            },
+        })
+    //     let d1 = this.data.data;
+    //     let zhen_list=this.data.zhen_list
+    //     let d2 = zhen_list[e.detail.value];
+    //     console.log(d2)
+    //     let towns=[]
+    //     for(let i=0;i<d1.length;i++){
+    //         if(d1[i].town==d2){
+    //             towns.push(d1[i])
+    //         }
+    //     }
+    //     console.log(towns)
+    //    if(towns.length==0){
+    //        this.setData({noTown:true})
+    //    }else{
+    //        this.setData({data:towns})
+    //    }
     },
     details(event) {
         wx.navigateTo({

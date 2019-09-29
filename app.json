@@ -17,7 +17,9 @@
         "pages/personal/home/home",
         "pages/personal/login/login",
         "pages/personal/real/real",
-        "pages/packGoods/upData/upData"
+        "pages/packGoods/upData/upData",
+        "pages/packExpert/list-detail",
+        "pages/packExpert/course-detail/course-detail"
     ],
     "window": {
         "backgroundTextStyle": "dark",

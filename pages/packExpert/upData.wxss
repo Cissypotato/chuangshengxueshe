@@ -19,6 +19,9 @@
 .form_3 .choo_mk {width:26.2vw; height:10vw; line-height:10vw; border-radius:4px; border:1px solid #eceff1; float:left; margin-left:5vw; text-align:center; margin-top:3vw; font-size:0.8rem; color:#b0bec5;}
 .form_3 .lng_show {height:10vw; line-height:10vw;  font-size:0.9rem; display:inline-block; float:left; margin-left:5vw; margin-top:3vw; border:1px solid #fff; color:#b0bec5;}
 .form_3 .type_now {color:#3f51b5;}
-.form_3 textarea {width:84vw; margin:2vw 5vw; border:1px solid #eceff1; border-radius:4px; padding:2vw 3vw; font-size:0.9rem; min-height:5rem; line-height:1.6;}
+.form_3 textarea {width:84vw; margin:2vw 0; border:1px solid #eceff1; border-radius:4px; padding:2vw 3vw; font-size:0.9rem; min-height:5rem; line-height:1.6;}
 
 .tag_list {display:inline-block; margin-left:5vw; padding:0.4rem 0.6rem; border:1px solid #eceff1;  border-radius:4px; font-size:0.8rem; margin-top:0.8rem;}
+
+.addimg{margin-top: 20rpx;}
+.form_3 .course-texterea{margin:2vw 5vw;}

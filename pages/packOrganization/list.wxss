@@ -21,3 +21,6 @@
 .page_tips_4>.l {display:inline-block;}
 .page_tips_4>.l>icon {float:left; margin-right:0.2rem;}
 .page_tips_4>.r {float:right;}
+
+
+.org-title{width: 80%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;display:inline-block}

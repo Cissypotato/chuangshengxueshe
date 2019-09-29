@@ -1,0 +1,35 @@
+/* pages/packExpert/list-detail.wxss */
+
+
+.avatar-wrapper{width: 100vw;height:50vw;position: relative;}
+.cover{width: 100%;height: 100%;background: rgba(0, 0, 0,0.2)}
+
+.avatar-info{width: 100%; margin-bottom: 40rpx;}
+.avatar-name{margin-top: 10rpx;letter-spacing: 0.2em;font-size: 40rpx;}
+.avatar-title{font-size: 0.9rem;color:#546e7a;margin-top: 14rpx}
+
+.static-nav{display: flex;width: 100%;padding: 22rpx;font-size: 28rpx;background: #f7f7f7;color: #555;box-sizing: border-box;}
+.static-nav>view{width: 50%;display: flex;flex-direction: column;justify-content: center;align-items: center;}
+.all-course{border-right: 1px solid #eee}
+.b-word{font-size: 20rpx;color: #aaa}
+
+
+
+.main-info{padding: 5vw;line-height: 1.4em; }
+
+.expert-intro-w{margin-top: 10rpx;}
+.expert-intro{margin-top: 20rpx;border-top: 1px solid #f5f5f5;padding-top: 26rpx }
+.t-title{font-size: 36rpx;}
+.t-info {font-size:0.9rem; width:90vw;color:#546e7a; line-height:1.8; text-align: justify;}
+
+.course-wrapper{margin-bottom: 80rpx;margin-top: 40rpx;}
+.course-item-w{display: flex;align-items: center;width: 100%;line-height: 50rpx;}
+.course-name{width:60%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-size: 0.9rem;color:#546e7a;margin-left: 20rpx;margin-right: 80rpx;}
+.icon-lianjie {color:#2196f3; margin-right:0.4rem;}
+icon {font-size:0.9rem; }
+.tag {color:#90a4ae; margin-left:0.6rem;}
+.r { color:#ff9800;}
+
+.no-course{color: #ccc}
+
+

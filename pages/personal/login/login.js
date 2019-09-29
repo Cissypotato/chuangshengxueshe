@@ -32,9 +32,6 @@ Page({
                iv: e.detail.iv,
                encryptedData: e.detail.encryptedData,
             },
-            method: 'GET',
-            dataType: 'json',
-            responseType: 'text',
             success: function(res) {
                wx.setStorageSync("token", res.data.token)
                wx.setStorageSync("user_real", res.data.code)
@@ -91,9 +88,6 @@ Page({
                data: {
                   tel: tel
                },
-               method: 'GET',
-               dataType: 'json',
-               responseType: 'text',
                success: function(res) {
                   wx.showToast({
                      title: '发送成功请注意查收',

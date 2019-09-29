@@ -7,7 +7,7 @@ Page({
         user: {},
         //初始数据
         data: {},
-        plus_state:true,
+        plus_state: true,
         //富文本编辑器按钮样式集
         formats: {},
         //上传数据
@@ -18,9 +18,9 @@ Page({
         user.token = wx.getStorageSync("token");
         user.user_real = wx.getStorageSync("user_real");
         if (user.token == '' || user.user_real == '') {
-            if (user.token == ''){
+            if (user.token == '') {
                 var k = '/pages/personal/login/login';
-            }else{
+            } else {
                 var k = '/pages/personal/real/real';
             };
             wx.showModal({
@@ -31,7 +31,7 @@ Page({
                         wx.navigateTo({
                             url: k
                         });
-                    }else{
+                    } else {
                         wx.navigateBack({
                             delta: 1
                         });
@@ -55,7 +55,8 @@ Page({
                 console.log(res.data)
                 let data = res.data;
                 this.setData({
-                    data:{...data}
+                    data: { ...data
+                    }
                 });
             }
         })
@@ -104,13 +105,13 @@ Page({
     /*专家人才上传*/
     up_btn_step_1(e) { //专家人才开始上传
         let t = this.data.up_data;
-         if (t.name == undefined) {
+        if (t.name == undefined) {
             getApp().alert('请填写专家姓名');
-         }else if (t.specialty == undefined) {
-             getApp().alert('请填写专家头衔');
-         }else if (t.tel == undefined || reg.test(t.tel) == false) {
+        } else if (t.specialty == undefined) {
+            getApp().alert('请填写专家头衔');
+        } else if (t.tel == undefined || reg.test(t.tel) == false) {
             getApp().alert('请填写有效联系电话');
-        } else if (t.editor == undefined) {
+        } else if (t.expert_detail == undefined) {
             getApp().alert('请填写专家介绍');
         } else if (this.data.img_path == undefined || this.data.img_path == []) {
             getApp().alert('请添加专家照片');
@@ -125,9 +126,9 @@ Page({
                 formData: {
                     uid: this.data.user.token,
                     name: t.name,
-                    specialty:t.specialty,
+                    specialty: t.specialty,
                     tel: t.tel,
-                    info: t.editor
+                    info: t.expert_detail
                 },
                 success: (res) => {
                     wx.hideLoading()
@@ -147,11 +148,13 @@ Page({
     },
 
     /*课程上传*/
-    plus_state_choo() {//项目展示和项目上传页面切换
+    plus_state_choo() { //项目展示和项目上传页面切换
         let plus_state = this.data.plus_state;
         plus_state = !plus_state;
         console.log(plus_state)
-        this.setData({ plus_state });
+        this.setData({
+            plus_state
+        });
     },
     deletePro(e) { //删除项目
         let id = e.currentTarget.dataset.id
@@ -176,8 +179,8 @@ Page({
                     })
                 }
             }
-        })   
-        
+        })
+
     },
     // tag_choo(e) { //项目针对人群
     //     let id = e.currentTarget.dataset.id;
@@ -195,30 +198,42 @@ Page({
     // },
     up_btn_step_2() { //课程开始上传
         let t = this.data.up_data;
+        console.log(t)
         if (t.i_name == undefined) {
             getApp().alert('请填写课程名称');
-        }else if (t.price == undefined) {
+        } else if (t.price == undefined) {
             getApp().alert('请填写课程预算');
-        }else if (t.editor == undefined) {
+        } else if (t.editor == undefined) {
+            getApp().alert('请填写课程大纲');
+        } else if (t.time == undefined) {
+            getApp().alert('请填写课程总时长');
+        } else if (t.course_detail == undefined) {
             getApp().alert('请填写课程介绍');
+        } else if (t.course_pointer == undefined) {
+            getApp().alert('请填写课程亮点');
         } else {
             wx.showLoading({
                 title: '上传中···'
             });
-            t.plus_state=true
+            t.plus_state = true
             this.setData({
-                data:t
+                data: t
             })
-            wx.request({
-                url: 'https://xczyzx.com/index.php/index/Expert/addCourses',
-                data: {
+            wx.uploadFile({
+                url: 'https://xczyzx.com/index.php/index/expert/addCourses',
+                filePath: this.data.img_path,
+                name: 'img',
+                formData: {
                     uid: this.data.user.token,
                     s_name: t.i_name,
                     // people: t.people,
-                    info: t.editor,
+                    outline: t.editor,
                     price: t.price,
+                    bright_spot: t.course_pointer,
+                    info: t.course_detail,
+                    length: t.time,
                 },
-                success: (res) => {           
+                success: (res) => {
                     wx.hideLoading()
                     wx.showModal({
                         title: '提示',
@@ -295,7 +310,7 @@ Page({
                         id: 'abcd',
                         role: 'god'
                     },
-                    success: function () {
+                    success: function() {
                         console.log('insert image success')
                     }
                 })
@@ -312,14 +327,16 @@ Page({
 
         })
     },
-    onEditorBlur(e) {//编辑器赋值
+    onEditorBlur(e) { //编辑器赋值
         var up_data = this.data.up_data;
         up_data.editor = e.detail.html;
-        this.setData({up_data});
+        this.setData({
+            up_data
+        });
     },
-    re_btn(){
-        let data=this.data.data
-        data.state=3
+    re_btn() {
+        let data = this.data.data
+        data.state = 3
         this.setData({
             data
         })

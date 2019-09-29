@@ -37,6 +37,16 @@
         <view class="z_page_title">添加新课程
             <view class="link o_1" bindtap="plus_state_choo">返回列表</view>
         </view>
+        <view class='z_page_pack_2'>
+            <view class='pack_6 addimg' bindtap="chooseImage" wx:if="{{img_path.length==0||img_path==undefined}}">
+                <view class='btn'>添加课程照片</view>
+            </view>
+            <view class='pack_6' wx:else>
+                <image src="{{img_path}}" mode="aspectFill" bindtap="handleImagePreview"></image>
+                <view class='del' bindtap="removeImage">删除图片</view>
+            </view>
+            <view class='clear'></view>
+        </view>
         <view class="in_tips">
             <b>课程名称</b>
         </view>
@@ -45,6 +55,18 @@
             <b>课程价格</b>
         </view>
         <input data-t="price" bindblur="input_data" type="number" placeholder="￥" />
+        <view class="in_tips">
+            <b>课程总时长</b>
+        </view>
+        <input data-t="time" bindblur="input_data" type="number" placeholder="小时" />
+        <view class="in_tips">
+            <b>课程简介</b>
+        </view>
+        <textarea data-t="course_detail"  class="course-texterea" auto-height bindblur="input_data" />
+        <view class="in_tips">
+            <b>课程亮点</b>
+        </view>
+        <textarea data-t="course_pointer"  class="course-texterea" auto-height bindblur="input_data" />
         <!-- <view class="in_tips">
             <b>针对人群</b>
         </view>
@@ -52,12 +74,12 @@
             {{item.name}}
         </view> -->
         <view class="in_tips">
-            <b>课程介绍</b>
-            <s>请使用以下文本编辑器填写课程介绍</s>
+            <b>课程大纲</b>
+            <s>请使用以下文本编辑器填写课程大纲</s>
         </view>
         <editor id="editor" class="ql-container" placeholder="" showImgSize showImgToolbar showImgResize bindready="onEditorReady" bindinput="onEditorBlur"></editor>
         <view class='toolbar' bindtap="format">
-            <text bindtap="insertImage">插入图片</text>
+            <!-- <text bindtap="insertImage">插入图片</text> -->
             <text class="{{formats.bold ? 'b_1' : ''}}" data-name="bold" bindtap="edit_blod">文字加粗</text>
             <text class=" {{formats.back ? 'b_1' : ''}}" data-name="backgroundColor" data-value="#00ff00" bindtap="edit_back">文字背景</text>
         </view>
@@ -102,16 +124,13 @@
         <input data-t="tel" type='number' bindblur="input_data" />
         <view class="in_tips">
             <b>专家介绍</b>
-            <s>请使用以下文本编辑器填写专家介绍</s>
+            <textarea data-t="expert_detail" auto-height bindblur="input_data" />
         </view>
-        <editor id="editor" class="ql-container" placeholder="" bindinput="" showImgSize showImgToolbar showImgResize                           bindready="onEditorReady" bindinput="onEditorBlur"></editor>
+        <!-- <editor id="editor" class="ql-container" placeholder="" bindinput="" showImgSize showImgToolbar showImgResize                           bindready="onEditorReady" bindinput="onEditorBlur"></editor>
         <view class='toolbar' bindtap="format">
-            <text bindtap="insertImage">插入图片</text>
             <text class="{{formats.bold ? 'b_1' : ''}}" data-name="bold" bindtap="edit_blod">文字加粗</text>
-            <text class=" {{formats.back ? 'b_1' : ''}}" data-name="backgroundColor" data-value="#00ff00" bindtap="edit_back">
-                文字背景              
-            </text>
-        </view>
+            <text class=" {{formats.back ? 'b_1' : ''}}" data-name="backgroundColor" data-value="#00ff00" bindtap="edit_back">文字背景</text>
+        </view> -->
     </view>
     <view class="z_page_space"></view>
     <button class="z_btn_2 g_1" bindtap="up_btn_step_1">提交</button>

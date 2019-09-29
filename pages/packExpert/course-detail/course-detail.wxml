@@ -1,0 +1,71 @@
+<!--pages/packExpert/course-detail/course-detail.wxml-->
+<!--pages/packExpert/list-detail.wxml-->
+<view>
+
+     <view class="avatar-wrapper" style="background-image:url({{init_data.img}});background-position:center center;background-size:cover">
+        <!-- <image></image> -->
+        <view class="cover"></view>
+
+       
+    </view>
+
+    <view class="static-nav">
+        <view class="all-course">
+            <view>{{init_data.length}}小时</view>
+            <view class="b-word">总时长</view>
+        </view>
+        <view class="all-learner">
+            <view>{{init_data.about_num}}次</view>
+            <view class="b-word">已预约</view>
+        </view>
+    </view>
+
+    <view class="main-info">
+        <view class="avatar-info">
+            <view class="avatar-title">{{init_data.s_name}}</view>
+            <view class="avatar-name">{{init_data.expert_name}}</view>
+        </view>
+        <view>
+            <view class="t-title">课程简介</view>
+             <view class="expert-intro">
+                <rich-text class="text_pack t-info " nodes="{{init_data.info}}"></rich-text>
+                <!-- <view class="text_pack t-info ">{{init_data.info}} </view> -->
+            </view>
+            <!-- <rich-text nodes="{{init_data.info}}" class="t-info"></rich-text> -->
+        </view>
+        <view class="course-wrapper">
+            <view class="t-title">课程亮点</view>
+            <view class="expert-intro">
+             <view class="t-info" >{{init_data.bright_spot}}</view>
+            
+            </view>
+        </view>
+        <view class="separate-line"></view>
+        <view class="course-wrapper">
+            <view class="t-title">课程大纲</view>
+            <view class="expert-intro">
+                <rich-text class="text_pack t-info"  nodes="{{init_data.outline}}"></rich-text>
+
+                <!-- <view>第一阶段</view>
+                <view>第一阶段介绍（包括时长/地点，相关内容等）</view>
+                <view>第二阶段</view>
+                <view>第二阶段介绍（包括时长/地点，相关内容等）</view>
+                <view>第三阶段</view>
+                <view>第三阶段介绍（包括时长/地点，相关内容等）</view> -->
+            </view>
+           
+           
+        </view>
+        
+    </view>
+
+
+
+
+    
+    <view wx:if="{{state}}" class="reservation-now">已预约</view>
+
+    <view  wx:else class="reservation-now" bindtap="reservationNow" data-id="{{init_data.id}}">立即预约</view>
+
+
+</view>

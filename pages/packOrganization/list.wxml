@@ -10,7 +10,8 @@
 <view class='z_page_space_3'></view>
 <view class="list_pack_2" wx:for="{{list}}" wx:key>
     <view class='z_list_2'>
-        <t bindtap="list_click" data-info="{{item.info}}">{{item.title}}
+        <t bindtap="list_click" data-info="{{item.info}}">
+            <view class="org-title">{{item.title}}</view>
             <icon class="iconfont icon-you r"></icon>
         </t>
         <image bindtap="list_click" data-info="{{item.info}}" src="{{item.img}}"></image>

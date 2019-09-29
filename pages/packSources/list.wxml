@@ -55,26 +55,33 @@
     <view class="clear"></view>
 </view>
 -->
+<view class="source-header">
 
-<view class='z_page_space_3'></view>
-<view class="z_page_title title-top">{{page_title}} <view bindtap="toUpdata" class="to-updata">上传资源</view></view>
-<view class='z_page_space_3'></view>
-<view class="btn_steam">
-    <!-- <picker bindchange="city_choo" value="{{city_list[city_list_index]}}"  range="{{city_list}}"> -->
-        <view class="l"><icon class="iconfont icon-icon_gps_fill"></icon>新都区</view>
-    <!-- </picker> -->
-    <picker bindchange="zhen_choo" value="{{zhen_list[zhen_list_index]}}"  range="{{zhen_list}}">
-        <view class="r"><icon class="iconfont icon-icon_gps_fill"></icon>{{zhen_list[zhen_list_index]}}</view>
-    </picker>
-    <view class="clear"></view>
+    <view class='z_page_space_3'></view>
+    <view class="z_page_title title-top">{{page_title}}
+        <view bindtap="toUpdata" class="to-updata">上传资源</view>
+    </view>
+    <view class='z_page_space_3'></view>
+    <view class="btn_steam">
+        <picker bindchange="city_choo" value="{{city_list[city_list_index]}}" range="{{city_list}}" range-key="name">
+            <view class="r">
+                <icon class="iconfont icon-icon_gps_fill"></icon>{{city_list[city_list_index].name}}</view>
+        </picker>
+        <picker bindchange="zhen_choo" value="{{zhen_list[zhen_list_index]}}" range="{{zhen_list}}" range-key="name">
+            <view class="r">
+                <icon class="iconfont icon-icon_gps_fill"></icon>{{zhen_list[zhen_list_index].name}}</view>
+        </picker>
+        <view class="clear"></view>
+    </view>
 </view>
-<view class="page_tips_1">没有查询到任何数据，请重新选择！</view>
+
+<view class="page_tips_1 nodata" wx:if="{{noTown}}">没有查询到任何数据，请重新选择！</view>
 
 
-<scroll-view scroll-y  bindscrolltolower="lower" style="height: 1200rpx;" upper-threshold="0">
+<scroll-view scroll-y bindscrolltolower="lower" style="height: 1200rpx;" upper-threshold="0" wx:else>
 
 
-    <view class='z_list_1' style="background:#fff; position:relative; " wx:for="{{data}}" wx:key wx:if="{{zhen_list_index==0||item.town == zhen_list[zhen_list_index]}}"  data-id="{{item.id}}" bindtap='details'>
+    <view class='z_list_1' style="background:#fff; position:relative; " wx:for="{{data}}" wx:key  data-id="{{item.id}}" bindtap='details'>
         <image src="{{item.img}}"></image>
         <view class="r">
             <view class="z_font_2 source-title">{{item.title}}</view>
@@ -88,3 +95,4 @@
 
 </scroll-view>
 <view class='z_page_space'></view>
+

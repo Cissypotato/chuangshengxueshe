@@ -1,0 +1,76 @@
+<!--pages/packExpert/list-detail.wxml-->
+<view>
+
+    <view class="avatar-wrapper" style="background-image:url({{init_data.img}});background-position:center center;background-size:cover">
+        <!-- <image></image> -->
+        <view class="cover"></view>
+
+        <!-- <view class="avatar-info">
+            <view class="avatar-title">{{init_data.specialty}}</view>
+            <view class="avatar-name">{{init_data.name}}</view>
+        </view> -->
+    </view>
+
+    <view class="static-nav">
+        <view class="all-course">
+            <view>{{init_data.course_num}}课</view>
+            <view class="b-word">总课程</view>
+        </view>
+        <view class="all-learner">
+            <view>{{init_data.about_num}}次</view>
+            <view class="b-word">已预约</view>
+        </view>
+    </view>
+
+    <view class="main-info">
+        <view class="avatar-info">
+            
+            <view class="avatar-name">{{init_data.name}}</view>
+            <view class="avatar-title">{{init_data.specialty}}</view>
+        </view>
+        
+        <view class="expert-intro-w">
+            <view class="t-title">老师介绍</view>
+            <view class="expert-intro">
+                <rich-text class="text_pack t-info " nodes="{{init_data.info}}"></rich-text>
+            </view>
+        </view>
+        <view class="course-wrapper">
+            <view class="t-title">课程列表</view>
+            <view class="course-item">
+                <view class="z_list_2_b" wx:if="{{init_data.course.length==0}}">
+                    <li class="no-course">该专家暂时没有课程，敬请期待</li>
+               </view>
+                <view class="z_list_2_b" wx:else>
+                    <view  wx:for="{{init_data.course}}" data-id="{{item.id}}" bindtap="toCourseDetail" class="course-item-w">
+                        <view> <icon class="iconfont icon-lianjie"></icon></view>
+                        <view class="course-name"><text >{{item.s_name}}</text></view>
+                        <view>
+                            <icon class="iconfont icon-jiage r"></icon>
+                            <text class="r">{{item.price}}</text>
+                            
+                        </view>
+                        <!-- <text class="tag">{{item.people}}</text> -->
+                        
+                    </view>
+                    
+                </view>
+            </view>
+        </view>
+
+
+    </view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</view>
