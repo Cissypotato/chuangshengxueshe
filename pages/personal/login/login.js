@@ -23,6 +23,7 @@ Page({
       })
    },
    getPhoneNumber: function(e) {
+      console.log(e)
       let then = this
       if (e.detail.errMsg == "getPhoneNumber:ok") {
          wx.request({
@@ -149,9 +150,6 @@ Page({
             data: {
                tel: then.data.tel
             },
-            method: 'GET',
-            dataType: 'json',
-            responseType: 'text',
             success: function(res) {
                console.log(res)
                wx.setStorageSync("token", res.data.token)

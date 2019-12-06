@@ -1,7 +1,7 @@
 
 
 <view class='z_page_space_3'></view>
-<view class="z_page_info_0">{{item.name}}</view>
+<view class="z_page_info_0">{{item_i.name}}</view>
 <scroll-view scroll-x enable-flex class="img_list">
     <image class="scroll-view-item" wx:for="{{item_i.img}}" wx:key src="{{item.img}}" mode="aspectFill" bindtap="img_show" data-src="{{item.img}}"></image>
     <view class="last_pack"></view>

@@ -1,0 +1,30 @@
+/* pages/personal/address/address.wxss */
+
+page{background: #f8f8f8;padding-bottom: 200rpx;height: 100%}
+
+.main{box-sizing: border-box}
+.card-Wrapper{overflow: auto;}
+
+.card{background: #fff;margin-top: 20rpx;padding: 40rpx;line-height: 1.8em; }
+
+.card-content{border-bottom:1px solid #f8f8f8;}
+.content-left{display: flex;justify-content: space-between}
+.default-selected{font-size: 24rpx;background: #FFB445;color: #fff;border-radius: 4px;padding: 4rpx;margin-left: 20rpx;}
+.iconxuanze,.iconxuanze1{font-size: 40rpx;color:#FFB445,; }
+
+
+.tel{font-size: 28rpx;margin-left: 20rpx;}
+.address{font-size: 28rpx;color: #555;}
+.card-button{display: flex;justify-content: space-between;margin-top: 20rpx;line-height: 2em;font-size: 28rpx;color: #555}
+
+.icon-iconfontzhizuobiaozhunbduan10,.icon-dustbin_icon{font-size: 24rpx;color: #555;margin-right: 10rpx;}
+
+.button{position: fixed;bottom: 0;width: 100%;padding: 40rpx;box-sizing: border-box;background: #fff;border-top: 1px solid #eee }
+.button>button{background:linear-gradient(#6D7BC7, #4A5BB9);color: #fff;}
+
+
+
+.no-address{height: 100%;width: 100%;display: flex;justify-content: center;align-items: center;}
+.content-wrapper>text{font-size: 34rpx;color: #6c7733}
+.icon-wrapper{width: 100%;display: flex;justify-content: center;padding: 20rpx;box-sizing: border-box;margin-bottom: 80rpx;}
+.icon-jia1{font-size: 240rpx;color: #d0d8ab;}

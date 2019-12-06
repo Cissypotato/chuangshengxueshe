@@ -129,8 +129,11 @@
                 <view class="z_font_2">{{item.title}}</view>
                 <view class="z_font_3">{{item.districts}} / {{item.town}} / {{item.community}}</view>
                 <view class="z_font_3">{{item.group}}</view>
-                <view class="z_font_4">
-                    <text>{{item.price}}</text> {{item.area}}</view>
+                <view class="z_font_4 z_4_1">
+                    <view class="z_font_4_1"><text>{{item.price}}</text> {{item.area}}</view>
+                    <view wx:if="{{item.types==1}}">已出租</view>
+                    <view wx:elif="{{item.types==0}}">未租赁</view>
+                </view>
             </view>
             <view class='clear'></view>
         </view>

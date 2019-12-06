@@ -1,0 +1,97 @@
+<!--pages/personal/address/addAddress/addAddress.wxml-->
+<view>
+  <form bindsubmit="updateFormSubmit" wx:if="{{addressItem}}">
+    <view class="section">
+      <text>联系人</text>
+      <input placeholder="姓名" placeholder-class="placeholder" name="name" value="{{addressItem.name}}"></input>
+    </view>
+    <view class="section">
+      <text>联系方式</text>
+      <input placeholder="电话号码" type="number" placeholder-class="placeholder" name="tel"  value="{{addressItem.tel}}"></input>
+    </view>
+    <view class="section">
+      <text>所在地区</text>
+
+
+      <picker mode="region" value="{{region}}" custom-item="{{customItem}}" bindchange="bindRegionChange" name="province">
+        <view class="picker">
+        <text wx:if="{{isUpdate}}">{{region[0]}}，{{region[1]}}，{{region[2]}}</text>
+         <text wx:else>{{addressItem.porvince}}，{{addressItem.city}}，{{addressItem.area}}</text>
+          
+           <!-- {{region[0]}}，{{region[1]}}，{{region[2]}} -->
+          <span class="iconfont icon-sanjiaoxing"></span>
+        </view>
+
+      </picker>
+
+    </view>
+    <view class="section">
+      <text>详细地址</text>
+      <input placeholder="请填写 " placeholder-class="placeholder" name="address" value="{{addressItem.place}}"></input>
+    </view>
+
+    <!-- <view class="default-address">
+      <text>设为默认地址</text>
+      <!-- <span class="iconfont icon-kaiguan2"></span> -->
+      <!-- <span class="iconfont icon-kaiguan1"></span> --> 
+      <!-- <view class="body-view">
+        <switch checked bindchange="switchChange" name="defaultSelected"  checked="{{Boolean(addressItem.default)}}"/>
+        <!-- <switch bindchange="switch2Change" /> -->
+      <!-- </view>
+    </view> --> 
+
+    <view class="button ">
+      <button form-type="submit" aria-disabled="true">保存地址</button>
+
+    </view>
+  </form>
+
+
+  <form bindsubmit="formSubmit" wx:else>
+    <view class="section">
+      <text>联系人</text>
+      <input placeholder="姓名" placeholder-class="placeholder" name="name"></input>
+    </view>
+    <view class="section">
+      <text>联系方式</text>
+      <input placeholder="电话号码" type="number" placeholder-class="placeholder" name="tel"></input>
+    </view>
+    <view class="section">
+      <text>所在地区</text>
+
+
+      <picker mode="region" value="{{region}}" custom-item="{{customItem}}" bindchange="bindRegionChange" name="province">
+        <view class="picker">
+          {{region[0]}}，{{region[1]}}，{{region[2]}}
+          <span class="iconfont icon-sanjiaoxing"></span>
+        </view>
+
+      </picker>
+
+    </view>
+    <view class="section">
+      <text>详细地址</text>
+      <input placeholder="请填写 " placeholder-class="placeholder" name="address"></input>
+    </view>
+
+    <view class="default-address">
+      <text>设为默认地址</text>
+      <!-- <span class="iconfont icon-kaiguan2"></span> -->
+      <!-- <span class="iconfont icon-kaiguan1"></span> -->
+      <view class="body-view">
+        <switch checked bindchange="switchChange" name="defaultSelected" color="#FE9823"/>
+        <!-- <switch bindchange="switch2Change" /> -->
+      </view>
+    </view>
+
+    <view class="button ">
+      <button form-type="submit">保存地址</button>
+
+    </view>
+  </form>
+
+
+
+
+
+</view>

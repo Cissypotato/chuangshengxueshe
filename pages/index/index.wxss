@@ -59,3 +59,6 @@
 .experts-img{margin-bottom: 10rpx;}
 .experts-name{letter-spacing: 0.2em;text-align: center;font-size: 0.95rem}
 .course-name{text-overflow: ellipsis;width:100%;white-space: nowrap;overflow: hidden;font-size: 0.75rem;color:#546e7a;text-align: center}
+
+.z_4_1{display: flex;justify-content: space-between;}
+.z_font_4_1>text{font-size: 0.9rem;color: #ff9800}

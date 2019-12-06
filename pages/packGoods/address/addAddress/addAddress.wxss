@@ -1,0 +1,23 @@
+/* pages/personal/address/addAddress/addAddress.wxss */
+page{background:#f8f8f8 }
+form{margin-top: 60rpx;}
+.section{padding: 20rpx 40rpx 20rpx 40rpx;display: flex;border-bottom: 1px solid #eee;background:#fff}
+
+.section>text{width: 25%}
+picker{width: 75%;}
+
+
+.picker{font-size: 28rpx;color: #555}
+/* .region{float: left} */
+.icon-sanjiaoxing{color: #FE9823;float: right}
+
+.button{width: 100%;padding: 40rpx;box-sizing: border-box;}
+.button>button{ background: linear-gradient(70deg,#FE9823,#FF5822);color: #fff;}
+
+
+.placeholder{color: #cdcdcd}
+
+.default-address{display: flex;justify-content: space-between;padding: 40rpx;margin-top: 20rpx;border: 1px solid #eee;
+background:#fff}
+
+.icon-kaiguan2,.icon-kaiguan1{color:#FE9823;font-size: 64rpx; }

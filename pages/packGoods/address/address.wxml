@@ -1,0 +1,77 @@
+<!--pages/personal/address/address.wxml-->
+<view class="no-login-wrapper" wx:if="{{!user_id}}">
+
+  <text bindtap="toLogin">您还没有登录,请先登录</text>
+
+</view>
+
+<view wx:else>
+<view  class="main" wx:if="{{hasAddress}}">
+  <view class="card-wrapper" >
+    <!-- <view>收货地址</view> -->
+    <view class="card" wx:for="{{addressList}}">
+
+      <view class="card-content" data-id="{{item.id}}" bindtap="handleChange">
+        <view class="content-left">
+          <view class="main-content" >
+            <view>
+              <text class="name">{{item.name}}</text>
+              <text class="tel">{{item.tel}}</text>
+              <span class="default-selected" wx:if="{{item.default}}"> 默认</span>
+            </view>
+            <view class="address">{{item.porvince}}-{{item.city}}-{{item.area}}-{{item.place}}</view>
+
+          </view>
+
+          <!-- <view class="selected">
+            <span class="iconfont iconxuanze1"  data-id="{{item.id}}" bindtap="handleChange" wx:if="{{item.default==2}}"></span>
+            <span class="iconfont iconxuanze"   data-id="{{item.id}}" bindtap="handleChange" wx:esle></span>
+          </view> -->
+        </view>
+        <view class="content-right"></view>
+      </view>
+
+
+      <view class="card-button">
+        <view bindtap="editAddress" data-id="{{item.id}}">
+          <span class="iconfont icon-iconfontzhizuobiaozhunbduan10"></span>
+          编辑地址
+        </view>
+        <view bindtap="deleteAddress" data-index="{{index}}" data-id="{{item.id}}">
+          <span class="iconfont icon-dustbin_icon"></span>删除
+        </view>
+
+      </view>
+    </view>
+  </view>
+
+
+
+
+  <view class="button">
+    <button bindtap="toAddAdress">新建地址</button>
+
+  </view>
+</view>
+
+
+
+
+
+<view class="no-address" wx:else>
+  <view class="content-wrapper">
+    <view class="icon-wrapper" bindtap="toAddAdress">
+
+      <span class="iconfont icon-jia1"></span>
+    </view>
+    <text> 您还没有收货地址，请添加收货地址</text>
+  </view>
+
+
+
+
+
+
+</view>
+
+</view>

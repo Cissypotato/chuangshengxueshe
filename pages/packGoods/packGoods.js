@@ -13,6 +13,7 @@ Page({
           url: 'https://xczyzx.com/index.php/index/shop/returnShop',
           data: '',
           success: (res)=> {
+
               let type = res.data.sort
               let town = res.data.address
               let list=res.data.data
@@ -21,9 +22,9 @@ Page({
                 town,
                 list
               })
-            //   console.log(list)
-            //   console.log(town)
-
+              console.log(list)
+              console.log(town)
+              console.log(type)
           },
         })
 
@@ -135,5 +136,21 @@ Page({
         wx.navigateTo({
             url: './upData/upData'
         })
-    }
+    },
+    onShareAppMessage: function () {
+        return {
+            title: "社区特色产品",
+            // desc: '志愿活动分享',
+            path: 'pages/packGoods/packGoods',
+
+            success: (res) => {
+                // 转发成功
+                console.log('分享成功')
+                // this.shareClick();
+            },
+            fail: function (res) {
+                // 转发失败
+            }
+        }
+    },
 });

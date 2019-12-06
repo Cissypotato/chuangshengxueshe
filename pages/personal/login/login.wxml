@@ -27,7 +27,7 @@
 <view class='z_page_space_2'></view>
 <view class="z_page_title">注册&登陆</view>
 <input class='input_1' placeholder='请输入手机号码' maxlength='11' bindinput="tel"></input>
-<input class='input_2' placeholder='请输入验证码'maxlength='4' bindinput='code'></input>
+<input class='input_2' placeholder='请输入验证码' maxlength='4' bindinput='code'></input>
 <text class="z_btn_3 b_1" bindtap='getCode'>{{text}}</text>
 <view class="clear"></view>
 <view class='z_page_space_2'></view>

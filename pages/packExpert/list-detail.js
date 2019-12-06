@@ -13,6 +13,9 @@ Page({
      */
     onLoad: function (options) {
        let id=options.id
+       this.setData({
+           id
+       })
        wx.request({
            url: 'https://xczyzx.com/index.php/index/expert/returnExpertDesc',
            data: {id},
@@ -22,8 +25,6 @@ Page({
                    init_data:res.data
                })
            },
-           fail: function(res) {},
-           complete: function(res) {},
        })
     },
 
@@ -33,5 +34,22 @@ Page({
       wx.navigateTo({
           url: './course-detail/course-detail?id='+id,
       })
-    }
+    },
+    onShareAppMessage: function () {
+        return {
+            // title: this.data.init_data.title,
+            // desc: '志愿活动分享',
+            path: 'pages/packExpert/list-detail?id=' + this.data.id,
+
+            success: (res) => {
+                // 转发成功
+                console.log('分享成功')
+                // this.shareClick();
+            },
+            fail: function (res) {
+                // 转发失败
+            }
+        }
+    },
+
 })

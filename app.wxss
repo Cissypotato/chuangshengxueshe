@@ -41,6 +41,8 @@ page {background:#fff;}
 .btn_steam_2 .r {width:46.5vw; float:left;  background:#f5f5f5; border:1px solid #eeeeee; color:#bdbdbd; border-radius:0 4px 4px 0; border-left:0;}
 .btn_steam_2 b {color:#03a9f4; letter-spacing:1px;}
 
+
+
 /* page_tips */
 .page_tips_1 {width:90vw; height:2.4rem; line-height:2.4rem;  text-align:center;  font-size:0.7rem; margin-left:5vw; position:relative; top:2.4rem; color:#90a4ae;}
 .page_tips_2 {width:90vw; height:1rem; line-height:1rem; font-size:0.7rem; margin-left:5vw; color:#90a4ae;}

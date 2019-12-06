@@ -1,0 +1,68 @@
+
+<view class="confirm-order-wrapper">
+    <view>
+      <view wx:if="{{init_data.address==null}}">
+        <view bindtap="toAddAddress" class="addAddress">添加地址</view>
+      </view>
+        <view class="address-wrapper" wx:else>
+            <view class="name-wrapper">
+                <span>收货人：{{init_data.address.name}}</span>
+                <span>{{init_data.address.tel}}</span>
+                <span bindtap="toAddressList">></span>
+            </view>
+            <view>地址：{{init_data.address.porvince}}{{init_data.address.city}}{{init_data.address.area}}{{init_data.address.place}}</view>
+        </view>
+        <view class="com-wrapper">
+            <view class="img-wrapper" style="background:url({{init_data.shop.img}}) center center;background-size:cover;">
+            </view>
+            <view class="info-wrapper">
+                <view class="name">{{init_data.shop.name}}</view>
+                <view>
+                    <view class="num">数量：1件</view>
+                    <view class="score">价格：<span>{{init_data.shop.price}}</span></view>
+                </view>
+                
+            </view>
+        </view>
+    </view>
+    <view class="btn-wrapper">
+        <button bindtap="submitOrder" data-addressid="{{init_data.address.id}}">确认订单</button>
+    </view>
+
+
+</view>
+
+
+
+<!-- <view class="confirm-order-wrapper">
+    <view>
+      <view wx:if="{{init_data.address==null}}">
+        <view bindtap="toAddAddress" class="addAddress">添加地址</view>
+      </view>
+        <view class="address-wrapper" wx:else>
+            <view class="name-wrapper">
+                <span>收货人：陈土豆</span>
+                <span>13887890678</span>
+                <span bindtap="toAddressList">></span>
+            </view>
+            <view>地址：土豆村土豆街道233号</view>
+        </view>
+        <view class="com-wrapper">
+            <view class="img-wrapper" style="background:url(/image/1.jpg) center center;background-size:cover;">
+            </view>
+            <view class="info-wrapper">
+                <view class="name">豆瓣</view>
+                <view>
+                    <view class="num">数量：1件</view>
+                    <view class="score">价格：<span>24元</span></view>
+                </view>
+                
+            </view>
+        </view>
+    </view>
+    <view class="btn-wrapper">
+        <button bindtap="submitOrder" data-addressid="{{init_data.address.id}}">确认订单</button>
+    </view>
+
+
+</view> -->

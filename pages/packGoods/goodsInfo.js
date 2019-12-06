@@ -8,13 +8,11 @@ Page({
    },
    onLoad: function(options) {
       let id = options.id
+      this.setData({
+          id
+      })
       wx.request({
          url: 'https://xczyzx.com/index.php/index/shop/returnDesc?id=' + id,
-         data: '',
-         header: {},
-         method: 'GET',
-         dataType: 'json',
-         responseType: 'text',
          success: (res) => {
             console.log(res)
             this.setData({
@@ -22,8 +20,6 @@ Page({
 
             })
          },
-         fail: function(res) {},
-         complete: function(res) {},
       })
       
    },
@@ -52,6 +48,7 @@ Page({
       });
    },
    goMake(event) {
+       let com_id = event.currentTarget.dataset.id
       var then = this
       //先判断用户是否登陆
       //然后判断用户是否实名认证
@@ -63,30 +60,24 @@ Page({
             data: {
                id: wx.getStorageSync("token")
             },
-            header: {},
-            method: 'GET',
-            dataType: 'json',
-            responseType: 'text',
             success: function (res) {
                then.setData({
                   state: res.data.info.state
                });
                if (res.data.info.state == '1') {
-                  wx.request({
-                     url: app.globalData.appUrl + 'order/add_order',
-                     data: {
-                        uid: wx.getStorageSync("token"),
-                        resources_id: event.currentTarget.dataset.id
-                     },
-                     header: {},
-                     method: 'GET',
-                     dataType: 'json',
-                     responseType: 'text',
-                     success: function (res) {
-                        app.alert("预订成功")
-                     },
-                     fail: function (res) { }
-                  })
+                   wx.navigateTo({
+                       url: './order/order?com_id='+com_id,
+                   })
+                //   wx.request({
+                //      url: app.globalData.appUrl + 'order/add_order',
+                //      data: {
+                //         uid: wx.getStorageSync("token"),
+                //         resources_id: event.currentTarget.dataset.id
+                //      },
+                //      success: function (res) {
+                //         app.alert("预订成功")
+                //      },
+                //   })
                } else {
                   wx.showModal({
                      title: '提示',
@@ -121,4 +112,18 @@ Page({
          });
       }
    },
+    onShareAppMessage: function () {
+        return {
+            title:this.data.item_i.name,
+            path: 'pages/packGoods/goodsInfo？id='+this.data.id,
+            success: (res) => {
+                // 转发成功
+                console.log('分享成功')
+                // this.shareClick();
+            },
+            fail: function (res) {
+                // 转发失败
+            }
+        }
+    },
 });

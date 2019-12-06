@@ -430,4 +430,20 @@ Page({
             });
         };
     },
+    onShareAppMessage: function () {
+        return {
+            // title: this.data.init_data.title,
+            // desc: '志愿活动分享',
+            path: 'pages/index/index',
+
+            success: (res) => {
+                // 转发成功
+                console.log('分享成功')
+                // this.shareClick();
+            },
+            fail: function (res) {
+                // 转发失败
+            }
+        }
+    },
 });

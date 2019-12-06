@@ -7,7 +7,11 @@ Page({
     },
     onLoad: function (options){
 		let k = options.id;
+        this.setData({
+            id:k
+        })
         this.detaInfo(k);
+       
     },
     onShow: function() {
         let then = this;
@@ -45,17 +49,15 @@ Page({
         //先判断用户是否登陆
         //然后判断用户是否实名认证
         let isLogin = this.data.isLogin;
-
-        if (isLogin) {
+        if (this.data.info.resources.types==1){
+            app.alert('该资源已出租，不能进行预约')
+        
+    }else if (isLogin) {
             wx.request({
                 url: app.globalData.appUrl + 'index/news_num',
                 data: {
                     id: wx.getStorageSync("token")
                 },
-                header: {},
-                method: 'GET',
-                dataType: 'json',
-                responseType: 'text',
                 success: function (res) {
                     then.setData({
                         state: res.data.info.state
@@ -67,10 +69,6 @@ Page({
                                 uid: wx.getStorageSync("token"),
                                 resources_id: event.currentTarget.dataset.id
                             },
-                            header: {},
-                            method: 'GET',
-                            dataType: 'json',
-                            responseType: 'text',
                             success: function (res) {
                                 app.alert("预约成功")
                             },
@@ -140,8 +138,25 @@ Page({
     },
 	details(event) {
 		wx.redirectTo({
-			url: '/pages/index/details/details?id=' + event.currentTarget.dataset.id,
+			url: '/pages/packSources/details/details?id=' + event.currentTarget.dataset.id,
 		});
 		console.log(event.currentTarget.dataset.id)
 	},
+    onShareAppMessage: function () {
+        return {
+            title: this.data.info.resources.title,
+            // desc: '志愿活动分享',
+            path: 'pages/packSources/details/details?id=' + this.data.id,
+
+            success: (res) => {
+                // 转发成功
+                console.log('分享成功')
+                // this.shareClick();
+            },
+            fail: function (res) {
+                // 转发失败
+            }
+        }
+    },
+    
 })

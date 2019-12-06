@@ -64,5 +64,22 @@ Page({
               }
           })
         
-    }
+    },
+    onShareAppMessage: function () {
+        return {
+            title: "社会组织",
+            // desc: '志愿活动分享',
+            path: 'pages/packOrganization/list',
+
+            success: (res) => {
+                // 转发成功
+                console.log('分享成功')
+                // this.shareClick();
+            },
+            fail: function (res) {
+                // 转发失败
+            }
+        }
+    },
+
 });

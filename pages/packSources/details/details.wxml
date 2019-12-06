@@ -21,6 +21,9 @@
     <view class="pack">
         <text class="tips">面积</text> {{info.resources.area}}
     </view>
+    <view class="pack">
+        <text class="tips">状态</text> <span wx:if="{{info.resources.types==0}}">未租赁</span><span wx:if="{{info.resources.types==1}}">已出租</span>
+    </view>
     <view class="clear"></view>
 </view>
 <view class="z_page_info_1">{{info.resources.desc}}</view>
@@ -77,7 +80,7 @@
         <view class='t'>在线咨询</view>
         <view class='b'>了解更多资源信息</view>
     </button>
-    <button class='btn o_1' bindtap='goMake' data-id="{{info.resources.id}}">
+    <button class='{{info.resources.types==0?"btn o_1":"btn o_1-1"}}' bindtap='goMake' data-id="{{info.resources.id}}">
         <view class='t'>立即预约</view>
         <view class='b'>预约后请注意消息</view>
     </button>

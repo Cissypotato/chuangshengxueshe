@@ -17,11 +17,6 @@ Page({
        })
         wx.request({
             url: 'https://xczyzx.com/index.php/index/dbs/returnDb',
-            data: '',
-            header: {},
-            method: 'GET',
-            dataType: 'json',
-            responseType: 'text',
             success: (res) => {
                 console.log(res)             
                 let type = res.data.type
@@ -69,6 +64,15 @@ Page({
 
     },
     onShow: function() {
+       
+        // wx.request({
+        //     url: 'https://xczyzx.com//index.php/index/user/getAccessToken',
+        //     success: (res) => {
+        //         console.log('233')
+        //         let access_token=res.data.access_token
+        //         this.getQrcode(access_token)  
+        //     },
+        // })
     },
     list_click(e) {
         let i = e.currentTarget.dataset.id;
@@ -170,10 +174,6 @@ Page({
                     one:id_1,
                     two:id
                 },
-                header: {},
-                method: 'GET',
-                dataType: 'json',
-                responseType: 'text',
                 success: (res)=> {
                     console.log(res)
                     let card_list = res.data.data
@@ -187,5 +187,45 @@ Page({
                     })
                 },
             })
-    }
+    },
+    onShareAppMessage: function () {
+        return {
+            title: "项目公示",
+            // desc: '志愿活动分享',
+            path: 'pages/packNeeds/list',
+
+            success: (res) => {
+                // 转发成功
+                console.log('分享成功')
+                // this.shareClick();
+            },
+            fail: function (res) {
+                // 转发失败
+            }
+        }
+    },
+    // getQrcode(access_token) {
+    //     console.log(access_token)
+    //     wx.request({
+    //         url: "https://xczyzx.com//index.php/index/user/getImg",//域名省略
+    //         data: {
+    //             access_token: access_token,
+    //             path: "pages/packNeeds/list",
+    //             // scene: this.data.id,
+    //             // width: 300
+    //         },
+    //         header: {
+    //             'content-type': 'application/x-www-form-urlencoded'
+    //         },
+    //         method: 'POST',
+    //         dataType: 'json',
+    //         success: (res) => {
+    //             console.log(res)
+    //             let qrcodeUrl = res.data;//服务器小程序码地址
+    //         },
+    //         fail: function () { },
+    //         // complete: options.complete || function () { }
+    //     })
+    // }
+    //https://xczyzx.com/index.php/index/user/getAccessToken?path=pages/packNeeds/list  //获得二维码接口
 });

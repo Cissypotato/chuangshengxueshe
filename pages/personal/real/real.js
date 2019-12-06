@@ -6,14 +6,11 @@ Page({
    onLoad: function (options) {
 
    },
-   onReady: function () {
-
-   },
    onShow: function () {
 
    },
    formSubmit(e){
-       let regIdNo = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+      let regIdNo = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
       let name = e.detail.value.real_name
       let card = e.detail.value.real_number
       if(!regIdNo.test(card)){

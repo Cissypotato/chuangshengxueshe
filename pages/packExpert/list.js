@@ -137,4 +137,20 @@ Page({
 
         }   
     },
+    onShareAppMessage: function () {
+        return {
+            title: "专家人才",
+            // desc: '志愿活动分享',
+            path: 'pages/packExpert/list',
+
+            success: (res) => {
+                // 转发成功
+                console.log('分享成功')
+                // this.shareClick();
+            },
+            fail: function (res) {
+                // 转发失败
+            }
+        }
+    },
 });
