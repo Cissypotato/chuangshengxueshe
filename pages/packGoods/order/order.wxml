@@ -18,8 +18,8 @@
             <view class="info-wrapper">
                 <view class="name">{{init_data.shop.name}}</view>
                 <view>
-                    <view class="num">数量：1件</view>
-                    <view class="score">价格：<span>{{init_data.shop.price}}</span></view>
+                    <view class="num">数量：<span class="control-num" bindtap="reduce">-</span>{{num}}<span  class="control-num" bindtap="add">+</span>件</view>
+                    <view class="score">价格：<span>{{price}}</span></view>
                 </view>
                 
             </view>

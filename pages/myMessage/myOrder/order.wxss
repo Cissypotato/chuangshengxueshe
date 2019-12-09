@@ -1,0 +1,18 @@
+/* pages/personal/order/order.wxss */
+
+.header{display: flex;justify-content: space-around;box-shadow: 0px 1px 3px 0px rgba(59,75,109,1)}
+.nav-item{line-height: 2em;color: #aaa;box-sizing: border-box;}
+.active{border-bottom: 2px solid #FF5822}
+
+.main{padding: 30rpx;margin-top: 20rpx;}
+.order-item{padding: 40rpx 0;display: flex;justify-content: space-between;border-bottom: 1px solid #eee}
+.img-wrapper{width: 40%;background: #eee;height: 180rpx;}
+.order-item>.info-wrapper{width: 56%;display: flex;flex-direction: column;justify-content: space-between;}
+.info-wrapper>.name{font-size: 36rpx;line-height: 2em;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.info-1-wrapper{font-size: 26rpx;display: flex;line-height: 1.6em;color: #aaa;margin-bottom: 10rpx;}
+.info-1{width: 60%;}
+.info-1 span{color: #ddd}
+.info-2{width: 25%;box-sizing: border-box}
+.info-2>image{width: 100%}
+
+.no-order{margin-top: 40rpx;text-align: center;padding: 30rpx;color: #aaa}

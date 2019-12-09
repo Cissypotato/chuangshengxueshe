@@ -1,0 +1,7 @@
+<!--components/pickerThree/pickerThree.wxml-->
+
+<view class="section">
+    <picker mode="multiSelector" range="{{part}}" bindcolumnchange="choo_part" bindchange="choo_part_ok" range-key="name">
+        <text class="input_text">{{data_part}}</text>
+    </picker>
+</view>

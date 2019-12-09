@@ -93,4 +93,9 @@ Page({
             info_pack: false
         });
     },
+    toMyOrder(){
+        wx.navigateTo({
+            url: './myOrder/order'
+        })
+    }
 })

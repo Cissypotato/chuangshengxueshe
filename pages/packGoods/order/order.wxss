@@ -12,6 +12,8 @@
 .name{font-size: 38rpx;margin-top: 20rpx;}
 .num,.score{line-height: 2em;color: #aaa}
 .score>span{color: #6D7BC7}
+.control-num{border: 1px solid #efefef;margin: 0 10rpx;padding: 0 10rpx;}
+
 
 .btn-wrapper{padding-bottom: 40rpx;}
 .btn-wrapper>button{color: #fff;background: linear-gradient(120deg,#FFB445,#FF9B08);width: 90%;box-sizing: border-box}

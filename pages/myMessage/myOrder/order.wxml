@@ -1,0 +1,129 @@
+<!--pages/personal/order/order.wxml-->
+<!-- <view class="no-login-wrapper" wx:if="{{!user_id}}">
+
+    <text bindtap="toLogin">您还没有登录,请先登录</text>
+
+</view>
+<noItem wx:elif="{{init_data.length==0}}" img_path="/images/no3.png" prompt_word="您还没有订单哟"></noItem> -->
+<view>
+    <view class="header">
+        <view class="{{isArr1?'active':''}} nav-item" bindtap="changeArr" data-arr="1">未发货</view>
+        <view class="{{isArr2?'active':''}} nav-item" data-arr="2" bindtap="changeArr">待收货</view>
+        <view class="{{isArr3?'active':''}} nav-item" bindtap="changeArr" data-arr="3">已完成</view>
+        <!-- <view class="nav-item active">全部</view>
+        <view class="nav-item">待收货</view>
+        <view class="nav-item">已完成</view> -->
+    </view>
+    <!-- <view class="no-order">
+  您还没有订单
+</view> -->
+    <view class="main">
+        <view wx:if="{{isArr1}}">
+            <view wx:if="{{arr1.length>0}}">
+                <view class="order-item" wx:for="{{arr1}}" wx:key>
+                    <view class="img-wrapper" style="background:url({{item.shop_img}}) center center;background-size:cover;" data-id="{{item.id}}" bindtap="toConfirmOrder"></view>
+                    <view class="info-wrapper">
+                        <view class="name">{{item.shop_name}}</view>
+                        <view class="info-1-wrapper">
+                            <view class="info-1">
+                                <view>数量：{{item.shop_num}}件</view>
+                                <view>价格：
+                                    <span>{{item.pay_price}}</span>
+                                </view>
+                            </view>
+                            <!-- <view class="info-2">
+                                <image src="/images/17.png" mode="widthFix" wx:if="{{item.status==0}}"></image>
+                                <image src="/images/18.png" mode="widthFix" wx:else></image>
+                            </view> -->
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="no-data" wx:else>暂时没有数据</view>
+        </view>
+
+        <view wx:if="{{isArr2}}">
+            <view wx:if="{{arr2.length>0}}">
+                <view class="order-item" wx:for="{{arr2}}" wx:key>
+                    <view class="img-wrapper" style="background:url({{item.shop_img}}) center center;background-size:cover;" data-id="{{item.id}}" bindtap="toConfirmOrder"></view>
+                    <view class="info-wrapper">
+                        <view class="name">{{item.shop_name}}</view>
+                        <view class="info-1-wrapper">
+                            <view class="info-1">
+                               <view>数量：{{item.shop_num}}件</view>
+                                <view>价格：
+                                    <span>{{item.pay_price}}</span>
+                                </view>
+                            </view>
+                            <!-- <view class="info-2">
+                                <image src="/images/17.png" mode="widthFix"></image>
+                            </view> -->
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="no-data" wx:else>暂时没有数据</view>
+        </view>
+
+        <view wx:if="{{isArr3}}">
+            <view wx:if="{{arr3}}">
+                <view class="order-item" wx:for="{{arr3}}" wx:key>
+                    <view class="img-wrapper" style="background:url({{item.shop_img}}) center center;background-size:cover;" data-id="{{item.id}}" bindtap="toConfirmOrder"></view>
+                    <view class="info-wrapper">
+                        <view class="name">{{item.shop_name}}</view>
+                        <view class="info-1-wrapper">
+                            <view class="info-1">
+                                <view>数量：{{item.shop_num}}件</view>
+                                <view>价格：
+                                    <span>{{item.pay_price}}</span>
+                                </view>
+                            </view>
+                            <!-- <view class="info-2">
+                                <image src="/images/18.png" mode="widthFix"></image>
+                            </view> -->
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="no-data" wx:else>暂时没有数据</view>
+        </view>
+        <!-- <view class="order-item">
+            <view class="img-wrapper"></view>
+            <view class="info-wrapper">
+                <view class="name">保温杯</view>
+                <view class="info-1-wrapper">
+                    <view class="info-1">
+                        <view>数量：1件</view>
+                        <view>积分：
+                            <span>1200分</span>
+                        </view>
+                    </view>
+                    <view class="info-2">
+                        <image></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="order-item">
+            <view class="img-wrapper"></view>
+            <view class="info-wrapper">
+                <view class="name">保温杯</view>
+                <view class="info-1-wrapper">
+                    <view class="info-1">
+                        <view>数量：1件</view>
+                        <view>积分：
+                            <span>1200分</span>
+                        </view>
+                    </view>
+                    <view class="info-2">
+                        <image></image>
+                    </view>
+                </view>
+            </view>
+        </view> -->
+
+
+    </view>
+
+
+</view>

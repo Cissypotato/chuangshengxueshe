@@ -19,7 +19,8 @@
         "pages/personal/real/real",
         "pages/packGoods/upData/upData",
         "pages/packExpert/list-detail",
-        "pages/packExpert/course-detail/course-detail"
+        "pages/packExpert/course-detail/course-detail",
+        "pages/myMessage/myOrder/myOrder"
     ],
     "window": {
         "backgroundTextStyle": "dark",

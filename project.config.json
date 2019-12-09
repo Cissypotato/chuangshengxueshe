@@ -48,6 +48,10 @@
 			"currentL": -1,
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 45,
 			"list": [
@@ -370,6 +374,35 @@
 					"id": -1,
 					"name": "pages/packExpert/upData",
 					"pathName": "pages/packExpert/upData",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "确认订单",
+					"pathName": "pages/packGoods/order/order",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 47,
+					"name": "pages/packGoods/order/order",
+					"pathName": "pages/packGoods/order/order",
+					"query": "shop_id=34&address_id=3&user_id=5",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "消息",
+					"pathName": "pages/myMessage/list",
+					"query": "shop_id=34&address_id=3&user_id=5",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "上传资源",
+					"pathName": "pages/packSources/packUpData/packUpData",
+					"query": "shop_id=34&address_id=3&user_id=5",
 					"scene": null
 				}
 			]

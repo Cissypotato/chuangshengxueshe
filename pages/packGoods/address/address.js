@@ -80,7 +80,8 @@ Page({
          
     //   },
     // })
-    wx.navigateTo({
+    
+      wx.redirectTo({
         url: '../order/order?address_id='+id+'&com_id='+this.data.com_id,
     })
   },

@@ -1,0 +1,19 @@
+/* pages/personal/order/conformOrder/confirmOrder.wxss */
+
+.com-detail-wrapper{display: flex;flex-direction: column;justify-content: space-between;height: 100vh}
+.poster{height: 30vh;background: #eee}
+
+.com-info{padding: 30rpx;margin-top: 20rpx;}
+.title-warpper{line-height: 1.6em;padding-bottom:20rpx;border-bottom: 1px solid #eee}
+.title-warpper>.title{font-size: 44rpx;}
+.title-warpper>.price{color: #555;font-size: 24rpx;}
+.title-warpper>.price>span{color:#FF5822;font-size: 30rpx;}
+
+.info-wrapper{font-size: 24rpx;color: #aaa;line-height: 1.8em}
+
+.mid-title{padding: 30rpx;background: #f5f5f5}
+
+.com-intro{padding: 30rpx;}
+
+.confirm-wrapper{display: flex;width: 100%;text-align: center;margin-bottom: 60rpx;justify-content: center}
+.confirm{width: 80%;line-height: 2.8em;color: #fff;text-align: center;background: linear-gradient(70deg,#FE9823,#FF5822);border-radius: 16rpx;}

@@ -1,0 +1,41 @@
+<!--pages/personal/order/conformOrder/confirmOrder.wxml-->
+<view class="com-detail-wrapper">
+    <view>
+        <view class="poster" style="background:url({{init_data.shop_img}}) center center;background-size:cover;"></view>
+
+        <view class="com-info">
+            <view class="title-warpper">
+                <view class="title">{{init_data.shop_name}}</view>
+                <view class="price">价格：
+                    <span>{{init_data.pay_price}}分</span>
+                </view>
+            </view>
+            <view class="info-wrapper">
+                <view class="info-item">库存：{{init_data.num}}件</view>
+                <view class="info-item">商品兑换条件：商品提供单位/组织内部志愿者</view>
+                <view class="info-item">商品提供单位：成都市新都区志愿者中心</view>
+                <view class="info-item">温馨提示：积分兑换商品不提供发票，且不可退换。</view>
+            </view>
+        </view>
+        <view class="mid-title">兑换礼品详情</view>
+        <view class="com-intro">
+            <view>{{init_data.title}}</view>
+            <view class="info-wrapper">
+                <!-- <view class="info-item">库存： 200件</view>
+         <view class="info-item">容量： 250ml</view>
+         <view class="info-item">材质： 环保不锈钢</view>
+         <view class="info-item">颜色： 白色</view> -->
+                <!-- <view>{{init_data.title}}</view> -->
+                <rich-text nodes="{{init_data.content}}"></rich-text>
+            </view>
+        </view>
+    </view>
+    <view class="confirm-wrapper" wx:if="{{init_data.status==2}}">
+        <!-- <view class="left">
+            兑换积分：
+            <span>{{init_data.integral}}分</span>
+        </view>
+        <view class="right" bindtap="buyCom" data-id="{{init_data.id}}">兑换</view> -->
+        <view class="confirm" bindtap="confirm">确认收货</view>
+    </view>
+</view>

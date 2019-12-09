@@ -34,7 +34,7 @@
       <view class="margin-top btn_home text-lg" bindtap="go_home">继续找好资源</view>
    </view>
 </view> -->
-
+<view class="my-order" bindtap="toMyOrder">我的订单 <span>></span></view>
 <view class='z_page_space_3'></view>
 <view wx:if="{{ isNew }}">
 	<view class='page_message_pack' data-id="{{item.id}}" wx:for="{{info}}" wx:key bindtap="{{item.is_desc === 1?'newsDetails':''}}">
